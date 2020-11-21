@@ -78,30 +78,35 @@ namespace wpozyczalniaSamochodow
 
             if (connection.State != ConnectionState.Open)
                 OpenConnection();
-            var selectQuery = "SELECT id, firstName,lastName,email,isAdmin FROM wypozyczalniaUzytkownicy WHERE email='" + loginInput.Text + "' AND password = '" + passwordInput.Text + "';";
-            var result = new MySqlCommand(selectQuery, connection);
-            MySqlDataReader resultReader = result.ExecuteReader();
-
-            if (!resultReader.Read())
-                MessageBox.Show("Złe haslo lub login");
-            else
+            if (connection.State == ConnectionState.Open)
             {
-                isLogged = true;
-                var accountData = new string[5];
-                for (int i = 0; i < resultReader.FieldCount; i++)
-                {
-                    accountData[i] = (resultReader[i].ToString());
-                }
-                int id = Int32.Parse(accountData[0]);
-                string fName = accountData[1];
-                string lName = accountData[2];
-                string email = accountData[3];
-                bool isAdmin = Convert.ToBoolean(Int32.Parse(accountData[4]));
 
-                account = new Account(id, fName, lName, email, isAdmin);
+
+                var selectQuery = "SELECT id, firstName,lastName,email,isAdmin FROM wypozyczalniaUzytkownicy WHERE email='" + loginInput.Text + "' AND password = '" + passwordInput.Text + "';";
+                var result = new MySqlCommand(selectQuery, connection);
+                MySqlDataReader resultReader = result.ExecuteReader();
+
+                if (!resultReader.Read())
+                    MessageBox.Show("Złe haslo lub login");
+                else
+                {
+                    isLogged = true;
+                    var accountData = new string[5];
+                    for (int i = 0; i < resultReader.FieldCount; i++)
+                    {
+                        accountData[i] = (resultReader[i].ToString());
+                    }
+                    int id = Int32.Parse(accountData[0]);
+                    string fName = accountData[1];
+                    string lName = accountData[2];
+                    string email = accountData[3];
+                    bool isAdmin = Convert.ToBoolean(Int32.Parse(accountData[4]));
+
+                    account = new Account(id, fName, lName, email, isAdmin);
+                }
+                resultReader.Close();
+                result.Cancel();
             }
-            resultReader.Close();
-            result.Cancel();
 
             if (isLogged)
             {
