@@ -29,31 +29,47 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.loginPanel1 = new wpozyczalniaSamochodow.LoginPanel();
+            this.adminClient1 = new wpozyczalniaSamochodow.AdminClient();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // panel2
             // 
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Name = "menuStrip1";
+            this.panel2.Controls.Add(this.loginPanel1);
+            this.panel2.Controls.Add(this.adminClient1);
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            // 
+            // loginPanel1
+            // 
+            resources.ApplyResources(this.loginPanel1, "loginPanel1");
+            this.loginPanel1.Name = "loginPanel1";
+            // 
+            // adminClient1
+            // 
+            resources.ApplyResources(this.adminClient1, "adminClient1");
+            this.adminClient1.Name = "adminClient1";
             // 
             // App
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.Controls.Add(this.menuStrip1);
-            this.IsMdiContainer = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.panel2);
             this.Name = "App";
             this.Load += new System.EventHandler(this.App_Load);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Panel panel2;
+        private LoginPanel loginPanel1;
+        private AdminClient adminClient1;
     }
 }
 

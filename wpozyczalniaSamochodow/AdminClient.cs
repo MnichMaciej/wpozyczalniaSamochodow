@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,14 +10,11 @@ using System.Windows.Forms;
 
 namespace wpozyczalniaSamochodow
 {
-    public partial class AdminClient : Form
+    public partial class AdminClient : UserControl
     {
-        public AdminClient( App app)
+        public AdminClient()
         {
-            this.MdiParent = app;
-            this.Dock = DockStyle.Fill;
-
-            InitializeComponent(); 
+            InitializeComponent();
         }
     }
 }

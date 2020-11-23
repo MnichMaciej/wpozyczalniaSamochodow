@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,38 +11,35 @@ using MySql.Data.MySqlClient;
 
 namespace wpozyczalniaSamochodow
 {
-    public partial class LoginPanel : Form
+    public partial class LoginPanel : UserControl
     {
         private MySqlConnection connection;
         private string server;
         private string database;
         private string uid;
         private string password;
-        private string port;
         private string connectionString;
         private bool isLogged = false;
         private Account account;
-        private App parent;
+        public App parent;
 
-        public LoginPanel(App parent)
+        public LoginPanel()
         {
-            this.parent = parent;
-            this.MdiParent = parent;
-            this.Dock = DockStyle.Fill;
-
             InitializeComponent();
-            //server = "192.168.101.66";
-            //database = "tomnich_maciek";
-            //uid = "tomnich_maciek";
-            //password = "Hesoyam";
-            //port = "3306";
-            server = "localhost";
-            database = "wypozyczalniasamochodow";
-            uid = "root";
-            password = "";
+
+            server = "mn16.webd.pl";
+            database = "tomnich_maciek";
+            uid = "tomnich_maciek";
+            password = "Hesoyam";
+
             connectionString = "Server=" + server + ";" + "Uid=" + uid + ";" + "Pwd=" + password + ";" + "Database=" +
             database + ";";
             connection = new MySqlConnection(connectionString);
+        }
+       
+        public void setParent(App parent)
+        {
+            this.parent = parent;
         }
 
         private bool OpenConnection()
@@ -72,12 +69,6 @@ namespace wpozyczalniaSamochodow
                 return false;
             }
         }
-
-        private void LoginPanel_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void logInButtonClick(object sender, EventArgs e)
         {
             if (connection.State != ConnectionState.Open)
@@ -104,8 +95,7 @@ namespace wpozyczalniaSamochodow
                     string fName = accountData[1];
                     string lName = accountData[2];
                     string email = accountData[3];
-                    bool isAdmin = Convert.ToBoolean(Int32.Parse(accountData[4]));
-
+                    bool isAdmin = Convert.ToBoolean(accountData[4]);
                     account = new Account(id, fName, lName, email, isAdmin);
                 }
                 resultReader.Close();
@@ -117,7 +107,6 @@ namespace wpozyczalniaSamochodow
                 parent.openClient(ref account);
                 this.Hide();
             }
-
         }
     }
 }

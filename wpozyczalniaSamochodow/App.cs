@@ -14,30 +14,39 @@ namespace wpozyczalniaSamochodow
     {
         
         private Account account;
+        private List<UserControl> panels = new List<UserControl>();
 
         public App()
         {
             InitializeComponent();
-           
+            loginPanel1.setParent(this);
+            panels.Add(loginPanel1);
+            panels.Add(adminClient1);
         }
 
        
 
         private void App_Load(object sender, EventArgs e)
         {
-            LoginPanel loginPanel = new LoginPanel(this);
-            loginPanel.Show();
+            hidePanels();
+            loginPanel1.Show();
 
+        }
 
+        private void hidePanels()
+        {
+            foreach (UserControl panel in panels)
+            {
+                panel.Hide();
+            }
         }
         public void openClient(ref Account acc)
         {
             account = acc;
             if (account.isAdmin)
             {
-                AdminClient adminClient = new AdminClient(this);
-                adminClient.Show();
-
+                hidePanels();
+                adminClient1.Show();
             }
         }
 

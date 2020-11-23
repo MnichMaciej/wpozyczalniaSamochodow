@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="AdminClient.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AdminClient.Designer.cs">
       <DependentUpon>AdminClient.cs</DependentUpon>
@@ -61,7 +61,7 @@
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginPanel.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="LoginPanel.Designer.cs">
       <DependentUpon>LoginPanel.cs</DependentUpon>
