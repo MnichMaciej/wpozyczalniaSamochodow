@@ -10,19 +10,18 @@ using System.Windows.Forms;
 
 namespace wpozyczalniaSamochodow
 {
-    public partial class AdminClient : UserControl
+    public partial class CarPanel : UserControl
     {
-        public AdminClient()
+        public Action showParent;
+        public CarPanel()
         {
             InitializeComponent();
-            this.carPanel1.Hide();
-            this.carPanel1.showParent = this.panel1.Show;
         }
 
-        private void openCarPanel(object sender, EventArgs e)
+        private void goBack(object sender, EventArgs e)
         {
-            this.carPanel1.Show();
-            this.panel1.Hide();
+            this.Hide();
+            this.showParent();
         }
     }
 }

@@ -60,6 +60,18 @@
     <Compile Include="App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
+    <Compile Include="CarAddingPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CarAddingPanel.Designer.cs">
+      <DependentUpon>CarAddingPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CarPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CarPanel.Designer.cs">
+      <DependentUpon>CarPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -73,6 +85,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarAddingPanel.resx">
+      <DependentUpon>CarAddingPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarPanel.resx">
+      <DependentUpon>CarPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPanel.resx">
       <DependentUpon>LoginPanel.cs</DependentUpon>
