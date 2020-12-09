@@ -25,16 +25,22 @@ namespace wpozyczalniaSamochodow
             this.showParent();
         }
 
-        public void showPanel()
+        public async void showPanel()
         {
             this.Show();
-            this.getCars();
+            await this.getCarsAsync();
 
         }
 
-        private void getCars()
+        private async Task getCarsAsync()
         {
-            //cars = DatabaseService.getCars();
+            //DatabaseService.getCars.Start();
+            await DatabaseService.getCarsAsync().ContinueWith((task) =>
+            {
+                cars = task.Result;
+                Console.WriteLine("\n\n" + cars.ToString() + "\n\n");
+            });
+
         }
     }
 }
