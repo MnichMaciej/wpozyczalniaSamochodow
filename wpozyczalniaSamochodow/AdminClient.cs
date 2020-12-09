@@ -21,7 +21,7 @@ namespace wpozyczalniaSamochodow
 
         private void openCarPanel(object sender, EventArgs e)
         {
-            this.carPanel1.Show();
+            this.carPanel1.showPanel();
             this.panel1.Hide();
         }
     }

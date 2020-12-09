@@ -60,18 +60,21 @@
     <Compile Include="App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
+    <Compile Include="Car.cs" />
     <Compile Include="CarAddingPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CarAddingPanel.Designer.cs">
       <DependentUpon>CarAddingPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="CarData.cs" />
     <Compile Include="CarPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CarPanel.Designer.cs">
       <DependentUpon>CarPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="databaseService.cs" />
     <Compile Include="LoginPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

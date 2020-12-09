@@ -12,6 +12,7 @@ namespace wpozyczalniaSamochodow
 {
     public partial class CarPanel : UserControl
     {
+        private List<Car> cars;
         public Action showParent;
         public CarPanel()
         {
@@ -22,6 +23,18 @@ namespace wpozyczalniaSamochodow
         {
             this.Hide();
             this.showParent();
+        }
+
+        public void showPanel()
+        {
+            this.Show();
+            this.getCars();
+
+        }
+
+        private void getCars()
+        {
+            //cars = DatabaseService.getCars();
         }
     }
 }
