@@ -68,6 +68,12 @@
       <DependentUpon>CarAddingPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="CarData.cs" />
+    <Compile Include="CarEditingPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CarEditingPanel.Designer.cs">
+      <DependentUpon>CarEditingPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="CarPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CarAddingPanel.resx">
       <DependentUpon>CarAddingPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarEditingPanel.resx">
+      <DependentUpon>CarEditingPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CarPanel.resx">
       <DependentUpon>CarPanel.cs</DependentUpon>

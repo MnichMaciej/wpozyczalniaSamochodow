@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Data;
 using System.Runtime.CompilerServices;
+using MySqlX.XDevAPI.Common;
 
 namespace wpozyczalniaSamochodow
 {
@@ -125,6 +126,26 @@ namespace wpozyczalniaSamochodow
              });
         }
 
+        public static async Task<bool> makeQuery(string query)
+        {
+            return await Task.Run(() =>
+            {
+                bool resultFlag = false;
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    var result = new MySqlCommand(query, connection);
+                    MySqlDataReader resultReader = result.ExecuteReader();
+                    if (resultReader.Read()) resultFlag = true;
+                    resultReader.Close();
+                    result.Cancel();
+
+                }
+                return resultFlag;
+            });
+        }
+
         private static void ShowDialog(string text, string caption)
         {
             Form prompt = new Form()
@@ -149,6 +170,8 @@ namespace wpozyczalniaSamochodow
             database + ";";
             connection.ConnectionString = connectionString;
         }
+
+
 
 
 

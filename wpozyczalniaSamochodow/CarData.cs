@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace wpozyczalniaSamochodow
 {
-    class CarData
+    public class CarData
     {
         public string model;
         public string brand;

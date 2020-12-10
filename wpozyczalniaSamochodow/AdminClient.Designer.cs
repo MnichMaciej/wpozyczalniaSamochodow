@@ -47,7 +47,7 @@
             // 
             // reservationPanelButton
             // 
-            this.reservationPanelButton.Location = new System.Drawing.Point(424, 247);
+            this.reservationPanelButton.Location = new System.Drawing.Point(940, 247);
             this.reservationPanelButton.Name = "reservationPanelButton";
             this.reservationPanelButton.Size = new System.Drawing.Size(75, 23);
             this.reservationPanelButton.TabIndex = 1;
@@ -60,26 +60,29 @@
             this.panel1.Controls.Add(this.carPanelButton);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(774, 527);
+            this.panel1.Size = new System.Drawing.Size(1200, 527);
             this.panel1.TabIndex = 3;
             // 
             // carPanel1
             // 
+            this.carPanel1.AutoSize = true;
             this.carPanel1.Location = new System.Drawing.Point(0, 0);
             this.carPanel1.Name = "carPanel1";
-            this.carPanel1.Size = new System.Drawing.Size(774, 527);
+            this.carPanel1.Size = new System.Drawing.Size(1200, 527);
             this.carPanel1.TabIndex = 2;
             // 
             // AdminClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.carPanel1);
             this.Name = "AdminClient";
-            this.Size = new System.Drawing.Size(774, 527);
+            this.Size = new System.Drawing.Size(1203, 530);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
