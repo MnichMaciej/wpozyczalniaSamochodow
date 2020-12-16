@@ -1,4 +1,4 @@
-﻿namespace wpozyczalniaSamochodow
+﻿namespace wypozyczalniaSamochodow
 {
     partial class CarPanel
     {
@@ -32,6 +32,7 @@
             this.goBackButton = new System.Windows.Forms.Button();
             this.addingCarButton = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.carAddingPanel1 = new wypozyczalniaSamochodow.CarAddingPanel();
             this.carsTable = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +43,7 @@
             this.efficiency = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.isDisabled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.editCarButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.carEditingPanel1 = new wpozyczalniaSamochodow.CarEditingPanel();
+            this.carEditingPanel1 = new wypozyczalniaSamochodow.CarEditingPanel();
             this.menuPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.carsTable)).BeginInit();
@@ -55,7 +56,7 @@
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(200, 601);
+            this.menuPanel.Size = new System.Drawing.Size(200, 610);
             this.menuPanel.TabIndex = 0;
             // 
             // goBackButton
@@ -76,17 +77,27 @@
             this.addingCarButton.TabIndex = 0;
             this.addingCarButton.Text = "Dodaj samochód";
             this.addingCarButton.UseVisualStyleBackColor = true;
+            this.addingCarButton.Click += new System.EventHandler(this.addCar);
             // 
             // mainPanel
             // 
             this.mainPanel.AutoSize = true;
-            this.mainPanel.Controls.Add(this.carEditingPanel1);
             this.mainPanel.Controls.Add(this.carsTable);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Controls.Add(this.carEditingPanel1);
+            this.mainPanel.Controls.Add(this.carAddingPanel1);
             this.mainPanel.Location = new System.Drawing.Point(200, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1000, 601);
+            this.mainPanel.Size = new System.Drawing.Size(1003, 607);
             this.mainPanel.TabIndex = 1;
+            // 
+            // carAddingPanel1
+            // 
+            this.carAddingPanel1.AutoSize = true;
+            this.carAddingPanel1.Location = new System.Drawing.Point(0, 0);
+            this.carAddingPanel1.Name = "carAddingPanel1";
+            this.carAddingPanel1.Size = new System.Drawing.Size(1000, 604);
+            this.carAddingPanel1.TabIndex = 2;
+            this.carAddingPanel1.Visible = false;
             // 
             // carsTable
             // 
@@ -104,7 +115,7 @@
             this.carsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.carsTable.Location = new System.Drawing.Point(0, 0);
             this.carsTable.Name = "carsTable";
-            this.carsTable.Size = new System.Drawing.Size(1000, 601);
+            this.carsTable.Size = new System.Drawing.Size(1003, 607);
             this.carsTable.TabIndex = 0;
             this.carsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.carsTable_CellContentClick);
             // 
@@ -178,8 +189,9 @@
             this.carEditingPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.carEditingPanel1.Location = new System.Drawing.Point(0, 0);
             this.carEditingPanel1.Name = "carEditingPanel1";
-            this.carEditingPanel1.Size = new System.Drawing.Size(1000, 601);
+            this.carEditingPanel1.Size = new System.Drawing.Size(1003, 607);
             this.carEditingPanel1.TabIndex = 1;
+            this.carEditingPanel1.Visible = false;
             // 
             // CarPanel
             // 
@@ -189,7 +201,7 @@
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.menuPanel);
             this.Name = "CarPanel";
-            this.Size = new System.Drawing.Size(1200, 601);
+            this.Size = new System.Drawing.Size(1206, 610);
             this.menuPanel.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
@@ -216,5 +228,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn isDisabled;
         private System.Windows.Forms.DataGridViewButtonColumn editCarButton;
         private CarEditingPanel carEditingPanel1;
+        private CarAddingPanel carAddingPanel1;
     }
 }

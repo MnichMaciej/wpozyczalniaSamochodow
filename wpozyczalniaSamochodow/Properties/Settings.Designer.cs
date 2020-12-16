@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace wpozyczalniaSamochodow.Properties
+namespace wypozyczalniaSamochodow.Properties
 {
 
 

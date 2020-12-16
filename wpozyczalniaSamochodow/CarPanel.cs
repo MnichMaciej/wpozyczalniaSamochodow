@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace wpozyczalniaSamochodow
+namespace wypozyczalniaSamochodow
 {
     public partial class CarPanel : UserControl
     {
@@ -22,8 +22,20 @@ namespace wpozyczalniaSamochodow
 
         private void goBack(object sender, EventArgs e)
         {
-            this.Hide();
-            this.showParent();
+            if (carEditingPanel1.Visible)
+            {
+                carEditingPanel1.Hide();
+                BringToFront();
+            }else if (carAddingPanel1.Visible)
+            {
+                carAddingPanel1.Hide();
+                BringToFront();
+            }
+            else
+            {
+                this.Hide();
+                this.showParent();
+            }
         }
 
         public async void showPanel()
@@ -77,7 +89,14 @@ namespace wpozyczalniaSamochodow
 
         private void editCar(Car car)
         {
+            carEditingPanel1.BringToFront();
             carEditingPanel1.Show(car);
+        }
+
+        private void addCar(object sender, EventArgs e)
+        {
+            carAddingPanel1.BringToFront();
+            carAddingPanel1.Show();
         }
     }
 }

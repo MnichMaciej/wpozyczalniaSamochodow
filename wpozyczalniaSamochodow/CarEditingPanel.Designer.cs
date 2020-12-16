@@ -1,4 +1,4 @@
-﻿namespace wpozyczalniaSamochodow
+﻿namespace wypozyczalniaSamochodow
 {
     partial class CarEditingPanel
     {
@@ -206,6 +206,11 @@
             // odometerTextbox
             // 
             this.odometerTextbox.Location = new System.Drawing.Point(185, 147);
+            this.odometerTextbox.Maximum = new decimal(new int[] {
+            -1304428545,
+            434162106,
+            542,
+            0});
             this.odometerTextbox.Name = "odometerTextbox";
             this.odometerTextbox.Size = new System.Drawing.Size(120, 20);
             this.odometerTextbox.TabIndex = 20;

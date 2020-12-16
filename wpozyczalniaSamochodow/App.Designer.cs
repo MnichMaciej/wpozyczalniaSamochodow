@@ -1,4 +1,4 @@
-﻿namespace wpozyczalniaSamochodow
+﻿namespace wypozyczalniaSamochodow
 {
     partial class App
     {
@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.loginPanel1 = new wpozyczalniaSamochodow.LoginPanel();
-            this.adminClient1 = new wpozyczalniaSamochodow.AdminClient();
+            this.loginPanel1 = new wypozyczalniaSamochodow.LoginPanel();
+            this.adminClient1 = new wypozyczalniaSamochodow.AdminClient();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 

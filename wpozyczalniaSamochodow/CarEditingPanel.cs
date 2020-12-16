@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace wpozyczalniaSamochodow
+namespace wypozyczalniaSamochodow
 {
     public partial class CarEditingPanel : UserControl
     {
@@ -29,7 +29,7 @@ namespace wpozyczalniaSamochodow
             idNumberLabel.Text = car.carId.ToString();
             brandTextbox.Text = car.brand;
             modelTextbox.Text = car.model;
-            typeCombobox.SelectedIndex = (int)Enum.Parse(typeof(CarType), car.type.ToString());
+            typeCombobox.SelectedIndex = (int)Enum.Parse(typeof(CarType), car.type.ToString())-1;
             odometerTextbox.Value = car.vehicleOdometer;
             registrationNumberTextbox.Text = car.registrationNumber;
             efficiencyCheckbox.Checked = car.carEfficiency;

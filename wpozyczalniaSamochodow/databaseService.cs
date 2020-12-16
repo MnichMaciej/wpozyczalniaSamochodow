@@ -9,7 +9,7 @@ using System.Data;
 using System.Runtime.CompilerServices;
 using MySqlX.XDevAPI.Common;
 
-namespace wpozyczalniaSamochodow
+namespace wypozyczalniaSamochodow
 {
     static class DatabaseService
     {

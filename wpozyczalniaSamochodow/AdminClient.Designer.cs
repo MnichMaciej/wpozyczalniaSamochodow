@@ -1,4 +1,4 @@
-﻿namespace wpozyczalniaSamochodow
+﻿namespace wypozyczalniaSamochodow
 {
     partial class AdminClient
     {
@@ -31,7 +31,7 @@
             this.carPanelButton = new System.Windows.Forms.Button();
             this.reservationPanelButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.carPanel1 = new wpozyczalniaSamochodow.CarPanel();
+            this.carPanel1 = new wypozyczalniaSamochodow.CarPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
