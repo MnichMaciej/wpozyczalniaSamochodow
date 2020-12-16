@@ -25,11 +25,16 @@ namespace wypozyczalniaSamochodow
             if (carEditingPanel1.Visible)
             {
                 carEditingPanel1.Hide();
+                addingCarButton.Enabled = true;
                 BringToFront();
-            }else if (carAddingPanel1.Visible)
+
+            }
+            else if (carAddingPanel1.Visible)
             {
                 carAddingPanel1.Hide();
                 BringToFront();
+                addingCarButton.Enabled = true;
+
             }
             else
             {
@@ -91,12 +96,15 @@ namespace wypozyczalniaSamochodow
         {
             carEditingPanel1.BringToFront();
             carEditingPanel1.Show(car);
+            addingCarButton.Enabled = false;
         }
 
         private void addCar(object sender, EventArgs e)
         {
             carAddingPanel1.BringToFront();
             carAddingPanel1.Show();
+            addingCarButton.Enabled = false;
+
         }
     }
 }
