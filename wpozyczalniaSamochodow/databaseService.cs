@@ -126,6 +126,35 @@ namespace wypozyczalniaSamochodow
              });
         }
 
+        public static async Task<bool> insertCar(string brand,string model,int type,decimal odometer,string registrationNumber,int efficiency,int isDisabled,string imageUrl)
+        {
+            return await Task.Run(() =>
+            {
+                bool resultFlag = false;
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+
+                    var insertQuery = "INSERT INTO wypozyczalniaSamochody(brand, model, type, odometer, registrationNumber, efficiency, isDisabled, imageUrl) VALUES ('"+brand+"','"+model+"','"+type+"','"+odometer+"','"+registrationNumber+"','"+efficiency+"','"+isDisabled+"','"+imageUrl+"');";
+                    var result = new MySqlCommand(insertQuery, connection);
+                    try
+                    {
+                        MySqlDataReader resultReader = result.ExecuteReader();
+                        resultFlag = true;
+                        resultReader.Close();
+                    }
+                    catch
+                    {
+                        resultFlag = false;
+                    }
+                    result.Cancel();
+                }
+            
+                return resultFlag;
+            });
+        }
+
         public static async Task<bool> makeQuery(string query)
         {
             return await Task.Run(() =>

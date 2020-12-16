@@ -22,11 +22,11 @@ namespace wypozyczalniaSamochodow
             }
         }
 
-        private void save(object sender, EventArgs e)
+        private async void save(object sender, EventArgs e)
         {
             var brand = brandTextbox.Text;
             var model = modelTextbox.Text;
-            var type = typeCombobox.SelectedItem;
+            var type =  (int)((CarType)Enum.Parse(typeof(CarType), typeCombobox.SelectedItem.ToString()));
             var odometer = odometerTextbox.Value;
             var registrationNumber = registrationNumberTextbox.Text;
             var efficiency = efficiencyCheckbox.Checked;
@@ -35,10 +35,24 @@ namespace wypozyczalniaSamochodow
 
             if(brand.Length > 1 && model.Length >= 1 && registrationNumber.Length > 3 && imageUrl.Length > 2)
             {
-                MessageBox.Show(type.ToString());
+                await DatabaseService.insertCar(brand, model, type, odometer, registrationNumber, efficiency ? 1 : 0, isDisabled ? 1 : 0, imageUrl).ContinueWith(task =>
+                {
+                    bool result = task.Result;
+                    if (result)
+                    {
+                        //TODO: powrot
+                        MessageBox.Show("Zapisano");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie zapisano");
+                        //TODO: error
+                    }
+                });
             }
             else
             {
+                MessageBox.Show("Blad");
                 //TODO: error że mają być wszystkie wypelnione
             }
         }
