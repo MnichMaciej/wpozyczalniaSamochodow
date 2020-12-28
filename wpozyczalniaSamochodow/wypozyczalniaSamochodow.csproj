@@ -54,12 +54,46 @@
     <Compile Include="AdminClient.Designer.cs">
       <DependentUpon>AdminClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminReservationPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminReservationPanel.Designer.cs">
+      <DependentUpon>AdminReservationPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="App.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
+    <Compile Include="Car.cs" />
+    <Compile Include="CarAddingPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CarAddingPanel.Designer.cs">
+      <DependentUpon>CarAddingPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CarConditionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CarConditionPanel.Designer.cs">
+      <DependentUpon>CarConditionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CarData.cs" />
+    <Compile Include="CarEditingPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CarEditingPanel.Designer.cs">
+      <DependentUpon>CarEditingPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CarPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CarPanel.Designer.cs">
+      <DependentUpon>CarPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="databaseService.cs" />
+    <Compile Include="Fine.cs" />
     <Compile Include="LoginPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -68,11 +102,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservation.cs" />
     <EmbeddedResource Include="AdminClient.resx">
       <DependentUpon>AdminClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminReservationPanel.resx">
+      <DependentUpon>AdminReservationPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarAddingPanel.resx">
+      <DependentUpon>CarAddingPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarConditionPanel.resx">
+      <DependentUpon>CarConditionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarEditingPanel.resx">
+      <DependentUpon>CarEditingPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarPanel.resx">
+      <DependentUpon>CarPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPanel.resx">
       <DependentUpon>LoginPanel.cs</DependentUpon>

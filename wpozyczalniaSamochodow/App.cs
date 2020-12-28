@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace wpozyczalniaSamochodow
+namespace wypozyczalniaSamochodow
 {
     public partial class App : Form
     {
