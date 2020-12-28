@@ -15,14 +15,23 @@ namespace wypozyczalniaSamochodow
         public AdminClient()
         {
             InitializeComponent();
-            this.carPanel1.Hide();
-            this.carPanel1.showParent = this.panel1.Show;
+            carPanel1.Hide();
+            carPanel1.showParent = panel1.Show;
+            adminReservationPanel1.Hide();
+            adminReservationPanel1.showParent = panel1.Show;
+
         }
 
         private void openCarPanel(object sender, EventArgs e)
         {
-            this.carPanel1.showPanel();
-            this.panel1.Hide();
+            carPanel1.showPanel();
+            panel1.Hide();
+        }
+
+        private void openAdminReservationPanel(object sender, EventArgs e)
+        {
+            adminReservationPanel1.showPanel();
+
         }
     }
 }

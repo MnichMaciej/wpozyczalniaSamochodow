@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using System.Data;
 using System.Runtime.CompilerServices;
 using MySqlX.XDevAPI.Common;
+using wpozyczalniaSamochodow;
+using System.Security.Cryptography;
 
 namespace wypozyczalniaSamochodow
 {
@@ -24,7 +26,7 @@ namespace wypozyczalniaSamochodow
 
         public static bool openConnection()
         {
-            ShowDialog("Podaj haslo do bazy danych","123");
+            if(string.IsNullOrEmpty(password)) ShowDialog("Podaj haslo do bazy danych","123");
             try
             {
                 connection.Open();
@@ -80,8 +82,9 @@ namespace wypozyczalniaSamochodow
                 }
                 resultReader.Close();
                 result.Cancel();
+                connection.Close();
             }
-
+            
 
             return account;
         }
@@ -121,6 +124,8 @@ namespace wypozyczalniaSamochodow
                      }
                      resultReader.Close();
                      result.Cancel();
+                     connection.Close();
+
                  }
                  return cars;
              });
@@ -149,9 +154,53 @@ namespace wypozyczalniaSamochodow
                         resultFlag = false;
                     }
                     result.Cancel();
+                    connection.Close();
+
                 }
-            
+
                 return resultFlag;
+            });
+        }
+
+        public static async Task<List<Reservation>> getReservationsAsync()
+        {
+            return await Task.Run(() =>
+            {
+                List<Reservation> reservations = new List<Reservation>();
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    var selectQuery = "SELECT r.reservationId, s.brand,s.model,s.type,r.dateBegin,r.dateEnd,s.registrationNumber,r.ended, r.fineId FROM `wypozyczalniaRezerwacje` r INNER JOIN `wypozyczalniaSamochody` s ON r.carId = s.id;";
+                    var result = new MySqlCommand(selectQuery, connection);
+                    MySqlDataReader resultReader = result.ExecuteReader();
+                    while (resultReader.Read())
+                    {
+                        Reservation tempReservation = new Reservation();
+                        List<string> results = new List<string>();
+                        for (int i = 0; i < resultReader.FieldCount; i++)
+                        {
+                            results.Add(resultReader[i].ToString());
+                        }
+
+                        tempReservation.reservationId = Int32.Parse(results[0]);
+                        tempReservation.brand = results[1];
+                        tempReservation.model = results[2];
+                        tempReservation.carType = (CarType)Int32.Parse(results[3]);
+                        tempReservation.dateBegin = results[4];
+                        tempReservation.dateEnd = results[5];
+                        tempReservation.registrationNumber = results[6];
+                        tempReservation.ended = Convert.ToBoolean(results[7]);
+                        tempReservation.fineId = results[8] == "" ? -1 : Int32.Parse(results[8]);
+                        reservations.Add(tempReservation);
+
+                    }
+                    resultReader.Close();
+                    result.Cancel();
+                    connection.Close();
+
+                }
+                return reservations;
             });
         }
 
@@ -169,9 +218,75 @@ namespace wypozyczalniaSamochodow
                     if (resultReader.Read()) resultFlag = true;
                     resultReader.Close();
                     result.Cancel();
+                    connection.Close();
+
 
                 }
                 return resultFlag;
+            });
+        }
+
+        public static async Task<long> insertFine(Fine fine)
+        {
+            return await Task.Run(() =>
+            {
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    string query = "INSERT INTO wypozyczalniaOplaty(cost, description) VALUES('" + fine.fineCost + "','" + fine.fineDescription + "');";
+                    var insertCommand = new MySqlCommand(query, connection);
+                    insertCommand.ExecuteNonQuery(); 
+                    insertCommand.Dispose();
+                    connection.Close();
+
+                    return insertCommand.LastInsertedId;
+
+                }
+                return -1;
+            });
+        }
+
+        public static async Task<bool> updateReservation(Reservation reservation)
+        {
+            return await Task.Run(() =>
+            {
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    string query = $"UPDATE wypozyczalniaRezerwacje SET ended='{reservation.ended}',fineId='{(reservation.fineId == -1 ? "null" : reservation.fineId.ToString())}' WHERE reservationId='{reservation.reservationId}'";
+                    var insertCommand = new MySqlCommand(query, connection);
+                    insertCommand.ExecuteNonQuery();
+                    insertCommand.Dispose();
+                    connection.Close();
+
+                    return true;
+
+                }
+                return false;
+            });
+        }
+
+        public static async Task<bool> updateCar(Car car)
+        {
+            return await Task.Run(() =>
+            {
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    string query = $"UPDATE wypozyczalniaSamochody SET efficiency='{car.carEfficiency}' WHERE id='{car.registrationNumber}'";
+                    var insertCommand = new MySqlCommand(query, connection);
+                    insertCommand.ExecuteNonQuery();
+                    insertCommand.Dispose();
+                    connection.Close();
+
+
+                    return true;
+
+                }
+                return false;
             });
         }
 
