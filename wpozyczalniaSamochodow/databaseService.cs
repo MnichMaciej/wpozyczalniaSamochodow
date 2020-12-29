@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Runtime.CompilerServices;
 using MySqlX.XDevAPI.Common;
-using wpozyczalniaSamochodow;
+using wypozyczalniaSamochodow;
 using System.Security.Cryptography;
 
 namespace wypozyczalniaSamochodow
@@ -34,7 +34,7 @@ namespace wypozyczalniaSamochodow
             }
             catch (MySqlException ex)
             {
-
+                password = null;
                 switch (ex.Number)
                 {
                     case 0:

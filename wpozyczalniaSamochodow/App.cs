@@ -43,10 +43,14 @@ namespace wypozyczalniaSamochodow
         public void openClient(ref Account acc)
         {
             account = acc;
+            hidePanels();
             if (account.isAdmin)
             {
-                hidePanels();
                 adminClient1.Show();
+            }
+            else
+            {
+                customerClient1.show(account);
             }
         }
 

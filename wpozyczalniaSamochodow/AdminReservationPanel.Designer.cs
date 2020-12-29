@@ -1,4 +1,4 @@
-﻿namespace wpozyczalniaSamochodow
+﻿namespace wypozyczalniaSamochodow
 {
     partial class AdminReservationPanel
     {
@@ -41,7 +41,7 @@
             this.ended = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.fine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.carConditionButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.carConditionPanel1 = new wpozyczalniaSamochodow.CarConditionPanel();
+            this.carConditionPanel1 = new wypozyczalniaSamochodow.CarConditionPanel();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reservationTable)).BeginInit();
             this.SuspendLayout();

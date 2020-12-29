@@ -32,6 +32,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.loginPanel1 = new wypozyczalniaSamochodow.LoginPanel();
             this.adminClient1 = new wypozyczalniaSamochodow.AdminClient();
+            this.customerClient1 = new wypozyczalniaSamochodow.CustomerClient();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,6 +40,7 @@
             // 
             this.panel2.Controls.Add(this.loginPanel1);
             this.panel2.Controls.Add(this.adminClient1);
+            this.panel2.Controls.Add(this.customerClient1);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
@@ -51,6 +53,11 @@
             // 
             resources.ApplyResources(this.adminClient1, "adminClient1");
             this.adminClient1.Name = "adminClient1";
+            // 
+            // customerClient1
+            // 
+            resources.ApplyResources(this.customerClient1, "customerClient1");
+            this.customerClient1.Name = "customerClient1";
             // 
             // App
             // 
@@ -70,6 +77,7 @@
         private System.Windows.Forms.Panel panel2;
         private LoginPanel loginPanel1;
         private AdminClient adminClient1;
+        private CustomerClient customerClient1;
     }
 }
 
