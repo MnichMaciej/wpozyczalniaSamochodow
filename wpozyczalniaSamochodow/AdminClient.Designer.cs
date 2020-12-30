@@ -31,7 +31,7 @@
             this.carPanelButton = new System.Windows.Forms.Button();
             this.reservationPanelButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.adminReservationPanel1 = new wpozyczalniaSamochodow.AdminReservationPanel();
+            this.adminReservationPanel1 = new wypozyczalniaSamochodow.AdminReservationPanel();
             this.carPanel1 = new wypozyczalniaSamochodow.CarPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -75,7 +75,7 @@
             this.adminReservationPanel1.Location = new System.Drawing.Point(0, 0);
             this.adminReservationPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.adminReservationPanel1.Name = "adminReservationPanel1";
-            this.adminReservationPanel1.Size = new System.Drawing.Size(4196, 1820);
+            this.adminReservationPanel1.Size = new System.Drawing.Size(3357, 1456);
             this.adminReservationPanel1.TabIndex = 2;
             // 
             // carPanel1
@@ -110,6 +110,6 @@
         private System.Windows.Forms.Button reservationPanelButton;
         private System.Windows.Forms.Panel panel1;
         private CarPanel carPanel1;
-        private wpozyczalniaSamochodow.AdminReservationPanel adminReservationPanel1;
+        private wypozyczalniaSamochodow.AdminReservationPanel adminReservationPanel1;
     }
 }

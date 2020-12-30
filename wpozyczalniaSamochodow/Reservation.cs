@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using wypozyczalniaSamochodow;
 
-namespace wpozyczalniaSamochodow
+namespace wypozyczalniaSamochodow
 {
     public class Reservation
     {

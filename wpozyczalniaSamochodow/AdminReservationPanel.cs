@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using wypozyczalniaSamochodow;
 
-namespace wpozyczalniaSamochodow
+namespace wypozyczalniaSamochodow
 {
     public partial class AdminReservationPanel : UserControl
     {

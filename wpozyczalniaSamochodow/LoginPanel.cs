@@ -14,7 +14,6 @@ namespace wypozyczalniaSamochodow
     public partial class LoginPanel : UserControl
     {
         
-        private bool isLogged = false;
         private Account account;
         public App parent;
 
@@ -36,7 +35,6 @@ namespace wypozyczalniaSamochodow
             if(acc != null)
             {
                 account = acc;
-                isLogged = true;
                 parent.openClient(ref account);
                 this.Hide();
             }

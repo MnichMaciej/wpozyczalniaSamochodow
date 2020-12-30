@@ -1,4 +1,4 @@
-﻿namespace wpozyczalniaSamochodow
+﻿namespace wypozyczalniaSamochodow
 {
     partial class CarConditionPanel
     {
