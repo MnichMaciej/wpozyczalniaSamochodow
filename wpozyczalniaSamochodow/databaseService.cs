@@ -162,7 +162,7 @@ namespace wypozyczalniaSamochodow
             });
         }
 
-        public static async Task<List<Reservation>> getReservationsAsync()
+        public static async Task<List<Reservation>> getReservationsAsync(Account acc)
         {
             return await Task.Run(() =>
             {
@@ -171,7 +171,12 @@ namespace wypozyczalniaSamochodow
                     openConnection();
                 if (connection.State == ConnectionState.Open)
                 {
-                    var selectQuery = "SELECT r.reservationId, s.brand,s.model,s.type,r.dateBegin,r.dateEnd,s.registrationNumber,r.ended, r.fineId FROM `wypozyczalniaRezerwacje` r INNER JOIN `wypozyczalniaSamochody` s ON r.carId = s.id;";
+                    var selectQuery = "SELECT r.reservationId, s.brand,s.model,s.type,r.dateBegin,r.dateEnd,s.registrationNumber,r.ended, r.fineId FROM `wypozyczalniaRezerwacje` r INNER JOIN `wypozyczalniaSamochody` s ON r.carId = s.id";
+                    if(!(acc is null))
+                    {
+                        selectQuery += $" WHERE r.accountId = {acc.id} AND r.ended = 0";
+                    }
+                    selectQuery += ";";
                     var result = new MySqlCommand(selectQuery, connection);
                     MySqlDataReader resultReader = result.ExecuteReader();
                     while (resultReader.Read())
@@ -255,7 +260,7 @@ namespace wypozyczalniaSamochodow
                     openConnection();
                 if (connection.State == ConnectionState.Open)
                 {
-                    string query = $"UPDATE wypozyczalniaRezerwacje SET ended='{reservation.ended}',fineId='{(reservation.fineId == -1 ? "null" : reservation.fineId.ToString())}' WHERE reservationId='{reservation.reservationId}'";
+                    string query = $"UPDATE wypozyczalniaRezerwacje SET ended='{(reservation.ended ? 1 : 0 )}',fineId='{(reservation.fineId == -1 ? "null" : reservation.fineId.ToString())}' WHERE reservationId='{reservation.reservationId}'";
                     var insertCommand = new MySqlCommand(query, connection);
                     insertCommand.ExecuteNonQuery();
                     insertCommand.Dispose();

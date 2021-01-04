@@ -34,8 +34,8 @@
             this.CarRentalPanelButton = new System.Windows.Forms.Button();
             this.carRentalPanel1 = new wypozyczalniaSamochodow.CarRentalPanel();
             this.carReturnPanel1 = new wypozyczalniaSamochodow.CarReturnPanel();
-            this.reservationPanel1 = new wypozyczalniaSamochodow.ReservationPanel();
             this.finePanel1 = new wypozyczalniaSamochodow.FinePanel();
+            this.reservationPanel1 = new wypozyczalniaSamochodow.ReservationPanel();
             this.SuspendLayout();
             // 
             // CarReturnPanelButton
@@ -80,9 +80,9 @@
             // 
             // carRentalPanel1
             // 
-            this.carRentalPanel1.Location = new System.Drawing.Point(0, 0);
+            this.carRentalPanel1.Location = new System.Drawing.Point(-492, -27);
             this.carRentalPanel1.Name = "carRentalPanel1";
-            this.carRentalPanel1.Size = new System.Drawing.Size(1528, 771);
+            this.carRentalPanel1.Size = new System.Drawing.Size(2050, 771);
             this.carRentalPanel1.TabIndex = 4;
             // 
             // carReturnPanel1
@@ -92,13 +92,6 @@
             this.carReturnPanel1.Size = new System.Drawing.Size(150, 150);
             this.carReturnPanel1.TabIndex = 5;
             // 
-            // reservationPanel1
-            // 
-            this.reservationPanel1.Location = new System.Drawing.Point(1223, 484);
-            this.reservationPanel1.Name = "reservationPanel1";
-            this.reservationPanel1.Size = new System.Drawing.Size(150, 150);
-            this.reservationPanel1.TabIndex = 6;
-            // 
             // finePanel1
             // 
             this.finePanel1.Location = new System.Drawing.Point(181, 385);
@@ -106,12 +99,19 @@
             this.finePanel1.Size = new System.Drawing.Size(150, 150);
             this.finePanel1.TabIndex = 7;
             // 
+            // reservationPanel1
+            // 
+            this.reservationPanel1.Location = new System.Drawing.Point(0, 0);
+            this.reservationPanel1.Name = "reservationPanel1";
+            this.reservationPanel1.Size = new System.Drawing.Size(1811, 781);
+            this.reservationPanel1.TabIndex = 8;
+            // 
             // CustomerClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.finePanel1);
             this.Controls.Add(this.reservationPanel1);
+            this.Controls.Add(this.finePanel1);
             this.Controls.Add(this.carReturnPanel1);
             this.Controls.Add(this.carRentalPanel1);
             this.Controls.Add(this.CarRentalPanelButton);
@@ -132,7 +132,7 @@
         private System.Windows.Forms.Button CarRentalPanelButton;
         private CarRentalPanel carRentalPanel1;
         private CarReturnPanel carReturnPanel1;
-        private ReservationPanel reservationPanel1;
         private FinePanel finePanel1;
+        private ReservationPanel reservationPanel1;
     }
 }
