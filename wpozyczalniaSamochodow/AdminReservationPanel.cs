@@ -44,7 +44,7 @@ namespace wypozyczalniaSamochodow
 
         private async Task getReservationsAsync()
         {
-            await DatabaseService.getReservationsAsync().ContinueWith((task) =>
+            await DatabaseService.getReservationsAsync(null).ContinueWith((task) =>
             {
                 reservations = task.Result;
                 foreach (Reservation reservation in reservations)
