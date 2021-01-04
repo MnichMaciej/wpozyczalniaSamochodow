@@ -33,5 +33,10 @@ namespace wypozyczalniaSamochodow
             adminReservationPanel1.showPanel();
 
         }
+
+        private void logOutButton_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
     }
 }

@@ -22,6 +22,8 @@ namespace wypozyczalniaSamochodow
             loginPanel1.setParent(this);
             panels.Add(loginPanel1);
             panels.Add(adminClient1);
+            panels.Add(customerClient1);
+            registrationPanel1.setParent(this);
         }
 
        
@@ -54,6 +56,11 @@ namespace wypozyczalniaSamochodow
             }
         }
 
-
+        public void openRegistrationPanel()
+        {
+            hidePanels();
+            loginPanel1.Show();
+            registrationPanel1.Show();
+        }
     }
 }

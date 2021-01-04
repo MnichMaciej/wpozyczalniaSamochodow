@@ -33,6 +33,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.adminReservationPanel1 = new wypozyczalniaSamochodow.AdminReservationPanel();
             this.carPanel1 = new wypozyczalniaSamochodow.CarPanel();
+            this.logOutButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +62,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.adminReservationPanel1);
+            this.panel1.Controls.Add(this.logOutButton);
             this.panel1.Controls.Add(this.reservationPanelButton);
             this.panel1.Controls.Add(this.carPanelButton);
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -88,6 +90,16 @@
             this.carPanel1.Size = new System.Drawing.Size(1609, 752);
             this.carPanel1.TabIndex = 2;
             // 
+            // logOutButton
+            // 
+            this.logOutButton.Location = new System.Drawing.Point(988, 362);
+            this.logOutButton.Name = "logOutButton";
+            this.logOutButton.Size = new System.Drawing.Size(364, 39);
+            this.logOutButton.TabIndex = 3;
+            this.logOutButton.Text = "Wyloguj";
+            this.logOutButton.UseVisualStyleBackColor = true;
+            this.logOutButton.Click += new System.EventHandler(this.logOutButton_Click);
+            // 
             // AdminClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -111,5 +123,6 @@
         private System.Windows.Forms.Panel panel1;
         private CarPanel carPanel1;
         private wypozyczalniaSamochodow.AdminReservationPanel adminReservationPanel1;
+        private System.Windows.Forms.Button logOutButton;
     }
 }
