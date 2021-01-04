@@ -181,6 +181,9 @@
     <EmbeddedResource Include="RegistrationPanel.resx">
       <DependentUpon>RegistrationPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReservationPanel.resx">
+      <DependentUpon>ReservationPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

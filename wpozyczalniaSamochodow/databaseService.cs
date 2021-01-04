@@ -162,7 +162,7 @@ namespace wypozyczalniaSamochodow
             });
         }
 
-        public static async Task<List<Reservation>> getReservationsAsync()
+        public static async Task<List<Reservation>> getReservationsAsync(Account acc)
         {
             return await Task.Run(() =>
             {
@@ -171,7 +171,12 @@ namespace wypozyczalniaSamochodow
                     openConnection();
                 if (connection.State == ConnectionState.Open)
                 {
-                    var selectQuery = "SELECT r.reservationId, s.brand,s.model,s.type,r.dateBegin,r.dateEnd,s.registrationNumber,r.ended, r.fineId FROM `wypozyczalniaRezerwacje` r INNER JOIN `wypozyczalniaSamochody` s ON r.carId = s.id;";
+                    var selectQuery = "SELECT r.reservationId, s.brand,s.model,s.type,r.dateBegin,r.dateEnd,s.registrationNumber,r.ended, r.fineId FROM `wypozyczalniaRezerwacje` r INNER JOIN `wypozyczalniaSamochody` s ON r.carId = s.id";
+                    if(!(acc is null))
+                    {
+                        selectQuery += $" WHERE r.accountId = {acc.id} AND r.ended = 0";
+                    }
+                    selectQuery += ";";
                     var result = new MySqlCommand(selectQuery, connection);
                     MySqlDataReader resultReader = result.ExecuteReader();
                     while (resultReader.Read())
@@ -255,7 +260,7 @@ namespace wypozyczalniaSamochodow
                     openConnection();
                 if (connection.State == ConnectionState.Open)
                 {
-                    string query = $"UPDATE wypozyczalniaRezerwacje SET ended='{reservation.ended}',fineId='{(reservation.fineId == -1 ? "null" : reservation.fineId.ToString())}' WHERE reservationId='{reservation.reservationId}'";
+                    string query = $"UPDATE wypozyczalniaRezerwacje SET ended='{(reservation.ended ? 1 : 0 )}',fineId='{(reservation.fineId == -1 ? "null" : reservation.fineId.ToString())}' WHERE reservationId='{reservation.reservationId}'";
                     var insertCommand = new MySqlCommand(query, connection);
                     insertCommand.ExecuteNonQuery();
                     insertCommand.Dispose();
@@ -289,6 +294,63 @@ namespace wypozyczalniaSamochodow
                 return false;
             });
         }
+
+        public static async Task<List<Car>> getAvaliableCars(Reservation reservation)
+        {
+            return await Task.Run(() =>
+            {
+                List<Car> cars = new List<Car>();
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    var selectQuery = $"SELECT c.brand, c.model FROM wypozyczalniaSamochody c WHERE c.type = {(int)reservation.carType} AND c.isDisabled = 0 AND c.efficiency = 1 AND NOT EXISTS (SELECT r.* FROM `wypozyczalniaRezerwacje` r WHERE r.carId = c.id AND r.ended = 0 AND((r.dateBegin BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}') OR(r.dateEnd BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}'))) GROUP BY c.model;";
+                    var result = new MySqlCommand(selectQuery, connection);
+                    MySqlDataReader resultReader = result.ExecuteReader();
+                    while (resultReader.Read())
+                    {
+                        Car tempCar = new Car();
+                        List<string> results = new List<string>();
+                        for (int i = 0; i < resultReader.FieldCount; i++)
+                        {
+                            results.Add(resultReader[i].ToString());
+                        }
+                        tempCar.brand = results[0];
+                        tempCar.model = results[1];
+                        cars.Add(tempCar);
+
+                    }
+                    resultReader.Close();
+                    result.Cancel();
+                    connection.Close();
+
+                }
+                return cars;
+            });
+        }
+
+        public static async Task<bool> insertReservation(Reservation reservation, Car car, int accountId)
+        {
+            return await Task.Run(() =>
+            {
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    string query = $"INSERT INTO wypozyczalniaRezerwacje(carId, accountId,dateBegin,dateEnd,ended) VALUES((SELECT id FROM wypozyczalniaSamochody c WHERE type = {(int)reservation.carType} AND brand = '{car.brand}' AND model = '{car.model}' AND efficiency = 1 AND isDisabled = 0 AND NOT EXISTS (SELECT r.* FROM `wypozyczalniaRezerwacje` r WHERE r.carId = c.id AND r.ended = 0 AND((r.dateBegin BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}') OR(r.dateEnd BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}'))) LIMIT 1),{accountId},'{reservation.dateBegin}','{reservation.dateEnd}',0);";
+                    MessageBox.Show(query);
+                    var insertCommand = new MySqlCommand(query, connection);
+                    insertCommand.ExecuteNonQuery();
+                    insertCommand.Dispose();
+                    connection.Close();
+
+                    return insertCommand.LastInsertedId >= 0 ? true : false;
+
+                }
+                return false;
+            });
+        }
+
 
         private static void ShowDialog(string text, string caption)
         {
