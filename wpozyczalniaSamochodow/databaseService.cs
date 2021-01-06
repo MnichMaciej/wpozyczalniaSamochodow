@@ -338,7 +338,6 @@ namespace wypozyczalniaSamochodow
                 if (connection.State == ConnectionState.Open)
                 {
                     string query = $"INSERT INTO wypozyczalniaRezerwacje(carId, accountId,dateBegin,dateEnd,ended) VALUES((SELECT id FROM wypozyczalniaSamochody c WHERE type = {(int)reservation.carType} AND brand = '{car.brand}' AND model = '{car.model}' AND efficiency = 1 AND isDisabled = 0 AND NOT EXISTS (SELECT r.* FROM `wypozyczalniaRezerwacje` r WHERE r.carId = c.id AND r.ended = 0 AND((r.dateBegin BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}') OR(r.dateEnd BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}'))) LIMIT 1),{accountId},'{reservation.dateBegin}','{reservation.dateEnd}',0);";
-                    MessageBox.Show(query);
                     var insertCommand = new MySqlCommand(query, connection);
                     insertCommand.ExecuteNonQuery();
                     insertCommand.Dispose();

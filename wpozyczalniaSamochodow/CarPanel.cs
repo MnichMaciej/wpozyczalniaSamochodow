@@ -52,6 +52,7 @@ namespace wypozyczalniaSamochodow
 
         private async Task getCarsAsync()
         {
+            //cars.Clear(); TO DO poprawić
             await DatabaseService.getCarsAsync().ContinueWith((task) =>
             {
                 cars = task.Result;

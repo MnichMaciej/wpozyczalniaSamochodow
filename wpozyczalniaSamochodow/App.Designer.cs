@@ -33,11 +33,13 @@
             this.loginPanel1 = new wypozyczalniaSamochodow.LoginPanel();
             this.adminClient1 = new wypozyczalniaSamochodow.AdminClient();
             this.customerClient1 = new wypozyczalniaSamochodow.CustomerClient();
+            this.registrationPanel1 = new wypozyczalniaSamochodow.RegistrationPanel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.registrationPanel1);
             this.panel2.Controls.Add(this.loginPanel1);
             this.panel2.Controls.Add(this.adminClient1);
             this.panel2.Controls.Add(this.customerClient1);
@@ -59,6 +61,11 @@
             resources.ApplyResources(this.customerClient1, "customerClient1");
             this.customerClient1.Name = "customerClient1";
             // 
+            // registrationPanel1
+            // 
+            resources.ApplyResources(this.registrationPanel1, "registrationPanel1");
+            this.registrationPanel1.Name = "registrationPanel1";
+            // 
             // App
             // 
             resources.ApplyResources(this, "$this");
@@ -78,6 +85,6 @@
         private LoginPanel loginPanel1;
         private AdminClient adminClient1;
         private CustomerClient customerClient1;
+        private RegistrationPanel registrationPanel1;
     }
 }
-

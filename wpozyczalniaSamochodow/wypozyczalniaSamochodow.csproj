@@ -133,6 +133,12 @@
     <Compile Include="ReservationPanel.Designer.cs">
       <DependentUpon>ReservationPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistrationPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RegistrationPanel.Designer.cs">
+      <DependentUpon>RegistrationPanel.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminClient.resx">
       <DependentUpon>AdminClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +178,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegistrationPanel.resx">
+      <DependentUpon>RegistrationPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReservationPanel.resx">
       <DependentUpon>ReservationPanel.cs</DependentUpon>
     </EmbeddedResource>

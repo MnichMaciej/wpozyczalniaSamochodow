@@ -43,5 +43,10 @@ namespace wypozyczalniaSamochodow
                 MessageBox.Show("nie bangla tu coś");
             }
         }
+
+        private void registrationButton_Click(object sender, EventArgs e)
+        {
+            parent.openRegistrationPanel();
+        }
     }
 }

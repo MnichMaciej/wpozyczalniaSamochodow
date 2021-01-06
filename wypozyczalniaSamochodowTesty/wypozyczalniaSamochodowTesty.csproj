@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LoginPanelTest.cs" />
+    <Compile Include="ReservationPanelTest.cs" />
     <Compile Include="CarRentalPanelTest.cs" />
   </ItemGroup>
   <ItemGroup>
