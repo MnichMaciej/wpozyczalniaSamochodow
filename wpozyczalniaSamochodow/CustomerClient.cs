@@ -69,7 +69,7 @@ namespace wypozyczalniaSamochodow
             openCarRentalPanel(acc);
         }
 
-        private void logOutButton_Click(object sender, EventArgs e)
+        private void LogOutButton_Click(object sender, EventArgs e)
         {
             Application.Restart();
         }

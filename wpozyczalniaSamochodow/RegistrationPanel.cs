@@ -28,16 +28,6 @@ namespace wypozyczalniaSamochodow
 
         public bool checkCorrectness(string firstName, string lastName, string city, string address, string houseNumber, string apartmentNumber, string email, string password, string password2)
         {
-            //var firstName = firstNameTextBox.Text;
-            //var lastName = lastNameTextBox.Text;
-            //var city = cityTextBox.Text;
-            //var address = adressTextBox.Text;
-            //var houseNoumber = Convert.ToInt32(houseNumberTextBox.Text);
-            //var apartmentNumber = Convert.ToInt32(apartmentNumberTextBox.Text);
-            //var email = emailTextBox.Text;
-            //var password = passwordTextBox.Text;
-            //var password2 = passwordTextBox2.Text;
-
             if (firstName == "")
             {
                 firstNameTextBox.BackColor = Color.Red;

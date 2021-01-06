@@ -12,7 +12,7 @@ namespace wypozyczalniaSamochodow
 {
     public partial class App : Form
     {
-        
+
         private Account account;
         private List<UserControl> panels = new List<UserControl>();
 
@@ -22,11 +22,10 @@ namespace wypozyczalniaSamochodow
             loginPanel1.setParent(this);
             panels.Add(loginPanel1);
             panels.Add(adminClient1);
-            panels.Add(customerClient1);
             registrationPanel1.setParent(this);
         }
 
-       
+
 
         private void App_Load(object sender, EventArgs e)
         {
@@ -62,5 +61,6 @@ namespace wypozyczalniaSamochodow
             loginPanel1.Show();
             registrationPanel1.Show();
         }
+
     }
 }

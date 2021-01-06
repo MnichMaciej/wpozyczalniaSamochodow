@@ -85,7 +85,6 @@
         private LoginPanel loginPanel1;
         private AdminClient adminClient1;
         private CustomerClient customerClient1;
-        private wypozyczalniaSamochodow.RegistrationPanel registrationPanel1;
+        private RegistrationPanel registrationPanel1;
     }
 }
-
