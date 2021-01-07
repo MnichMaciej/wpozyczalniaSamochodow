@@ -127,6 +127,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservation.cs" />
+    <Compile Include="ReservationData.cs" />
     <Compile Include="ReservationPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

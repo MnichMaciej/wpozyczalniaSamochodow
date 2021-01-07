@@ -13,7 +13,7 @@ namespace wypozyczalniaSamochodow
     public partial class CarRentalPanel : UserControl
     {
         Account account;
-        Reservation reservation;
+        ReservationData reservation;
         List<Car> cars;
         public CarRentalPanel()
         {
@@ -23,11 +23,14 @@ namespace wypozyczalniaSamochodow
                 typeCombobox.Items.Add(item);
             }
             carTable.Hide();
+            dateFromPicker.MinDate = DateTime.Today;
+            dateToPicker.MinDate = DateTime.Today.AddDays(1);
+
         }
         public void show(Account acc)
         {
             account = acc;
-            reservation = new Reservation();
+            reservation = new ReservationData();
             Show();
         }
 

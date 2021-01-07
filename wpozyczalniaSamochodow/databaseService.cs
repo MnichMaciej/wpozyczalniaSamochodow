@@ -295,7 +295,7 @@ namespace wypozyczalniaSamochodow
             });
         }
 
-        public static async Task<List<Car>> getAvaliableCars(Reservation reservation)
+        public static async Task<List<Car>> getAvaliableCars(ReservationData reservation)
         {
             return await Task.Run(() =>
             {
@@ -329,7 +329,7 @@ namespace wypozyczalniaSamochodow
             });
         }
 
-        public static async Task<bool> insertReservation(Reservation reservation, Car car, int accountId)
+        public static async Task<bool> insertReservation(ReservationData reservation, Car car, int accountId)
         {
             return await Task.Run(() =>
             {

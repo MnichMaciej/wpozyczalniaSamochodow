@@ -7,17 +7,11 @@ using wypozyczalniaSamochodow;
 
 namespace wypozyczalniaSamochodow
 {
-    public class Reservation
+    public class Reservation : ReservationData
     {
         public int reservationId;
         public string registrationNumber;
-        public string brand;
-        public string model;
-        public string dateBegin;
-        public string dateEnd;
-        public CarType carType;
-        public int fineId;
-        public bool ended;
+        
 
     }
 }
