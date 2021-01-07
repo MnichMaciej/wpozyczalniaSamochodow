@@ -24,7 +24,7 @@ namespace wypozyczalniaSamochodow
             }
             carTable.Hide();
             dateFromPicker.MinDate = DateTime.Today;
-            dateToPicker.MinDate = DateTime.Today.AddDays(1);
+            dateToPicker.MinDate = DateTime.Today;
 
         }
         public void show(Account acc)

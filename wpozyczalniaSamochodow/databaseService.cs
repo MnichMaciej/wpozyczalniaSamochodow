@@ -337,13 +337,30 @@ namespace wypozyczalniaSamochodow
                     openConnection();
                 if (connection.State == ConnectionState.Open)
                 {
-                    string query = $"INSERT INTO wypozyczalniaRezerwacje(carId, accountId,dateBegin,dateEnd,ended) VALUES((SELECT id FROM wypozyczalniaSamochody c WHERE type = {(int)reservation.carType} AND brand = '{car.brand}' AND model = '{car.model}' AND efficiency = 1 AND isDisabled = 0 AND NOT EXISTS (SELECT r.* FROM `wypozyczalniaRezerwacje` r WHERE r.carId = c.id AND r.ended = 0 AND((r.dateBegin BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}') OR(r.dateEnd BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}'))) LIMIT 1),{accountId},'{reservation.dateBegin}','{reservation.dateEnd}',0);";
+                    int dateDiff = getDateDiff(reservation);
+                    string query = $"INSERT INTO wypozyczalniaOplaty(cost, description) VALUES({dateDiff}*(SELECT cena FROM wypozyczalniaTypy WHERE id = {(int)reservation.carType}),\"Opłata za rezerwacje\");";
                     var insertCommand = new MySqlCommand(query, connection);
                     insertCommand.ExecuteNonQuery();
                     insertCommand.Dispose();
                     connection.Close();
-
-                    return insertCommand.LastInsertedId >= 0 ? true : false;
+                    if(insertCommand.LastInsertedId >= 0)
+                    {
+                        if (connection.State != ConnectionState.Open)
+                            openConnection();
+                        if (connection.State == ConnectionState.Open)
+                        {
+                            query = $"INSERT INTO wypozyczalniaRezerwacje(carId, accountId,dateBegin,dateEnd,ended,fineId) VALUES((SELECT id FROM wypozyczalniaSamochody c WHERE type = {(int)reservation.carType} AND brand = '{car.brand}' AND model = '{car.model}' AND efficiency = 1 AND isDisabled = 0 AND NOT EXISTS (SELECT r.* FROM `wypozyczalniaRezerwacje` r WHERE r.carId = c.id AND r.ended = 0 AND((r.dateBegin BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}') OR(r.dateEnd BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}'))) LIMIT 1),{accountId},'{reservation.dateBegin}','{reservation.dateEnd}',0,{insertCommand.LastInsertedId});";
+                            insertCommand = new MySqlCommand(query, connection);
+                            insertCommand.ExecuteNonQuery();
+                            insertCommand.Dispose();
+                            connection.Close();
+                            if (insertCommand.LastInsertedId >= 0)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
 
                 }
                 return false;
@@ -377,7 +394,12 @@ namespace wypozyczalniaSamochodow
         }
 
 
-
+        private static int getDateDiff(ReservationData reservation)
+        {
+            DateTime from = DateTime.Parse(reservation.dateBegin);
+            DateTime to = DateTime.Parse(reservation.dateEnd);
+            return (to - from).Days;
+        }
 
 
     }
