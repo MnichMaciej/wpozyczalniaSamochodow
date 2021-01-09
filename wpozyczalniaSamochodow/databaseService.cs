@@ -180,7 +180,7 @@ namespace wypozyczalniaSamochodow
                         List<string> results = new List<string>();
                         for (int i = 0; i < resultReader.FieldCount; i++)
                         {
-                            results.Add(resultReader[i].ToString());
+                            results.Add(resultReader[i].ToString()); // przy wejsciu w rezerzacje z poziomu admina wyrzuca tutaj blad
                         }
 
                         tempReservation.reservationId = Int32.Parse(results[0]);
