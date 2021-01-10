@@ -39,7 +39,7 @@ namespace wypozyczalniaSamochodow
 
         public void openFinePanel(Account account)
         {
-            finePanel1.show(account);
+            finePanel1.showPanel(account);
 
         }
 
