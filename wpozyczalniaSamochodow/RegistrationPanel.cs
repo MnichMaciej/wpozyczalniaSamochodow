@@ -31,103 +31,103 @@ namespace wypozyczalniaSamochodow
             if (firstName == "")
             {
                 firstNameTextBox.BackColor = Color.Red;
-                MessageBox.Show("Brak wprowadzonego imienia");
+                MessageBox.Show("Brak wprowadzonego imienia!");
                 return false;
             }
             if (lastName == "")
             {
                 lastNameTextBox.BackColor = Color.Red;
-                MessageBox.Show("Brak wprowadzonego nazwiska");
+                MessageBox.Show("Brak wprowadzonego nazwiska!");
                 return false;
             }
             if (city == "")
             {
                 cityTextBox.BackColor = Color.Red;
-                MessageBox.Show("Brak wprowadzoengo miasta");
+                MessageBox.Show("Brak wprowadzoengo miasta!");
                 return false;
             }
             if (address == "")
             {
                 addressTextBox.BackColor = Color.Red;
-                MessageBox.Show("Brak wproawdzonej ulicy");
+                MessageBox.Show("Brak wprowadzonej ulicy!");
                 return false;
             }
             if (houseNumber == "")
             {
                 houseNumberTextBox.BackColor = Color.Red;
-                MessageBox.Show("Brak wprowadzoengo numeru mieszkania");
+                MessageBox.Show("Brak wprowadzonego numeru mieszkania!");
                 return false;
             }
             
             if (email == "")
             {
                 emailTextBox.BackColor = Color.Red;
-                MessageBox.Show("Brak wprowadzonego adresu email");
+                MessageBox.Show("Brak wprowadzonego adresu email!");
                 return false;
             }
             if (password == "")
             {
                 passwordTextBox.BackColor = Color.Red;
-                MessageBox.Show("Brak hasla");
+                MessageBox.Show("Brak hasla!");
                 return false;
             }
 
             if (firstName.Any(char.IsDigit))
             {
                 firstNameTextBox.BackColor = Color.Red;
-                MessageBox.Show("Imie nie moze zawierac cyfr");
+                MessageBox.Show("Imie nie moze zawierac cyfr!");
                 return false;
             }
 
             if (lastName.Any(char.IsDigit))
             {
                 lastNameTextBox.BackColor = Color.Red;
-                MessageBox.Show("Nazwisko nie moze zawierac cyfr");
+                MessageBox.Show("Nazwisko nie moze zawierac cyfr!");
                 return false;
             }
 
             if (city.Any(char.IsDigit))
             {
                 cityTextBox.BackColor = Color.Red;
-                MessageBox.Show("Nazwa miasta nie moze zawierac cyfr");
+                MessageBox.Show("Nazwa miasta nie moze zawierac cyfr!");
                 return false;
             }
 
             if (address.Any(char.IsDigit))
             {
                 addressTextBox.BackColor = Color.Red;
-                MessageBox.Show("Nazwa ulicy nie moze zawierac cyfr");
+                MessageBox.Show("Nazwa ulicy nie moze zawierac cyfr!");
                 return false;
             }
 
             if (!houseNumber.All(char.IsDigit))
             {
                 houseNumberTextBox.BackColor = Color.Red;
-                MessageBox.Show("Numer domu musi skladac sie z samych cyfr");
+                MessageBox.Show("Numer domu musi skladac sie z samych cyfr!");
                 return false;
             }
 
-            if(apartmentNumber != "")
+            if (apartmentNumber != "")
             {
                 if (!apartmentNumber.All(char.IsDigit))
                 {
                     apartmentNumberTextBox.BackColor = Color.Red;
-                    MessageBox.Show("Numer mieszkania nie może zawierac liter");
+                    MessageBox.Show("Numer mieszkania nie może zawierac liter!");
                     return false;
                 }
             }
 
             if (password != password2)
             {
-                MessageBox.Show("Rozne hasla");
+                MessageBox.Show("Hasla sa rozne!");
                 passwordTextBox.BackColor = Color.Red;
                 passwordTextBox2.BackColor = Color.Red;
                 return false;
             }
 
-            if(password.Length < 6)
+            if (password.Length < 6)
             {
-                MessageBox.Show("Haslo zbyt krotkie");
+                MessageBox.Show("Haslo jest zbyt krotkie!");
                 passwordTextBox.BackColor = Color.Red;
                 return false;
             }
@@ -138,23 +138,19 @@ namespace wypozyczalniaSamochodow
             }
             catch
             {
-                MessageBox.Show("Niepoprawny adres email");
+                MessageBox.Show("Niepoprawny adres email!");
                 emailTextBox.BackColor = Color.Red;
                 return false;
             }
 
-            if(!email.Contains("."))
+            if (!email.Contains("."))
             {
-                MessageBox.Show("Niepoprawny adres email");
+                MessageBox.Show("Niepoprawny adres email!");
                 emailTextBox.BackColor = Color.Red;
                 return false;
             }
-
-            
 
             return true;
-
-            // TODO: Skonczyc sprawdzanie bledow
         }
 
         private void RegistrationButton_Click(object sender, EventArgs e)
@@ -174,15 +170,9 @@ namespace wypozyczalniaSamochodow
                 //TODO: Podłączenie do bazy danych
 
 
-                MessageBox.Show("Rejestracja przebiegła pomyślnie");
+                MessageBox.Show("Rejestracja przebiegła pomyślnie.");
                 Hide();
             }
-
-            
-            //else
-            //{
-            //    MessageBox.Show("Niepoprawne dane");
-            //}
         }
 
         //Metoda wizualna
@@ -245,6 +235,5 @@ namespace wypozyczalniaSamochodow
         {
             Hide();
         }
-
     }
 }
