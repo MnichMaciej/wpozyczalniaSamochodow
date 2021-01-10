@@ -21,7 +21,7 @@ namespace wypozyczalniaSamochodow
                 typeComboBox.Items.Add(item);
             }
         }
-        bool checkCorectness(string brand, string model, int type, decimal odometer, string registrationNumber, bool efficiency, bool isDisabled)
+        public bool checkCorectness(string brand, string model, int type, decimal odometer, string registrationNumber, bool efficiency, bool isDisabled)
         {
             if (brand == "")
             {
