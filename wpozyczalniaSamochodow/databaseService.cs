@@ -26,7 +26,7 @@ namespace wypozyczalniaSamochodow
 
         public static bool openConnection()
         {
-            if(string.IsNullOrEmpty(password)) ShowDialog("Podaj haslo do bazy danych","123");
+            if(string.IsNullOrEmpty(password)) ShowDialog("Podaj hasło do bazy danych","Połączenie");
             try
             {
                 connection.Open();
@@ -367,6 +367,41 @@ namespace wypozyczalniaSamochodow
             });
         }
 
+        public static async Task<List<Fine>> getFines(Account acc)
+        {
+
+            return await Task.Run(() =>
+            {
+                List<Fine> fines = new List<Fine>();
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    var selectQuery = $"SELECT id, cost, description FROM wypozyczalniaOplaty WHERE id IN (SELECT fineId FROM wypozyczalniaRezerwacje WHERE accountId = {acc.id});";
+                    var result = new MySqlCommand(selectQuery, connection);
+                    MySqlDataReader resultReader = result.ExecuteReader();
+                    while (resultReader.Read())
+                    {
+                        Fine tempFine = new Fine();
+                        List<string> results = new List<string>();
+                        for (int i = 0; i < resultReader.FieldCount; i++)
+                        {
+                            results.Add(resultReader[i].ToString());
+                        }
+                        tempFine.fineId = Int32.Parse(results[0]);
+                        tempFine.fineCost = Convert.ToDouble(results[1]);
+                        tempFine.fineDescription = results[2];
+                        fines.Add(tempFine);
+
+                    }
+                    resultReader.Close();
+                    result.Cancel();
+                    connection.Close();
+                }
+                return fines;
+            });
+        }
+
 
         private static void ShowDialog(string text, string caption)
         {
@@ -378,7 +413,7 @@ namespace wypozyczalniaSamochodow
                 Text = caption,
                 StartPosition = FormStartPosition.CenterScreen
             };
-            Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+            Label textLabel = new Label() { Left = 50, Top = 20, Text = text, AutoSize = true };
             TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
             Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
             confirmation.Click += (sender, e) => { prompt.Close(); };

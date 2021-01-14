@@ -87,7 +87,6 @@ namespace wypozyczalniaSamochodow
             {
                 if (MessageBox.Show("Kosz anulowania rezerwacji wynosi: 30zł. Chcesz anulować rezerwacje?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    //TODO: opalta + anulowanie
                     Fine fine = new Fine();
                     fine.fineCost = 30;
                     fine.fineDescription = "Anulowanie rezerwacji, krócej niż 3 dni przed jej terminem.";

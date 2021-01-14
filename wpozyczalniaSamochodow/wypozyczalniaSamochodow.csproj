@@ -167,6 +167,9 @@
     <EmbeddedResource Include="CustomerClient.resx">
       <DependentUpon>CustomerClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FinePanel.resx">
+      <DependentUpon>FinePanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginPanel.resx">
       <DependentUpon>LoginPanel.cs</DependentUpon>
     </EmbeddedResource>
