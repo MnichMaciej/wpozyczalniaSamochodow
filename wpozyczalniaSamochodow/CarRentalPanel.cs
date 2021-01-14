@@ -14,7 +14,7 @@ namespace wypozyczalniaSamochodow
     {
         Account account;
         ReservationData reservation;
-        List<Car> cars;
+        List<Car> cars = new List<Car>();
         public CarRentalPanel()
         {
             InitializeComponent();
@@ -29,6 +29,8 @@ namespace wypozyczalniaSamochodow
         }
         public void show(Account acc)
         {
+            cars.Clear();
+            carTable.Rows.Clear();
             account = acc;
             reservation = new ReservationData();
             Show();

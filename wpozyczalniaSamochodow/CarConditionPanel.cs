@@ -65,6 +65,10 @@ namespace wypozyczalniaSamochodow
             {
                 finePanel.Show();
             }
+            else
+            {
+                finePanel.Hide();
+            }
         }
     }
 }

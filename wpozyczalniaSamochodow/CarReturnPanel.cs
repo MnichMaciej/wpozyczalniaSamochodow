@@ -8,13 +8,15 @@ namespace wypozyczalniaSamochodow
     public partial class CarReturnPanel : UserControl
     {
         public Account account;
-        private List<Reservation> reservations;
+        private List<Reservation> reservations = new List<Reservation>();
         public CarReturnPanel()
         {
             InitializeComponent();
         }
         public void show(Account acc)
         {
+            reservations.Clear();
+            reservationTable.Rows.Clear();
             account = acc;
             Show();
             getReservations();

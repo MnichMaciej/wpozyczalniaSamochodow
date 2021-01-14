@@ -13,7 +13,7 @@ namespace wypozyczalniaSamochodow
 {
     public partial class AdminReservationPanel : UserControl
     {
-        private List<Reservation> reservations;
+        private List<Reservation> reservations = new List<Reservation>();
         public Action showParent;
         public AdminReservationPanel()
         {
@@ -23,6 +23,8 @@ namespace wypozyczalniaSamochodow
 
         public async void showPanel()
         {
+            reservations.Clear();
+            reservationTable.Rows.Clear();
             this.Show();
             await this.getReservationsAsync();
 

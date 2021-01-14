@@ -13,13 +13,15 @@ namespace wypozyczalniaSamochodow
     public partial class ReservationPanel : UserControl
     {
         private Account account; 
-        private List<Reservation> reservations;
+        private List<Reservation> reservations = new List<Reservation>();
         public ReservationPanel()
         {
             InitializeComponent();
         }
         public void show(Account acc)
         {
+            reservations.Clear();
+            reservationTable.Rows.Clear();
             account = acc;
             Show();
             getReservations();

@@ -13,7 +13,7 @@ namespace wypozyczalniaSamochodow
 {
     public partial class CarPanel : UserControl
     {
-        private List<Car> cars;
+        private List<Car> cars = new List<Car>();
         public Action showParent;
         public CarPanel()
         {
@@ -34,7 +34,9 @@ namespace wypozyczalniaSamochodow
                 carAddingPanel1.Hide();
                 BringToFront();
                 addingCarButton.Enabled = true;
-
+                cars.Clear();
+                carsTable.Rows.Clear();
+                this.getCarsAsync();
             }
             else
             {
@@ -45,6 +47,8 @@ namespace wypozyczalniaSamochodow
 
         public async void showPanel()
         {
+            cars.Clear();
+            carsTable.Rows.Clear();
             this.Show();
             await this.getCarsAsync();
 
@@ -52,7 +56,6 @@ namespace wypozyczalniaSamochodow
 
         private async Task getCarsAsync()
         {
-            //cars.Clear(); TO DO poprawić
             await DatabaseService.getCarsAsync().ContinueWith((task) =>
             {
                 cars = task.Result;
