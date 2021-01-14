@@ -68,7 +68,7 @@ namespace wypozyczalniaSamochodow
                 {
                     editReservation(reservations[e.RowIndex]);
                 }
-                else
+                else if (e.ColumnIndex == 6)
                 {
                     cancelReservation(reservations[e.RowIndex]);
                 }

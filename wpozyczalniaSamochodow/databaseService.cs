@@ -171,7 +171,7 @@ namespace wypozyczalniaSamochodow
                     openConnection();
                 if (connection.State == ConnectionState.Open)
                 {
-                    var selectQuery = "SELECT r.reservationId, s.brand,s.model,s.type,r.dateBegin,r.dateEnd,s.registrationNumber,r.ended, r.fineId FROM `wypozyczalniaRezerwacje` r INNER JOIN `wypozyczalniaSamochody` s ON r.carId = s.id";
+                    var selectQuery = "SELECT r.reservationId, s.brand,s.model,s.type,r.dateBegin,r.dateEnd,s.registrationNumber,r.ended, r.fineId, r.checked FROM `wypozyczalniaRezerwacje` r INNER JOIN `wypozyczalniaSamochody` s ON r.carId = s.id";
                     if(!(acc is null))
                     {
                         selectQuery += $" WHERE r.accountId = {acc.id} AND r.ended = 0";
@@ -197,6 +197,7 @@ namespace wypozyczalniaSamochodow
                         tempReservation.registrationNumber = results[6];
                         tempReservation.ended = Convert.ToBoolean(results[7]);
                         tempReservation.fineId = results[8] == "" ? -1 : Int32.Parse(results[8]);
+                        tempReservation._checked = Convert.ToBoolean(results[9]);
                         reservations.Add(tempReservation);
 
                     }
@@ -260,7 +261,7 @@ namespace wypozyczalniaSamochodow
                     openConnection();
                 if (connection.State == ConnectionState.Open)
                 {
-                    string query = $"UPDATE wypozyczalniaRezerwacje SET ended='{(reservation.ended ? 1 : 0 )}',fineId='{(reservation.fineId == -1 ? "null" : reservation.fineId.ToString())}' WHERE reservationId='{reservation.reservationId}'";
+                    string query = $"UPDATE wypozyczalniaRezerwacje SET ended='{(reservation.ended ? 1 : 0 )}',fineId='{(reservation.fineId == -1 ? "null" : reservation.fineId.ToString())}', checked='{(reservation._checked ? 1 : 0)}' WHERE reservationId='{reservation.reservationId}'";
                     var insertCommand = new MySqlCommand(query, connection);
                     insertCommand.ExecuteNonQuery();
                     insertCommand.Dispose();
@@ -399,6 +400,29 @@ namespace wypozyczalniaSamochodow
                     connection.Close();
                 }
                 return fines;
+            });
+        }
+
+        public static async Task<Boolean> returnCar(Reservation res)
+        {
+
+            return await Task.Run(() =>
+            {
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    string query = $"UPDATE wypozyczalniaRezerwacje SET ended='{(res.ended ? 1 : 0)}' WHERE reservationId='{res.reservationId}'";
+                    var insertCommand = new MySqlCommand(query, connection);
+                    insertCommand.ExecuteNonQuery();
+                    insertCommand.Dispose();
+                    connection.Close();
+
+
+                    return true;
+
+                }
+                return false;
             });
         }
 

@@ -15,5 +15,6 @@ namespace wypozyczalniaSamochodow
         public CarType carType;
         public int fineId;
         public bool ended;
+        public bool _checked;
     }
 }

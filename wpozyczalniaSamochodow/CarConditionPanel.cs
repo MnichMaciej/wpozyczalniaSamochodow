@@ -36,6 +36,7 @@ namespace wypozyczalniaSamochodow
                 {
                     int fineId = (int)task.Result;
                     reservation.fineId = fineId;
+                    reservation._checked = true;
                     await DatabaseService.updateReservation(reservation);
                 });
             }

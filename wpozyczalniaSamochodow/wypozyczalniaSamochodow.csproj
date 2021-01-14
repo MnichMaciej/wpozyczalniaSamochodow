@@ -164,6 +164,9 @@
     <EmbeddedResource Include="CarRentalPanel.resx">
       <DependentUpon>CarRentalPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CarReturnPanel.resx">
+      <DependentUpon>CarReturnPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerClient.resx">
       <DependentUpon>CustomerClient.cs</DependentUpon>
     </EmbeddedResource>

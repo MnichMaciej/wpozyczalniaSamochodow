@@ -72,6 +72,10 @@ namespace wypozyczalniaSamochodow
             reservationTable.Rows[index].Cells["dateEnd"].Value = reservation.dateEnd;
             reservationTable.Rows[index].Cells["ended"].Value = reservation.ended;
             reservationTable.Rows[index].Cells["fine"].Value = reservation.fineId;
+            reservationTable.Rows[index].Cells["_checked"].Value = reservation._checked;
+
+
+
         }
 
         private void reservationTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -87,7 +91,9 @@ namespace wypozyczalniaSamochodow
 
         private void checkCarConditon(Reservation reservation)
         {
-            carConditionPanel1.Show(reservation);
+            if (reservation.ended && !reservation._checked)
+                carConditionPanel1.Show(reservation);
+            else MessageBox.Show("Rezerwacja nie jest zakończona lub została już oceniona.");
         }
     }
 }

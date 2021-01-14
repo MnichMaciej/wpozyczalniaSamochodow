@@ -27,7 +27,7 @@ namespace wypozyczalniaSamochodow
 
         private void hide(object sender, EventArgs e)
         {
-
+            Hide();
         }
 
         private async void getFinesList(Account acc)
