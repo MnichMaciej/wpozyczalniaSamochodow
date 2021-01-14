@@ -34,7 +34,9 @@ namespace wypozyczalniaSamochodow
                 carAddingPanel1.Hide();
                 BringToFront();
                 addingCarButton.Enabled = true;
-
+                cars.Clear();
+                carsTable.Rows.Clear();
+                this.getCarsAsync();
             }
             else
             {
