@@ -13,7 +13,7 @@ namespace wypozyczalniaSamochodow
     public partial class ReservationPanel : UserControl
     {
         private Account account; 
-        private List<Reservation> reservations;
+        private List<Reservation> reservations = new List<Reservation>();
         public ReservationPanel()
         {
             InitializeComponent();

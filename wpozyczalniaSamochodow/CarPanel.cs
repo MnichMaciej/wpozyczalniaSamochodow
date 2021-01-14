@@ -13,7 +13,7 @@ namespace wypozyczalniaSamochodow
 {
     public partial class CarPanel : UserControl
     {
-        private List<Car> cars;
+        private List<Car> cars = new List<Car>();
         public Action showParent;
         public CarPanel()
         {

@@ -14,7 +14,7 @@ namespace wypozyczalniaSamochodow
     {
         Account account;
         ReservationData reservation;
-        List<Car> cars;
+        List<Car> cars = new List<Car>();
         public CarRentalPanel()
         {
             InitializeComponent();

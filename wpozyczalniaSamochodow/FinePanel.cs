@@ -13,7 +13,7 @@ namespace wypozyczalniaSamochodow
     public partial class FinePanel : UserControl
     {
         Account account;
-        List<Fine> fines;
+        List<Fine> fines = new List<Fine>();
         public FinePanel()
         {
             InitializeComponent();

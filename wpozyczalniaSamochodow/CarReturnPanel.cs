@@ -8,7 +8,7 @@ namespace wypozyczalniaSamochodow
     public partial class CarReturnPanel : UserControl
     {
         public Account account;
-        private List<Reservation> reservations;
+        private List<Reservation> reservations = new List<Reservation>();
         public CarReturnPanel()
         {
             InitializeComponent();
