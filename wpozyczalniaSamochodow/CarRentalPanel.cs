@@ -29,6 +29,8 @@ namespace wypozyczalniaSamochodow
         }
         public void show(Account acc)
         {
+            cars.Clear();
+            carTable.Rows.Clear();
             account = acc;
             reservation = new ReservationData();
             Show();

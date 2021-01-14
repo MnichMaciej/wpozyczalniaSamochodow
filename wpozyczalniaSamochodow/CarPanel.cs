@@ -45,6 +45,8 @@ namespace wypozyczalniaSamochodow
 
         public async void showPanel()
         {
+            cars.Clear();
+            carsTable.Rows.Clear();
             this.Show();
             await this.getCarsAsync();
 
@@ -52,7 +54,6 @@ namespace wypozyczalniaSamochodow
 
         private async Task getCarsAsync()
         {
-            //cars.Clear(); TO DO poprawić
             await DatabaseService.getCarsAsync().ContinueWith((task) =>
             {
                 cars = task.Result;

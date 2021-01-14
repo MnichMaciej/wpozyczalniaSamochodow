@@ -13,6 +13,7 @@ namespace wypozyczalniaSamochodow
     public partial class FinePanel : UserControl
     {
         Account account;
+        List<Fine> fines;
         public FinePanel()
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace wypozyczalniaSamochodow
         {
             await DatabaseService.getFines(acc).ContinueWith(task =>
             {
-                var fines = task.Result;
+                fines = task.Result;
                 foreach (Fine fine in fines)
                 {
                     if (fineTable.InvokeRequired)

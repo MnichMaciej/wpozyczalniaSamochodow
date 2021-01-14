@@ -23,6 +23,8 @@ namespace wypozyczalniaSamochodow
 
         public async void showPanel()
         {
+            reservations.Clear();
+            reservationTable.Rows.Clear();
             this.Show();
             await this.getReservationsAsync();
 
