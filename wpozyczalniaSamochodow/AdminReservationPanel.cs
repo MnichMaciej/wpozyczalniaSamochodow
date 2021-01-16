@@ -30,12 +30,13 @@ namespace wypozyczalniaSamochodow
 
         }
 
-        private void goBack(object sender, EventArgs e)
+        private async void goBack(object sender, EventArgs e)
         {
             if (carConditionPanel1.Visible)
             {
                 reservations.Clear();
                 reservationTable.Rows.Clear();
+                await this.getReservationsAsync();
                 carConditionPanel1.Hide();
                 carConditionPanel1.SendToBack();
             }

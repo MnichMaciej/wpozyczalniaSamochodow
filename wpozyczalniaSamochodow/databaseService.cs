@@ -269,7 +269,8 @@ namespace wypozyczalniaSamochodow
         {
             return await Task.Run(() =>
             {
-                if(!(reservation is null) && reservation.fineId > 0){
+                if (!(reservation is null) && reservation.fineId > 0)
+                {
                     return getFine(reservation.fineId).ContinueWith(task =>
                     {
                         Fine fine2 = task.Result;
@@ -279,9 +280,9 @@ namespace wypozyczalniaSamochodow
                             openConnection();
                         if (connection.State == ConnectionState.Open)
                         {
-                            string query = "UPDATE wypozyczalniaOplaty SET cost = '" + fine.fineCost + "', description = '" + fine.fineDescription + "' WHERE id = "+reservation.fineId+";";
+                            string query = "UPDATE wypozyczalniaOplaty SET cost = '" + fine.fineCost + "', description = '" + fine.fineDescription + "' WHERE id = " + reservation.fineId + ";";
                             var insertCommand = new MySqlCommand(query, connection);
-                            insertCommand.ExecuteNonQuery(); 
+                            insertCommand.ExecuteNonQuery();
                             insertCommand.Dispose();
                             connection.Close();
 
@@ -291,19 +292,22 @@ namespace wypozyczalniaSamochodow
                     }).Result;
 
                 }
-                if (connection.State != ConnectionState.Open)
-                    openConnection();
-                if (connection.State == ConnectionState.Open)
+                else
                 {
-                    string query = "INSERT INTO wypozyczalniaOplaty(cost, description) VALUES('" + fine.fineCost + "','" + fine.fineDescription + "');";
-                    var insertCommand = new MySqlCommand(query, connection);
-                    insertCommand.ExecuteNonQuery();
-                    insertCommand.Dispose();
-                    connection.Close();
+                    if (connection.State != ConnectionState.Open)
+                        openConnection();
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        string query = "INSERT INTO wypozyczalniaOplaty(cost, description) VALUES('" + fine.fineCost + "','" + fine.fineDescription + "');";
+                        var insertCommand = new MySqlCommand(query, connection);
+                        insertCommand.ExecuteNonQuery();
+                        insertCommand.Dispose();
+                        connection.Close();
 
-                    return insertCommand.LastInsertedId;
+                        return insertCommand.LastInsertedId;
+                    }
+                    return -1;
                 }
-                return -1;
             });
         }
 

@@ -36,9 +36,17 @@ namespace wypozyczalniaSamochodow
                 await saveFine(fine,reservation).ContinueWith( async task =>
                 {
                     int fineId = (int)task.Result;
+                    if(fineId > 0)
+                    {
+
                     reservation.fineId = fineId;
                     reservation._checked = true;
                     await DatabaseService.updateReservation(reservation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Przepraszamy, nie udało się zapisać opłaty.");
+                    }
                 });
             }
             if (!efficientCheckbox.Checked)
