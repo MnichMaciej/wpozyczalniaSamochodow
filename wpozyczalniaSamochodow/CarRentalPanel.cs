@@ -60,6 +60,8 @@ namespace wypozyczalniaSamochodow
 
         private async void getAvaliableCars(object sender, EventArgs e)
         {
+            cars.Clear();
+            carTable.Rows.Clear();
             if(reservation.carType != 0 && reservation.dateBegin!=null && reservation.dateEnd != null)
             {
                 await DatabaseService.getAvaliableCars(reservation).ContinueWith((task) =>
@@ -112,7 +114,6 @@ namespace wypozyczalniaSamochodow
                 bool result = task.Result;
                 if (result)
                 {
-                    //TODO: powrot
                     MessageBox.Show("Zapisano");
                     if (InvokeRequired)
                         Invoke(new Action(() =>Hide()));
@@ -122,7 +123,6 @@ namespace wypozyczalniaSamochodow
                 else
                 {
                     MessageBox.Show("Nie zapisano");
-                    //TODO: error
                 }
             });
         }

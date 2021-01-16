@@ -55,17 +55,15 @@
             this.menuPanel.Controls.Add(this.addingCarButton);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
-            this.menuPanel.Margin = new System.Windows.Forms.Padding(4);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(1036, 940);
+            this.menuPanel.Size = new System.Drawing.Size(217, 611);
             this.menuPanel.TabIndex = 0;
             // 
             // goBackButton
             // 
-            this.goBackButton.Location = new System.Drawing.Point(43, 126);
-            this.goBackButton.Margin = new System.Windows.Forms.Padding(4);
+            this.goBackButton.Location = new System.Drawing.Point(32, 102);
             this.goBackButton.Name = "goBackButton";
-            this.goBackButton.Size = new System.Drawing.Size(184, 28);
+            this.goBackButton.Size = new System.Drawing.Size(138, 23);
             this.goBackButton.TabIndex = 1;
             this.goBackButton.Text = "Powrót";
             this.goBackButton.UseVisualStyleBackColor = true;
@@ -73,10 +71,9 @@
             // 
             // addingCarButton
             // 
-            this.addingCarButton.Location = new System.Drawing.Point(43, 75);
-            this.addingCarButton.Margin = new System.Windows.Forms.Padding(4);
+            this.addingCarButton.Location = new System.Drawing.Point(32, 61);
             this.addingCarButton.Name = "addingCarButton";
-            this.addingCarButton.Size = new System.Drawing.Size(184, 28);
+            this.addingCarButton.Size = new System.Drawing.Size(138, 23);
             this.addingCarButton.TabIndex = 0;
             this.addingCarButton.Text = "Dodaj samochód";
             this.addingCarButton.UseVisualStyleBackColor = true;
@@ -84,14 +81,17 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainPanel.AutoScroll = true;
             this.mainPanel.AutoSize = true;
             this.mainPanel.Controls.Add(this.carsTable);
             this.mainPanel.Controls.Add(this.carEditingPanel1);
             this.mainPanel.Controls.Add(this.carAddingPanel1);
-            this.mainPanel.Location = new System.Drawing.Point(267, 0);
-            this.mainPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.mainPanel.Location = new System.Drawing.Point(200, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1338, 748);
+            this.mainPanel.Size = new System.Drawing.Size(1385, 626);
             this.mainPanel.TabIndex = 1;
             // 
             // carsTable
@@ -110,10 +110,9 @@
             this.editCarButton});
             this.carsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.carsTable.Location = new System.Drawing.Point(0, 0);
-            this.carsTable.Margin = new System.Windows.Forms.Padding(4);
             this.carsTable.Name = "carsTable";
             this.carsTable.RowHeadersWidth = 51;
-            this.carsTable.Size = new System.Drawing.Size(1338, 748);
+            this.carsTable.Size = new System.Drawing.Size(1385, 626);
             this.carsTable.TabIndex = 0;
             this.carsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.carsTable_CellContentClick);
             // 
@@ -124,7 +123,7 @@
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 48;
+            this.ID.Width = 40;
             // 
             // brand
             // 
@@ -133,7 +132,7 @@
             this.brand.MinimumWidth = 6;
             this.brand.Name = "brand";
             this.brand.ReadOnly = true;
-            this.brand.Width = 75;
+            this.brand.Width = 60;
             // 
             // model
             // 
@@ -142,7 +141,7 @@
             this.model.MinimumWidth = 6;
             this.model.Name = "model";
             this.model.ReadOnly = true;
-            this.model.Width = 75;
+            this.model.Width = 61;
             // 
             // type
             // 
@@ -151,7 +150,7 @@
             this.type.MinimumWidth = 6;
             this.type.Name = "type";
             this.type.ReadOnly = true;
-            this.type.Width = 69;
+            this.type.Width = 56;
             // 
             // odometer
             // 
@@ -160,6 +159,7 @@
             this.odometer.MinimumWidth = 6;
             this.odometer.Name = "odometer";
             this.odometer.ReadOnly = true;
+            this.odometer.Width = 78;
             // 
             // registrationNumber
             // 
@@ -168,7 +168,7 @@
             this.registrationNumber.MinimumWidth = 6;
             this.registrationNumber.Name = "registrationNumber";
             this.registrationNumber.ReadOnly = true;
-            this.registrationNumber.Width = 151;
+            this.registrationNumber.Width = 115;
             // 
             // efficiency
             // 
@@ -177,7 +177,7 @@
             this.efficiency.MinimumWidth = 6;
             this.efficiency.Name = "efficiency";
             this.efficiency.ReadOnly = true;
-            this.efficiency.Width = 74;
+            this.efficiency.Width = 59;
             // 
             // isDisabled
             // 
@@ -185,7 +185,7 @@
             this.isDisabled.MinimumWidth = 6;
             this.isDisabled.Name = "isDisabled";
             this.isDisabled.ReadOnly = true;
-            this.isDisabled.Width = 73;
+            this.isDisabled.Width = 57;
             // 
             // editCarButton
             // 
@@ -202,33 +202,33 @@
             this.carEditingPanel1.AutoSize = true;
             this.carEditingPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.carEditingPanel1.Location = new System.Drawing.Point(0, 0);
-            this.carEditingPanel1.Margin = new System.Windows.Forms.Padding(5);
+            this.carEditingPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.carEditingPanel1.Name = "carEditingPanel1";
-            this.carEditingPanel1.Size = new System.Drawing.Size(1338, 748);
+            this.carEditingPanel1.Size = new System.Drawing.Size(1385, 626);
             this.carEditingPanel1.TabIndex = 1;
             this.carEditingPanel1.Visible = false;
             // 
             // carAddingPanel1
             // 
             this.carAddingPanel1.AutoSize = true;
+            this.carAddingPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.carAddingPanel1.Location = new System.Drawing.Point(0, 0);
-            this.carAddingPanel1.Margin = new System.Windows.Forms.Padding(5);
+            this.carAddingPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.carAddingPanel1.Name = "carAddingPanel1";
-            this.carAddingPanel1.Size = new System.Drawing.Size(1333, 743);
+            this.carAddingPanel1.Size = new System.Drawing.Size(1385, 626);
             this.carAddingPanel1.TabIndex = 2;
             this.carAddingPanel1.Visible = false;
             // 
             // CarPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.menuPanel);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CarPanel";
-            this.Size = new System.Drawing.Size(2011, 940);
+            this.Size = new System.Drawing.Size(1207, 611);
             this.menuPanel.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();

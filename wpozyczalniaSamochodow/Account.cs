@@ -13,6 +13,11 @@ namespace wypozyczalniaSamochodow
         public string firstName;
         public string lastName;
         public string email;
+        public string city;
+        public string address;
+        public string houseNumber;
+        public string apartmentNumber;
+        public string password;
         public bool isAdmin;
 
         public Account()
