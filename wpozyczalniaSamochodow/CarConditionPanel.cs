@@ -65,7 +65,6 @@ namespace wypozyczalniaSamochodow
         {
             fine.fineCost = (double)cost.Value;
             fine.fineDescription = description.Text;
-            finePanel.Hide();
             return await DatabaseService.insertFine(fine,reservation);
 
         }

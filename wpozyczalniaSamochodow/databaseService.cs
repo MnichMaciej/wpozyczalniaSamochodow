@@ -287,7 +287,7 @@ namespace wypozyczalniaSamochodow
                             insertCommand.Dispose();
                             connection.Close();
 
-                            return insertCommand.LastInsertedId;
+                            return reservation.fineId;
                         }
                         return -1;
                     }).Result;
