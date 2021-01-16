@@ -162,6 +162,39 @@ namespace wypozyczalniaSamochodow
             });
         }
 
+        public static async Task<bool> insertUser(Account user)
+        {
+            return await Task.Run(() =>
+            {
+                bool resultFlag = false;
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+
+
+                    var insertQuery = "INSERT INTO wypozyczalniaUzytkownicy(firstName,lastName,city,address,houseNumber,apartmentNumber,email,password) VALUES ('" + user.firstName + "','" + user.lastName + "','" + user.city + "','" + user.address + "','" + user.houseNumber + "','" + user.apartmentNumber + "','" + user.email + "','" + user.password + "');";
+                    var result = new MySqlCommand(insertQuery, connection);
+                    try
+                    {
+                        MySqlDataReader resultReader = result.ExecuteReader();
+                        resultFlag = true;
+                        resultReader.Close();
+                    }
+                    catch
+                    {
+                        resultFlag = false;
+                    }
+                    result.Cancel();
+                    connection.Close();
+
+                }
+
+                return resultFlag;
+            });
+        }
+
+
         public static async Task<List<Reservation>> getReservationsAsync(Account acc)
         {
             return await Task.Run(() =>
@@ -232,24 +265,49 @@ namespace wypozyczalniaSamochodow
             });
         }
 
-        public static async Task<long> insertFine(Fine fine)
+        public static async Task<long> insertFine(Fine fine, Reservation reservation = null)
         {
             return await Task.Run(() =>
             {
-                if (connection.State != ConnectionState.Open)
-                    openConnection();
-                if (connection.State == ConnectionState.Open)
+                if (!(reservation is null) && reservation.fineId > 0)
                 {
-                    string query = "INSERT INTO wypozyczalniaOplaty(cost, description) VALUES('" + fine.fineCost + "','" + fine.fineDescription + "');";
-                    var insertCommand = new MySqlCommand(query, connection);
-                    insertCommand.ExecuteNonQuery(); 
-                    insertCommand.Dispose();
-                    connection.Close();
+                    return getFine(reservation.fineId).ContinueWith(task =>
+                    {
+                        Fine fine2 = task.Result;
+                        fine.fineCost += fine2.fineCost;
+                        fine.fineDescription += '\n' + fine2.fineDescription;
+                        if (connection.State != ConnectionState.Open)
+                            openConnection();
+                        if (connection.State == ConnectionState.Open)
+                        {
+                            string query = "UPDATE wypozyczalniaOplaty SET cost = '" + fine.fineCost + "', description = '" + fine.fineDescription + "' WHERE id = " + reservation.fineId + ";";
+                            var insertCommand = new MySqlCommand(query, connection);
+                            insertCommand.ExecuteNonQuery();
+                            insertCommand.Dispose();
+                            connection.Close();
 
-                    return insertCommand.LastInsertedId;
+                            return insertCommand.LastInsertedId;
+                        }
+                        return -1;
+                    }).Result;
 
                 }
-                return -1;
+                else
+                {
+                    if (connection.State != ConnectionState.Open)
+                        openConnection();
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        string query = "INSERT INTO wypozyczalniaOplaty(cost, description) VALUES('" + fine.fineCost + "','" + fine.fineDescription + "');";
+                        var insertCommand = new MySqlCommand(query, connection);
+                        insertCommand.ExecuteNonQuery();
+                        insertCommand.Dispose();
+                        connection.Close();
+
+                        return insertCommand.LastInsertedId;
+                    }
+                    return -1;
+                }
             });
         }
 
@@ -332,40 +390,126 @@ namespace wypozyczalniaSamochodow
 
         public static async Task<bool> insertReservation(ReservationData reservation, Car car, int accountId)
         {
-            return await Task.Run(() =>
+            double reservationCost = 0;
+            return await Task.Run(()=>
             {
                 if (connection.State != ConnectionState.Open)
                     openConnection();
                 if (connection.State == ConnectionState.Open)
                 {
-                    int dateDiff = getDateDiff(reservation);
-                    string query = $"INSERT INTO wypozyczalniaOplaty(cost, description) VALUES({dateDiff}*(SELECT cena FROM wypozyczalniaTypy WHERE id = {(int)reservation.carType}),\"Opłata za rezerwacje\");";
-                    var insertCommand = new MySqlCommand(query, connection);
-                    insertCommand.ExecuteNonQuery();
-                    insertCommand.Dispose();
-                    connection.Close();
-                    if(insertCommand.LastInsertedId >= 0)
+                    var selectQuery = $"SELECT cena FROM wypozyczalniaTypy WHERE id = { (int)reservation.carType}";
+                    var result = new MySqlCommand(selectQuery, connection);
+                    MySqlDataReader resultReader = result.ExecuteReader();
+                    while (resultReader.Read())
                     {
-                        if (connection.State != ConnectionState.Open)
-                            openConnection();
-                        if (connection.State == ConnectionState.Open)
+                        Fine tempFine = new Fine();
+                        List<string> results = new List<string>();
+                        for (int i = 0; i < resultReader.FieldCount; i++)
                         {
-                            query = $"INSERT INTO wypozyczalniaRezerwacje(carId, accountId,dateBegin,dateEnd,ended,fineId) VALUES((SELECT id FROM wypozyczalniaSamochody c WHERE type = {(int)reservation.carType} AND brand = '{car.brand}' AND model = '{car.model}' AND efficiency = 1 AND isDisabled = 0 AND NOT EXISTS (SELECT r.* FROM `wypozyczalniaRezerwacje` r WHERE r.carId = c.id AND r.ended = 0 AND((r.dateBegin BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}') OR(r.dateEnd BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}'))) LIMIT 1),{accountId},'{reservation.dateBegin}','{reservation.dateEnd}',0,{insertCommand.LastInsertedId});";
-                            insertCommand = new MySqlCommand(query, connection);
-                            insertCommand.ExecuteNonQuery();
-                            insertCommand.Dispose();
-                            connection.Close();
-                            if (insertCommand.LastInsertedId >= 0)
-                            {
-                                return true;
-                            }
+                            results.Add(resultReader[i].ToString());
                         }
+                        reservationCost = Int32.Parse(results[0]);
                     }
-                    return false;
+                    resultReader.Close();
+                    result.Cancel();
+                    connection.Close();
+                    if (showCostDialog(reservationCost))
+                    {
 
+                        return Task.Run(() =>
+                        {
+                            if (connection.State != ConnectionState.Open)
+                                openConnection();
+                            if (connection.State == ConnectionState.Open)
+                            {
+                                int dateDiff = getDateDiff(reservation);
+                                string query = $"INSERT INTO wypozyczalniaOplaty(cost, description) VALUES({dateDiff}*(SELECT cena FROM wypozyczalniaTypy WHERE id = {(int)reservation.carType}),\"Opłata za rezerwacje\");";
+                                var insertCommand = new MySqlCommand(query, connection);
+                                insertCommand.ExecuteNonQuery();
+                                insertCommand.Dispose();
+                                connection.Close();
+                                if (insertCommand.LastInsertedId >= 0)
+                                {
+                                    if (connection.State != ConnectionState.Open)
+                                        openConnection();
+                                    if (connection.State == ConnectionState.Open)
+                                    {
+                                        query = $"INSERT INTO wypozyczalniaRezerwacje(carId, accountId,dateBegin,dateEnd,ended,fineId) VALUES((SELECT id FROM wypozyczalniaSamochody c WHERE type = {(int)reservation.carType} AND brand = '{car.brand}' AND model = '{car.model}' AND efficiency = 1 AND isDisabled = 0 AND NOT EXISTS (SELECT r.* FROM `wypozyczalniaRezerwacje` r WHERE r.carId = c.id AND r.ended = 0 AND((r.dateBegin BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}') OR(r.dateEnd BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}'))) LIMIT 1),{accountId},'{reservation.dateBegin}','{reservation.dateEnd}',0,{insertCommand.LastInsertedId});";
+                                        insertCommand = new MySqlCommand(query, connection);
+                                        insertCommand.ExecuteNonQuery();
+                                        insertCommand.Dispose();
+                                        connection.Close();
+                                        if (insertCommand.LastInsertedId >= 0)
+                                        {
+                                            return true;
+                                        }
+                                    }
+                                }
+                            }
+                            return false;
+                        }).Result;
+                    }
                 }
                 return false;
             });
+        }
+
+        public static async Task<Fine> getFine(int fineId)
+        {
+
+            return await Task.Run(() =>
+            {
+                Fine fine = new Fine();
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    var selectQuery = $"SELECT id, cost, description FROM wypozyczalniaOplaty WHERE id = {fineId};";
+                    var result = new MySqlCommand(selectQuery, connection);
+                    MySqlDataReader resultReader = result.ExecuteReader();
+                    while (resultReader.Read())
+                    {
+                        Fine tempFine = new Fine();
+                        List<string> results = new List<string>();
+                        for (int i = 0; i < resultReader.FieldCount; i++)
+                        {
+                            results.Add(resultReader[i].ToString());
+                        }
+                        tempFine.fineId = Int32.Parse(results[0]);
+                        tempFine.fineCost = Convert.ToDouble(results[1]);
+                        tempFine.fineDescription = results[2];
+                        fine = tempFine;
+
+                    }
+                    resultReader.Close();
+                    result.Cancel();
+                    connection.Close();
+                }
+                return fine;
+            });
+        }
+
+        public static bool showCostDialog(double cost)
+        {
+            Form prompt = new Form()
+            {
+                Width = 500,
+                Height = 150,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = "Potwierdź rezerwacje",
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            Label textLabel = new Label() { Left = 50, Top = 20, AutoSize = true, Text = $"Czy chcesz wypożyczyć samochód za {cost}zł?" };
+            Button confirmation = new Button() { Text = "Tak", Left = 100, Width = 100, Top = 70, DialogResult = DialogResult.Yes };
+            Button rejection = new Button() { Text = "Nie", Left = 250, Width = 100, Top = 70, DialogResult = DialogResult.No };
+            confirmation.Click += (sender, e) => { prompt.Close(); };
+            prompt.Controls.Add(confirmation);
+            prompt.Controls.Add(rejection);
+            prompt.Controls.Add(textLabel);
+            prompt.AcceptButton = confirmation;
+
+
+            return prompt.ShowDialog() == DialogResult.Yes ? true : false ;
         }
 
         public static async Task<List<Fine>> getFines(Account acc)

@@ -14,6 +14,7 @@ namespace wypozyczalniaSamochodow
     public partial class CarConditionPanel : UserControl
     {
         Reservation reservation;
+        public Action showParent;
         public CarConditionPanel()
         {
             InitializeComponent();
@@ -32,12 +33,20 @@ namespace wypozyczalniaSamochodow
             if (fineCheckbox.Checked)
             {
                 Fine fine = new Fine();
-                await saveFine(fine).ContinueWith( async task =>
+                await saveFine(fine,reservation).ContinueWith( async task =>
                 {
                     int fineId = (int)task.Result;
+                    if(fineId > 0)
+                    {
+
                     reservation.fineId = fineId;
                     reservation._checked = true;
                     await DatabaseService.updateReservation(reservation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Przepraszamy, nie udało się zapisać opłaty.");
+                    }
                 });
             }
             if (!efficientCheckbox.Checked)
@@ -47,15 +56,15 @@ namespace wypozyczalniaSamochodow
                 car.carEfficiency = efficientCheckbox.Checked;
                 await DatabaseService.updateCar(car);
             }
-            Hide();
+            showParent();
         }
 
-        private async Task<long> saveFine(Fine fine)
+        private async Task<long> saveFine(Fine fine,Reservation reservation)
         {
             fine.fineCost = (double)cost.Value;
             fine.fineDescription = description.Text;
             finePanel.Hide();
-            return await DatabaseService.insertFine(fine);
+            return await DatabaseService.insertFine(fine,reservation);
 
         }
 

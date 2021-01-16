@@ -18,14 +18,18 @@ namespace wypozyczalniaSamochodow
         public CarPanel()
         {
             InitializeComponent();
+            carAddingPanel1.parent = this ;
         }
 
-        private void goBack(object sender, EventArgs e)
+        public void goBack(object sender, EventArgs e)
         {
             if (carEditingPanel1.Visible)
             {
                 carEditingPanel1.Hide();
                 addingCarButton.Enabled = true;
+                cars.Clear();
+                carsTable.Rows.Clear();
+                this.getCarsAsync();
                 BringToFront();
 
             }
@@ -83,6 +87,8 @@ namespace wypozyczalniaSamochodow
             carsTable.Rows[index].Cells["registrationNumber"].Value = car.registrationNumber;
             carsTable.Rows[index].Cells["efficiency"].Value = car.carEfficiency;
             carsTable.Rows[index].Cells["isDisabled"].Value = car.isDisabled;
+            mainPanel.AutoScroll = false;
+            mainPanel.AutoScroll = true;
         }
 
         private void carsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)

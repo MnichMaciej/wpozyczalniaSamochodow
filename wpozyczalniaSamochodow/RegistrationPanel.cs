@@ -153,25 +153,46 @@ namespace wypozyczalniaSamochodow
             return true;
         }
 
-        private void RegistrationButton_Click(object sender, EventArgs e)
+        private async void RegistrationButton_Click(object sender, EventArgs e)
         {
             var firstName = firstNameTextBox.Text;
             var lastName = lastNameTextBox.Text;
             var city = cityTextBox.Text;
             var address = addressTextBox.Text;
-            var houseNoumber = houseNumberTextBox.Text;
+            var houseNumber = houseNumberTextBox.Text;
             var apartmentNumber = apartmentNumberTextBox.Text;
             var email = emailTextBox.Text;
             var password = passwordTextBox.Text;
             var password2 = passwordTextBox2.Text;
 
-            if (checkCorrectness(firstName, lastName, city, address, houseNoumber, apartmentNumber,email, password,password2))
+            if (checkCorrectness(firstName, lastName, city, address, houseNumber, apartmentNumber,email, password,password2))
             {
-                //TODO: Podłączenie do bazy danych
+                Account user = new Account();
+                user.firstName = firstName;
+                user.lastName = lastName;
+                user.city = city;
+                user.address = address;
+                user.houseNumber = houseNumber;
+                user.apartmentNumber = apartmentNumber;
+                user.email = email;
+                user.password = password;
+                await DatabaseService.insertUser(user).ContinueWith(task=>
+                {
+                    var result = task.Result;
+                    if(result)
+                    {
+                        MessageBox.Show("Rejestracja przebiegła pomyślnie.");
+                        if (InvokeRequired)
+                            Invoke(new Action(() => Hide()));
+                        else
+                            Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie udało się zarejestrować użytkownika.");
+                    }
+                });
 
-
-                MessageBox.Show("Rejestracja przebiegła pomyślnie.");
-                Hide();
             }
         }
 
