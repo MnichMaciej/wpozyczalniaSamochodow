@@ -98,7 +98,7 @@
             this.logOutButton.TabIndex = 3;
             this.logOutButton.Text = "Wyloguj";
             this.logOutButton.UseVisualStyleBackColor = true;
-            this.logOutButton.Click += new System.EventHandler(this.logOutButton_Click);
+            this.logOutButton.Click += new System.EventHandler(this.logOut);
             // 
             // AdminClient
             // 

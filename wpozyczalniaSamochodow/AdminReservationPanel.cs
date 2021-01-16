@@ -11,9 +11,12 @@ using wypozyczalniaSamochodow;
 
 namespace wypozyczalniaSamochodow
 {
+    //Klasa przedstawiająca panel rezerwacji administratora
     public partial class AdminReservationPanel : UserControl
     {
         private List<Reservation> reservations = new List<Reservation>();
+        //pole 'showParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        //pole przechowuje metodę panelu nadrzędnego
         public Action showParent;
         public AdminReservationPanel()
         {
@@ -26,7 +29,7 @@ namespace wypozyczalniaSamochodow
             reservations.Clear();
             reservationTable.Rows.Clear();
             this.Show();
-            await this.getReservationsAsync();
+            await this.getReservations();
 
         }
 
@@ -44,7 +47,7 @@ namespace wypozyczalniaSamochodow
             }
         }
 
-        private async Task getReservationsAsync()
+        private async Task getReservations()
         {
             await DatabaseService.getReservationsAsync(null).ContinueWith((task) =>
             {
@@ -62,6 +65,7 @@ namespace wypozyczalniaSamochodow
 
         }
 
+        //metoda 'addReservationTableRow' została dodana 
         private void addReservationTableRow(Reservation reservation)
         {
             var index = reservationTable.Rows.Add();

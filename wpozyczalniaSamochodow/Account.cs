@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace wypozyczalniaSamochodow
 {
+    //Klasa 'kontener' przechowująca dane jednegeo użytkownika
     public class Account
     {
         public int id;
