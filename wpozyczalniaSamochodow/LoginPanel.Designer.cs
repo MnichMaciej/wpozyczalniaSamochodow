@@ -46,7 +46,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Log In";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.logInButtonClick);
+            this.button1.Click += new System.EventHandler(this.logOut);
             // 
             // label2
             // 

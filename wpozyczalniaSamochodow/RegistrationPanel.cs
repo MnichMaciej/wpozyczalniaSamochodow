@@ -12,14 +12,17 @@ namespace wypozyczalniaSamochodow
 {
     public partial class RegistrationPanel : UserControl
     {
-        public App parent;
-
+        //pole 'parent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        //pole przechowuje referencje do panelu nadrzędnego
+        private App parent;
         public RegistrationPanel()
         {
             InitializeComponent();
             Hide();
         }
 
+        //metoda 'setParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        //metoda pozwala na przypisanie wartości do pola 'parent'
         public void setParent(App parent)
         {
             this.parent = parent;
@@ -153,7 +156,7 @@ namespace wypozyczalniaSamochodow
             return true;
         }
 
-        private async void RegistrationButton_Click(object sender, EventArgs e)
+        private async void save(object sender, EventArgs e)
         {
             var firstName = firstNameTextBox.Text;
             var lastName = lastNameTextBox.Text;

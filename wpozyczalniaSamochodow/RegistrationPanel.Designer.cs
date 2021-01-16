@@ -213,7 +213,7 @@
             this.RegistrationButton.TabIndex = 16;
             this.RegistrationButton.Text = "Zarejestruj";
             this.RegistrationButton.UseVisualStyleBackColor = true;
-            this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click);
+            this.RegistrationButton.Click += new System.EventHandler(this.save);
             // 
             // passwordLabel2
             // 

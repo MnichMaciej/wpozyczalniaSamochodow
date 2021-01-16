@@ -13,6 +13,7 @@ using System.Security.Cryptography;
 
 namespace wypozyczalniaSamochodow
 {
+    //klasa 'DatabaseService' służy do obsługi połączenia z bazą danych
     static class DatabaseService
     {
         private static string server = "mn16.webd.pl";
