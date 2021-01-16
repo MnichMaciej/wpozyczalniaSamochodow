@@ -12,6 +12,7 @@ namespace wypozyczalniaSamochodow
 {
     public partial class CarAddingPanel : UserControl
     {
+        public CarPanel parent;
         public CarAddingPanel()
         {
             InitializeComponent();
@@ -121,6 +122,11 @@ namespace wypozyczalniaSamochodow
                     if (result)
                     {
                         MessageBox.Show("Samochod zostal zapisany w bazie danych");
+                        if (InvokeRequired)
+                            Invoke(new Action(() => parent.goBack(null,null)));
+                        else
+                            parent.goBack(null,null);
+
                     }
                     else
                     {

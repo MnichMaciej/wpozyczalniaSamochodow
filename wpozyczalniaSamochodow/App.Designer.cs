@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.registrationPanel1 = new wypozyczalniaSamochodow.RegistrationPanel();
             this.loginPanel1 = new wypozyczalniaSamochodow.LoginPanel();
             this.adminClient1 = new wypozyczalniaSamochodow.AdminClient();
             this.customerClient1 = new wypozyczalniaSamochodow.CustomerClient();
-            this.registrationPanel1 = new wypozyczalniaSamochodow.RegistrationPanel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +45,11 @@
             this.panel2.Controls.Add(this.customerClient1);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // registrationPanel1
+            // 
+            resources.ApplyResources(this.registrationPanel1, "registrationPanel1");
+            this.registrationPanel1.Name = "registrationPanel1";
             // 
             // loginPanel1
             // 
@@ -60,11 +65,6 @@
             // 
             resources.ApplyResources(this.customerClient1, "customerClient1");
             this.customerClient1.Name = "customerClient1";
-            // 
-            // registrationPanel1
-            // 
-            resources.ApplyResources(this.registrationPanel1, "registrationPanel1");
-            this.registrationPanel1.Name = "registrationPanel1";
             // 
             // App
             // 

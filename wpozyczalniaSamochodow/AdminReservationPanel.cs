@@ -18,7 +18,7 @@ namespace wypozyczalniaSamochodow
         public AdminReservationPanel()
         {
             InitializeComponent();
-
+            carConditionPanel1.showParent = ()=>goBack(null, null);
         }
 
         public async void showPanel()
@@ -34,6 +34,8 @@ namespace wypozyczalniaSamochodow
         {
             if (carConditionPanel1.Visible)
             {
+                reservations.Clear();
+                reservationTable.Rows.Clear();
                 carConditionPanel1.Hide();
                 carConditionPanel1.SendToBack();
             }

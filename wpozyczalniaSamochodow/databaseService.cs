@@ -232,22 +232,43 @@ namespace wypozyczalniaSamochodow
             });
         }
 
-        public static async Task<long> insertFine(Fine fine)
+        public static async Task<long> insertFine(Fine fine, Reservation reservation = null)
         {
             return await Task.Run(() =>
             {
+                if(!(reservation is null) && reservation.fineId > 0){
+                    return getFine(reservation.fineId).ContinueWith(task =>
+                    {
+                        Fine fine2 = task.Result;
+                        fine.fineCost += fine2.fineCost;
+                        fine.fineDescription += '\n' + fine2.fineDescription;
+                        if (connection.State != ConnectionState.Open)
+                            openConnection();
+                        if (connection.State == ConnectionState.Open)
+                        {
+                            string query = "UPDATE wypozyczalniaOplaty SET cost = '" + fine.fineCost + "', description = '" + fine.fineDescription + "' WHERE id = "+reservation.fineId+";";
+                            var insertCommand = new MySqlCommand(query, connection);
+                            insertCommand.ExecuteNonQuery(); 
+                            insertCommand.Dispose();
+                            connection.Close();
+
+                            return insertCommand.LastInsertedId;
+                        }
+                        return -1;
+                    }).Result;
+
+                }
                 if (connection.State != ConnectionState.Open)
                     openConnection();
                 if (connection.State == ConnectionState.Open)
                 {
                     string query = "INSERT INTO wypozyczalniaOplaty(cost, description) VALUES('" + fine.fineCost + "','" + fine.fineDescription + "');";
                     var insertCommand = new MySqlCommand(query, connection);
-                    insertCommand.ExecuteNonQuery(); 
+                    insertCommand.ExecuteNonQuery();
                     insertCommand.Dispose();
                     connection.Close();
 
                     return insertCommand.LastInsertedId;
-
                 }
                 return -1;
             });
@@ -365,6 +386,41 @@ namespace wypozyczalniaSamochodow
 
                 }
                 return false;
+            });
+        }
+
+        public static async Task<Fine> getFine(int fineId)
+        {
+
+            return await Task.Run(() =>
+            {
+                Fine fine = new Fine();
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    var selectQuery = $"SELECT id, cost, description FROM wypozyczalniaOplaty WHERE id = {fineId};";
+                    var result = new MySqlCommand(selectQuery, connection);
+                    MySqlDataReader resultReader = result.ExecuteReader();
+                    while (resultReader.Read())
+                    {
+                        Fine tempFine = new Fine();
+                        List<string> results = new List<string>();
+                        for (int i = 0; i < resultReader.FieldCount; i++)
+                        {
+                            results.Add(resultReader[i].ToString());
+                        }
+                        tempFine.fineId = Int32.Parse(results[0]);
+                        tempFine.fineCost = Convert.ToDouble(results[1]);
+                        tempFine.fineDescription = results[2];
+                        fine = tempFine;
+
+                    }
+                    resultReader.Close();
+                    result.Cancel();
+                    connection.Close();
+                }
+                return fine;
             });
         }
 
