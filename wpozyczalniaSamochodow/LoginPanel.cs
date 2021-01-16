@@ -38,10 +38,6 @@ namespace wypozyczalniaSamochodow
                 parent.openClient(ref account);
                 this.Hide();
             }
-            else
-            {
-                MessageBox.Show("nie bangla tu coś");
-            }
         }
 
         private void registrationButton_Click(object sender, EventArgs e)

@@ -162,6 +162,39 @@ namespace wypozyczalniaSamochodow
             });
         }
 
+        public static async Task<bool> insertUser(Account user)
+        {
+            return await Task.Run(() =>
+            {
+                bool resultFlag = false;
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+
+
+                    var insertQuery = "INSERT INTO wypozyczalniaUzytkownicy(firstName,lastName,city,address,houseNumber,apartmentNumber,email,password) VALUES ('" + user.firstName + "','" + user.lastName + "','" + user.city + "','" + user.address + "','" + user.houseNumber + "','" + user.apartmentNumber + "','" + user.email + "','" + user.password + "');";
+                    var result = new MySqlCommand(insertQuery, connection);
+                    try
+                    {
+                        MySqlDataReader resultReader = result.ExecuteReader();
+                        resultFlag = true;
+                        resultReader.Close();
+                    }
+                    catch
+                    {
+                        resultFlag = false;
+                    }
+                    result.Cancel();
+                    connection.Close();
+
+                }
+
+                return resultFlag;
+            });
+        }
+
+
         public static async Task<List<Reservation>> getReservationsAsync(Account acc)
         {
             return await Task.Run(() =>
