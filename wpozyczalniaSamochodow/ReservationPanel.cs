@@ -80,7 +80,6 @@ namespace wypozyczalniaSamochodow
 
         private void editReservation(Reservation reservation)
         {
-            //TODO: open edit reservationpanel
             reservationEditingPanel1.show(reservation);
         }
 

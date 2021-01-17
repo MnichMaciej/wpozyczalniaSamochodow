@@ -48,15 +48,17 @@
             this.panel1.Controls.Add(this.backButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(222, 781);
+            this.panel1.Size = new System.Drawing.Size(166, 635);
             this.panel1.TabIndex = 0;
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(60, 203);
+            this.backButton.Location = new System.Drawing.Point(45, 165);
+            this.backButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(92, 31);
+            this.backButton.Size = new System.Drawing.Size(69, 25);
             this.backButton.TabIndex = 0;
             this.backButton.Text = "Powrót";
             this.backButton.UseVisualStyleBackColor = true;
@@ -75,12 +77,13 @@
             this.dateEnd,
             this.editReservationButton,
             this.cancelReservationButton});
-            this.reservationTable.Location = new System.Drawing.Point(228, 3);
+            this.reservationTable.Location = new System.Drawing.Point(171, 2);
+            this.reservationTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.reservationTable.Name = "reservationTable";
             this.reservationTable.ReadOnly = true;
             this.reservationTable.RowHeadersWidth = 51;
             this.reservationTable.RowTemplate.Height = 24;
-            this.reservationTable.Size = new System.Drawing.Size(1536, 778);
+            this.reservationTable.Size = new System.Drawing.Size(1152, 632);
             this.reservationTable.TabIndex = 1;
             this.reservationTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.reservationTable_CellContentClick);
             // 
@@ -143,19 +146,21 @@
             // reservationEditingPanel1
             // 
             this.reservationEditingPanel1.Location = new System.Drawing.Point(0, 0);
+            this.reservationEditingPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.reservationEditingPanel1.Name = "reservationEditingPanel1";
-            this.reservationEditingPanel1.Size = new System.Drawing.Size(1473, 595);
+            this.reservationEditingPanel1.Size = new System.Drawing.Size(1323, 635);
             this.reservationEditingPanel1.TabIndex = 2;
             // 
             // ReservationPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.reservationEditingPanel1);
             this.Controls.Add(this.reservationTable);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ReservationPanel";
-            this.Size = new System.Drawing.Size(1764, 781);
+            this.Size = new System.Drawing.Size(1323, 635);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.reservationTable)).EndInit();
             this.ResumeLayout(false);

@@ -38,12 +38,16 @@ namespace wypozyczalniaSamochodow
 
         private void setDateBegin(object sender, EventArgs e)
         {
+            cars.Clear();
+            carTable.Rows.Clear();
             reservation.dateBegin = changeDateFormat(dateFromPicker.Value.Date.ToString());
             dateToPicker.MinDate = dateFromPicker.Value.AddDays(1);
         }
 
         private void setDateEnd(object sender, EventArgs e)
         {
+            cars.Clear();
+            carTable.Rows.Clear();
             reservation.dateEnd = changeDateFormat(dateToPicker.Value.Date.ToString());
             dateFromPicker.MaxDate = dateToPicker.Value.AddDays(-1);
         }
@@ -55,6 +59,8 @@ namespace wypozyczalniaSamochodow
 
         private void setCarType(object sender, EventArgs e)
         {
+            cars.Clear();
+            carTable.Rows.Clear();
             reservation.carType = (CarType)Enum.Parse(typeof(CarType), typeCombobox.SelectedItem.ToString());
         }
 

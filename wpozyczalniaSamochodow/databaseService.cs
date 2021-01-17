@@ -332,6 +332,93 @@ namespace wypozyczalniaSamochodow
             });
         }
 
+        public static async Task<bool> updateReservationOnEdit(Reservation reservation,Car car)
+        {
+            double reservationCost = 0;
+            return await Task.Run(() =>
+            {
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    var selectQuery = $"SELECT cena FROM wypozyczalniaTypy WHERE id = { (int)reservation.carType}";
+                    var result = new MySqlCommand(selectQuery, connection);
+                    MySqlDataReader resultReader = result.ExecuteReader();
+                    while (resultReader.Read())
+                    {
+                        Fine tempFine = new Fine();
+                        List<string> results = new List<string>();
+                        for (int i = 0; i < resultReader.FieldCount; i++)
+                        {
+                            results.Add(resultReader[i].ToString());
+                        }
+                        reservationCost = Int32.Parse(results[0]);
+                    }
+                    resultReader.Close();
+                    result.Cancel();
+                    connection.Close();
+                    if (showCostDialog(reservationCost))
+                    {
+
+                        return Task.Run(() =>
+                        {
+                            if (connection.State != ConnectionState.Open)
+                                openConnection();
+                            if (connection.State == ConnectionState.Open)
+                            {
+                                int dateDiff = getDateDiff(reservation);
+                                string query = $"UPDATE wypozyczalniaOplaty SET cost = ({dateDiff}*(SELECT cena FROM wypozyczalniaTypy WHERE id = {(int)reservation.carType})), description ='Opłata za rezerwacje' WHERE id = {reservation.fineId};";
+                                var insertCommand = new MySqlCommand(query, connection);
+                                insertCommand.ExecuteNonQuery();
+                                insertCommand.Dispose();
+                                connection.Close();
+
+                                if (connection.State != ConnectionState.Open)
+                                    openConnection();
+                                if (connection.State == ConnectionState.Open)
+                                {
+                                    int carId = -1;
+                                    query = $"(SELECT id FROM wypozyczalniaSamochody c WHERE type = {(int)reservation.carType} AND brand = '{car.brand}' AND model = '{car.model}' AND efficiency = 1 AND isDisabled = 0 AND NOT EXISTS (SELECT r.* FROM `wypozyczalniaRezerwacje` r WHERE r.carId = c.id AND r.ended = 0 AND r.reservationId != {reservation.reservationId} AND((r.dateBegin BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}') OR(r.dateEnd BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}')) LIMIT 1));";
+                                    result = new MySqlCommand(selectQuery, connection);
+                                    resultReader = result.ExecuteReader();
+                                    while (resultReader.Read())
+                                    {
+                                        
+                                        List<string> results = new List<string>();
+                                        for (int i = 0; i < resultReader.FieldCount; i++)
+                                        {
+                                            results.Add(resultReader[i].ToString());
+                                        }
+                                        carId = Int32.Parse(results[0]);
+                                    }
+                                    resultReader.Close();
+                                    result.Cancel();
+                                    connection.Close();
+
+                                    if (connection.State != ConnectionState.Open)
+                                        openConnection();
+                                    if (connection.State == ConnectionState.Open)
+                                    {
+                                        query = $"UPDATE wypozyczalniaRezerwacje SET carId ={carId},dateBegin = '{reservation.dateBegin}', dateEnd = '{reservation.dateEnd}';";
+                                        insertCommand = new MySqlCommand(query, connection);
+                                        insertCommand.ExecuteNonQuery();
+                                        insertCommand.Dispose();
+                                        connection.Close();
+                                        if (insertCommand.LastInsertedId >= 0)
+                                        {
+                                            return true;
+                                        }
+                                    }
+                                }
+                            }
+                            return false;
+                        }).Result;
+                    }
+                }
+                return false;
+            });
+        }
+
         public static async Task<bool> updateCar(Car car)
         {
             return await Task.Run(() =>
@@ -364,6 +451,40 @@ namespace wypozyczalniaSamochodow
                 if (connection.State == ConnectionState.Open)
                 {
                     var selectQuery = $"SELECT c.brand, c.model FROM wypozyczalniaSamochody c WHERE c.type = {(int)reservation.carType} AND c.isDisabled = 0 AND c.efficiency = 1 AND NOT EXISTS (SELECT r.* FROM `wypozyczalniaRezerwacje` r WHERE r.carId = c.id AND r.ended = 0 AND((r.dateBegin BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}') OR(r.dateEnd BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}'))) GROUP BY c.model;";
+                    var result = new MySqlCommand(selectQuery, connection);
+                    MySqlDataReader resultReader = result.ExecuteReader();
+                    while (resultReader.Read())
+                    {
+                        Car tempCar = new Car();
+                        List<string> results = new List<string>();
+                        for (int i = 0; i < resultReader.FieldCount; i++)
+                        {
+                            results.Add(resultReader[i].ToString());
+                        }
+                        tempCar.brand = results[0];
+                        tempCar.model = results[1];
+                        cars.Add(tempCar);
+
+                    }
+                    resultReader.Close();
+                    result.Cancel();
+                    connection.Close();
+
+                }
+                return cars;
+            });
+        }
+
+        public static async Task<List<Car>> getAvaliableCarsForEditReservation(Reservation reservation)
+        {
+            return await Task.Run(() =>
+            {
+                List<Car> cars = new List<Car>();
+                if (connection.State != ConnectionState.Open)
+                    openConnection();
+                if (connection.State == ConnectionState.Open)
+                {
+                    var selectQuery = $"SELECT c.brand, c.model FROM wypozyczalniaSamochody c WHERE c.type = {(int)reservation.carType} AND c.isDisabled = 0 AND c.efficiency = 1 AND NOT EXISTS (SELECT r.* FROM `wypozyczalniaRezerwacje` r WHERE r.carId = c.id AND r.ended = 0 AND r.reservationId != {reservation.reservationId} AND((r.dateBegin BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}') OR(r.dateEnd BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}'))) GROUP BY c.model;";
                     var result = new MySqlCommand(selectQuery, connection);
                     MySqlDataReader resultReader = result.ExecuteReader();
                     while (resultReader.Read())
@@ -499,7 +620,7 @@ namespace wypozyczalniaSamochodow
                 Text = "Potwierdź rezerwacje",
                 StartPosition = FormStartPosition.CenterScreen
             };
-            Label textLabel = new Label() { Left = 50, Top = 20, AutoSize = true, Text = $"Czy chcesz wypożyczyć samochód za {cost}zł?" };
+            Label textLabel = new Label() { Left = 50, Top = 20, AutoSize = true, Text = $"Czy chcesz wypożyczyć samochód za {cost}zł/dzień?" };
             Button confirmation = new Button() { Text = "Tak", Left = 100, Width = 100, Top = 70, DialogResult = DialogResult.Yes };
             Button rejection = new Button() { Text = "Nie", Left = 250, Width = 100, Top = 70, DialogResult = DialogResult.No };
             confirmation.Click += (sender, e) => { prompt.Close(); };
