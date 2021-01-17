@@ -16,12 +16,17 @@ namespace wypozyczalniaSamochodow
         public ReservationEditingPanel()
         {
             InitializeComponent();
+           // dateToPicker.Value = dateFromPicker.Value.AddDays(1);
+
         }
 
         public void show(Reservation res)
         {
             reservation = res;
             Show();
+            dateFromPicker.MinDate = DateTime.Today;
+            dateToPicker.MinDate = DateTime.Today;
+            dateToPicker.Value = dateFromPicker.Value.AddDays(1);
         }
 
         private void goBackButton_Click(object sender, EventArgs e)
@@ -44,6 +49,19 @@ namespace wypozyczalniaSamochodow
         public string changeDateFormat(string date)
         {
             return String.Join("-", date.Split(' ')[0].Split('.').Reverse());
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            //TO DO: Sprawdzenie warunku czy samochód jest dostępny
+            if(true)
+            {
+                // TO DO: połączenie do bazy danych
+            }
+            else
+            {
+                MessageBox.Show("Niestety ten samochod nie jest dostępny we wskazanym dniu");
+            }
         }
     }
 

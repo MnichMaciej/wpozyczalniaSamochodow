@@ -31,6 +31,7 @@
             this.goBackButton = new System.Windows.Forms.Button();
             this.dateFromPicker = new System.Windows.Forms.DateTimePicker();
             this.dateToPicker = new System.Windows.Forms.DateTimePicker();
+            this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // goBackButton
@@ -59,10 +60,21 @@
             this.dateToPicker.TabIndex = 2;
             this.dateToPicker.ValueChanged += new System.EventHandler(this.dateToPicker_ValueChanged);
             // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(492, 165);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(203, 31);
+            this.saveButton.TabIndex = 3;
+            this.saveButton.Text = "Zapisz";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
             // ReservationEditingPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.dateToPicker);
             this.Controls.Add(this.dateFromPicker);
             this.Controls.Add(this.goBackButton);
@@ -77,5 +89,6 @@
         private System.Windows.Forms.Button goBackButton;
         private System.Windows.Forms.DateTimePicker dateFromPicker;
         private System.Windows.Forms.DateTimePicker dateToPicker;
+        private System.Windows.Forms.Button saveButton;
     }
 }
