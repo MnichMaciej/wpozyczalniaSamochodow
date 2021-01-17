@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace wypozyczalniaSamochodow
 {
+    //Klasa przedstawiająca okno programu klienckiego administratora
     public partial class AdminClient : UserControl
     {
         public AdminClient()
@@ -34,7 +35,7 @@ namespace wypozyczalniaSamochodow
 
         }
 
-        private void logOutButton_Click(object sender, EventArgs e)
+        private void logOut(object sender, EventArgs e)
         {
             Application.Restart();
         }

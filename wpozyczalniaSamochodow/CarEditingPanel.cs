@@ -104,11 +104,12 @@ namespace wypozyczalniaSamochodow
                 await DatabaseService.makeQuery(query).ContinueWith(task=> {
                     bool result = task.Result;
                     if(result){
-                        //TODO: powrot
+                        MessageBox.Show("Zapisano zmiany.");
+                        Hide();
                     }
                     else
                     {
-                        //TODO: error
+                        MessageBox.Show("Nie zapisano zmian.");
                     }
 
 
