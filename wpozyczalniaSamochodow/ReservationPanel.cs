@@ -17,6 +17,7 @@ namespace wypozyczalniaSamochodow
         public ReservationPanel()
         {
             InitializeComponent();
+            reservationEditingPanel1.Hide();
         }
         public void show(Account acc)
         {
@@ -80,6 +81,7 @@ namespace wypozyczalniaSamochodow
         private void editReservation(Reservation reservation)
         {
             //TODO: open edit reservationpanel
+            reservationEditingPanel1.show(reservation);
         }
 
         private async void cancelReservation(Reservation reservation)

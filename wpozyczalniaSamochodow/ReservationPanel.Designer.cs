@@ -38,6 +38,7 @@
             this.dateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editReservationButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cancelReservationButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.reservationEditingPanel1 = new wypozyczalniaSamochodow.ReservationEditingPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reservationTable)).BeginInit();
             this.SuspendLayout();
@@ -139,10 +140,18 @@
             this.cancelReservationButton.ReadOnly = true;
             this.cancelReservationButton.Width = 125;
             // 
+            // reservationEditingPanel1
+            // 
+            this.reservationEditingPanel1.Location = new System.Drawing.Point(0, 0);
+            this.reservationEditingPanel1.Name = "reservationEditingPanel1";
+            this.reservationEditingPanel1.Size = new System.Drawing.Size(1473, 595);
+            this.reservationEditingPanel1.TabIndex = 2;
+            // 
             // ReservationPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.reservationEditingPanel1);
             this.Controls.Add(this.reservationTable);
             this.Controls.Add(this.panel1);
             this.Name = "ReservationPanel";
@@ -165,5 +174,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dateEnd;
         private System.Windows.Forms.DataGridViewButtonColumn editReservationButton;
         private System.Windows.Forms.DataGridViewButtonColumn cancelReservationButton;
+        private ReservationEditingPanel reservationEditingPanel1;
     }
 }
