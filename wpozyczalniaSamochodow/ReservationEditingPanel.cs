@@ -14,11 +14,10 @@ namespace wypozyczalniaSamochodow
     {
         Reservation reservation;
         List<Car> cars = new List<Car>();
+        public Action refreshDatabase;
         public ReservationEditingPanel()
         {
             InitializeComponent();
-           // dateToPicker.Value = dateFromPicker.Value.AddDays(1);
-
         }
 
         public void show(Reservation res)
@@ -33,6 +32,7 @@ namespace wypozyczalniaSamochodow
 
         private void goBackButton_Click(object sender, EventArgs e)
         {
+            refreshDatabase();
             Hide();
         }
 
@@ -114,7 +114,7 @@ namespace wypozyczalniaSamochodow
                 {
                     MessageBox.Show("Zapisano");
                     if (InvokeRequired)
-                        Invoke(new Action(() => Hide()));
+                        Invoke(new Action(() => { refreshDatabase(); Hide(); }));
                     else
                         Hide();
                 }
@@ -124,6 +124,8 @@ namespace wypozyczalniaSamochodow
                 }
             });
         }
+
+
     }
 
     

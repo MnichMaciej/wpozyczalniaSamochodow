@@ -379,7 +379,7 @@ namespace wypozyczalniaSamochodow
                                 {
                                     int carId = -1;
                                     query = $"(SELECT id FROM wypozyczalniaSamochody c WHERE type = {(int)reservation.carType} AND brand = '{car.brand}' AND model = '{car.model}' AND efficiency = 1 AND isDisabled = 0 AND NOT EXISTS (SELECT r.* FROM `wypozyczalniaRezerwacje` r WHERE r.carId = c.id AND r.ended = 0 AND r.reservationId != {reservation.reservationId} AND((r.dateBegin BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}') OR(r.dateEnd BETWEEN '{reservation.dateBegin}' AND '{reservation.dateEnd}')) LIMIT 1));";
-                                    result = new MySqlCommand(selectQuery, connection);
+                                    result = new MySqlCommand(query, connection);
                                     resultReader = result.ExecuteReader();
                                     while (resultReader.Read())
                                     {
@@ -399,7 +399,7 @@ namespace wypozyczalniaSamochodow
                                         openConnection();
                                     if (connection.State == ConnectionState.Open)
                                     {
-                                        query = $"UPDATE wypozyczalniaRezerwacje SET carId ={carId},dateBegin = '{reservation.dateBegin}', dateEnd = '{reservation.dateEnd}';";
+                                        query = $"UPDATE wypozyczalniaRezerwacje SET carId ={carId},dateBegin = '{reservation.dateBegin}', dateEnd = '{reservation.dateEnd}' WHERE reservationId = {reservation.reservationId};";
                                         insertCommand = new MySqlCommand(query, connection);
                                         insertCommand.ExecuteNonQuery();
                                         insertCommand.Dispose();

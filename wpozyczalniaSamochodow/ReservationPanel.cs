@@ -18,6 +18,13 @@ namespace wypozyczalniaSamochodow
         {
             InitializeComponent();
             reservationEditingPanel1.Hide();
+            reservationEditingPanel1.refreshDatabase =  () => 
+            {
+                reservations.Clear();
+                reservationTable.Rows.Clear(); 
+                getReservations(); 
+                //reservationEditingPanel1.Hide(); 
+            };
         }
         public void show(Account acc)
         {
