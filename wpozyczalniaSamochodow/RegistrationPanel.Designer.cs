@@ -63,7 +63,7 @@
             // firstNameTextBox
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(140, 35);
-            this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(120, 20);
             this.firstNameTextBox.TabIndex = 1;
@@ -82,7 +82,7 @@
             // lastNameTextBox
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(140, 70);
-            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(120, 20);
             this.lastNameTextBox.TabIndex = 3;
@@ -101,7 +101,7 @@
             // cityTextBox
             // 
             this.cityTextBox.Location = new System.Drawing.Point(140, 105);
-            this.cityTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cityTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(120, 20);
             this.cityTextBox.TabIndex = 5;
@@ -120,7 +120,7 @@
             // addressTextBox
             // 
             this.addressTextBox.Location = new System.Drawing.Point(140, 140);
-            this.addressTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addressTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.Size = new System.Drawing.Size(120, 20);
             this.addressTextBox.TabIndex = 7;
@@ -139,7 +139,7 @@
             // houseNumberTextBox
             // 
             this.houseNumberTextBox.Location = new System.Drawing.Point(140, 175);
-            this.houseNumberTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.houseNumberTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.houseNumberTextBox.Name = "houseNumberTextBox";
             this.houseNumberTextBox.Size = new System.Drawing.Size(120, 20);
             this.houseNumberTextBox.TabIndex = 9;
@@ -158,7 +158,7 @@
             // apartmentNumberTextBox
             // 
             this.apartmentNumberTextBox.Location = new System.Drawing.Point(140, 210);
-            this.apartmentNumberTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.apartmentNumberTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.apartmentNumberTextBox.Name = "apartmentNumberTextBox";
             this.apartmentNumberTextBox.Size = new System.Drawing.Size(120, 20);
             this.apartmentNumberTextBox.TabIndex = 11;
@@ -177,7 +177,7 @@
             // emailTextBox
             // 
             this.emailTextBox.Location = new System.Drawing.Point(140, 260);
-            this.emailTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.emailTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(120, 20);
             this.emailTextBox.TabIndex = 13;
@@ -197,7 +197,7 @@
             // 
             this.passwordTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.passwordTextBox.Location = new System.Drawing.Point(140, 295);
-            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '●';
             this.passwordTextBox.Size = new System.Drawing.Size(120, 20);
@@ -207,13 +207,13 @@
             // RegistrationButton
             // 
             this.RegistrationButton.Location = new System.Drawing.Point(150, 375);
-            this.RegistrationButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RegistrationButton.Margin = new System.Windows.Forms.Padding(2);
             this.RegistrationButton.Name = "RegistrationButton";
             this.RegistrationButton.Size = new System.Drawing.Size(100, 30);
             this.RegistrationButton.TabIndex = 16;
             this.RegistrationButton.Text = "Zarejestruj";
             this.RegistrationButton.UseVisualStyleBackColor = true;
-            this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click);
+            this.RegistrationButton.Click += new System.EventHandler(this.save);
             // 
             // passwordLabel2
             // 
@@ -228,7 +228,7 @@
             // passwordTextBox2
             // 
             this.passwordTextBox2.Location = new System.Drawing.Point(140, 330);
-            this.passwordTextBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passwordTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.passwordTextBox2.Name = "passwordTextBox2";
             this.passwordTextBox2.PasswordChar = '●';
             this.passwordTextBox2.Size = new System.Drawing.Size(120, 20);
@@ -238,7 +238,7 @@
             // BackToLoginButton
             // 
             this.BackToLoginButton.Location = new System.Drawing.Point(40, 375);
-            this.BackToLoginButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BackToLoginButton.Margin = new System.Windows.Forms.Padding(2);
             this.BackToLoginButton.Name = "BackToLoginButton";
             this.BackToLoginButton.Size = new System.Drawing.Size(80, 30);
             this.BackToLoginButton.TabIndex = 19;
@@ -270,9 +270,9 @@
             this.Controls.Add(this.lastNameLabel);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.firstNameLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RegistrationPanel";
-            this.Size = new System.Drawing.Size(527, 514);
+            this.Size = new System.Drawing.Size(520, 515);
             this.ResumeLayout(false);
             this.PerformLayout();
 

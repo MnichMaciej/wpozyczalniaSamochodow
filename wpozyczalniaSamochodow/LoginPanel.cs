@@ -14,8 +14,10 @@ namespace wypozyczalniaSamochodow
     public partial class LoginPanel : UserControl
     {
         
-        private Account account;
-        public App parent;
+        private Account account;        
+        //pole 'parent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        //pole przechowuje referencje do panelu nadrzędnego
+        private App parent;
 
         public LoginPanel()
         {
@@ -23,13 +25,15 @@ namespace wypozyczalniaSamochodow
 
         
         }
-       
+
+        //metoda 'setParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        //metoda pozwala na przypisanie wartości do pola 'parent'
         public void setParent(App parent)
         {
             this.parent = parent;
         }
 
-        private void logInButtonClick(object sender, EventArgs e)
+        private void logOut(object sender, EventArgs e)
         {
             Account acc = DatabaseService.logIn(loginInput.Text, passwordInput.Text);
             if(acc != null)

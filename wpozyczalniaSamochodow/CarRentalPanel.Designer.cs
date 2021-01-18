@@ -50,15 +50,17 @@
             this.panel1.Controls.Add(this.backButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(202, 713);
+            this.panel1.Size = new System.Drawing.Size(152, 579);
             this.panel1.TabIndex = 0;
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(53, 149);
+            this.backButton.Location = new System.Drawing.Point(50, 120);
+            this.backButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.Size = new System.Drawing.Size(60, 25);
             this.backButton.TabIndex = 0;
             this.backButton.Text = "Powrót";
             this.backButton.UseVisualStyleBackColor = true;
@@ -68,27 +70,30 @@
             // 
             this.dateFromPicker.CustomFormat = "yyyy-MM-dd";
             this.dateFromPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateFromPicker.Location = new System.Drawing.Point(310, 89);
+            this.dateFromPicker.Location = new System.Drawing.Point(230, 65);
+            this.dateFromPicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateFromPicker.Name = "dateFromPicker";
-            this.dateFromPicker.Size = new System.Drawing.Size(200, 22);
+            this.dateFromPicker.Size = new System.Drawing.Size(151, 20);
             this.dateFromPicker.TabIndex = 1;
             this.dateFromPicker.ValueChanged += new System.EventHandler(this.setDateBegin);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(258, 89);
+            this.label1.Location = new System.Drawing.Point(195, 70);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 17);
+            this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Od:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(569, 89);
+            this.label2.Location = new System.Drawing.Point(420, 70);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 17);
+            this.label2.Size = new System.Drawing.Size(24, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Do:";
             // 
@@ -96,37 +101,39 @@
             // 
             this.dateToPicker.CustomFormat = "yyyy-MM-dd";
             this.dateToPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateToPicker.Location = new System.Drawing.Point(626, 89);
+            this.dateToPicker.Location = new System.Drawing.Point(455, 65);
+            this.dateToPicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateToPicker.Name = "dateToPicker";
-            this.dateToPicker.Size = new System.Drawing.Size(198, 22);
+            this.dateToPicker.Size = new System.Drawing.Size(150, 20);
             this.dateToPicker.TabIndex = 4;
             this.dateToPicker.ValueChanged += new System.EventHandler(this.setDateEnd);
             // 
             // typeCombobox
             // 
             this.typeCombobox.FormattingEnabled = true;
-            this.typeCombobox.Location = new System.Drawing.Point(328, 139);
-            this.typeCombobox.Margin = new System.Windows.Forms.Padding(4);
+            this.typeCombobox.Location = new System.Drawing.Point(270, 110);
             this.typeCombobox.Name = "typeCombobox";
-            this.typeCombobox.Size = new System.Drawing.Size(160, 24);
+            this.typeCombobox.Size = new System.Drawing.Size(121, 21);
             this.typeCombobox.TabIndex = 33;
             this.typeCombobox.SelectedIndexChanged += new System.EventHandler(this.setCarType);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(208, 142);
+            this.label3.Location = new System.Drawing.Point(170, 115);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 17);
+            this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 34;
             this.label3.Text = "Typ samochodu:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(626, 135);
+            this.searchButton.Location = new System.Drawing.Point(490, 110);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(160, 30);
+            this.searchButton.Size = new System.Drawing.Size(100, 25);
             this.searchButton.TabIndex = 35;
             this.searchButton.Text = "Szukaj";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -141,18 +148,19 @@
             this.brand,
             this.model,
             this.rentButton});
-            this.carTable.Location = new System.Drawing.Point(204, 216);
+            this.carTable.Location = new System.Drawing.Point(153, 176);
+            this.carTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.carTable.Name = "carTable";
             this.carTable.ReadOnly = true;
             this.carTable.RowHeadersWidth = 51;
             this.carTable.RowTemplate.Height = 24;
-            this.carTable.Size = new System.Drawing.Size(1247, 497);
+            this.carTable.Size = new System.Drawing.Size(935, 404);
             this.carTable.TabIndex = 36;
             this.carTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.carTable_CellContentClick);
             // 
             // brand
             // 
-            this.brand.HeaderText = "Marka";
+            this.brand.HeaderText = "Marka:";
             this.brand.MinimumWidth = 6;
             this.brand.Name = "brand";
             this.brand.ReadOnly = true;
@@ -160,7 +168,7 @@
             // 
             // model
             // 
-            this.model.HeaderText = "Model";
+            this.model.HeaderText = "Model:";
             this.model.MinimumWidth = 6;
             this.model.Name = "model";
             this.model.ReadOnly = true;
@@ -168,7 +176,7 @@
             // 
             // rentButton
             // 
-            this.rentButton.HeaderText = "Wypożycz";
+            this.rentButton.HeaderText = "Wypożycz:";
             this.rentButton.MinimumWidth = 6;
             this.rentButton.Name = "rentButton";
             this.rentButton.ReadOnly = true;
@@ -177,7 +185,7 @@
             // 
             // CarRentalPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.carTable);
             this.Controls.Add(this.searchButton);
@@ -188,8 +196,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateFromPicker);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CarRentalPanel";
-            this.Size = new System.Drawing.Size(1454, 713);
+            this.Size = new System.Drawing.Size(1090, 579);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.carTable)).EndInit();
             this.ResumeLayout(false);

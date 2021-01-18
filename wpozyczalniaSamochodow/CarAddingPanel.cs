@@ -12,7 +12,9 @@ namespace wypozyczalniaSamochodow
 {
     public partial class CarAddingPanel : UserControl
     {
-        public CarPanel parent;
+        //pole 'showParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        //pole przechowuje metodę panelu nadrzędnego
+        public Action showParent;
         public CarAddingPanel()
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace wypozyczalniaSamochodow
                 typeComboBox.Items.Add(item);
             }
         }
+
         public bool checkCorectness(string brand, string model, int type, decimal odometer, string registrationNumber, bool efficiency, bool isDisabled)
         {
             if (brand == "")
@@ -123,10 +126,9 @@ namespace wypozyczalniaSamochodow
                     {
                         MessageBox.Show("Samochod zostal zapisany w bazie danych");
                         if (InvokeRequired)
-                            Invoke(new Action(() => parent.goBack(null,null)));
+                            Invoke(new Action(() => showParent()));
                         else
-                            parent.goBack(null,null);
-
+                            showParent();
                     }
                     else
                     {
@@ -136,6 +138,8 @@ namespace wypozyczalniaSamochodow
             }
         }
 
+        //metody dodane ze względu na wymagania frameworka Windows.Forms
+        //dokonują graficznych zmian w okienku
         private void brandTextBox_Click(object sender, EventArgs e)
         {
             brandTextBox.BackColor = Color.White;

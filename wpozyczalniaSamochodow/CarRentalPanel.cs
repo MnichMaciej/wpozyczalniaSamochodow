@@ -52,6 +52,8 @@ namespace wypozyczalniaSamochodow
             dateFromPicker.MaxDate = dateToPicker.Value.AddDays(-1);
         }
 
+        //metoda pomocnicza
+        //służy do zmiany formatu daty
         public string changeDateFormat(string date)
         {
             return String.Join("-", date.Split(' ')[0].Split('.').Reverse());
@@ -94,6 +96,9 @@ namespace wypozyczalniaSamochodow
                 MessageBox.Show("Uzupełnij wszystkie pola.");
             }
         }
+
+        //metoda 'addCarTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
+        //wypełnienia tabeli danymi
         private void addCarTableRow(Car car)
         {
             var index = carTable.Rows.Add();
@@ -102,6 +107,8 @@ namespace wypozyczalniaSamochodow
             
         }
 
+        //metoda 'carTable_CellContentClick' została dodana ze względu na wymagania frameworka Windows.Forms
+        //jest uruchamiana gdy użytkownik użyje przycisku w tabeli
         private void carTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;

@@ -14,11 +14,13 @@ namespace wypozyczalniaSamochodow
     public partial class CarPanel : UserControl
     {
         private List<Car> cars = new List<Car>();
+        //pole 'showParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        //pole przechowuje metodę panelu nadrzędnego
         public Action showParent;
         public CarPanel()
         {
             InitializeComponent();
-            carAddingPanel1.parent = this ;
+            carAddingPanel1.showParent = ()=>goBack(null,null);
         }
 
         public void goBack(object sender, EventArgs e)
@@ -29,7 +31,7 @@ namespace wypozyczalniaSamochodow
                 addingCarButton.Enabled = true;
                 cars.Clear();
                 carsTable.Rows.Clear();
-                this.getCarsAsync();
+                this.getCars();
                 BringToFront();
 
             }
@@ -40,7 +42,7 @@ namespace wypozyczalniaSamochodow
                 addingCarButton.Enabled = true;
                 cars.Clear();
                 carsTable.Rows.Clear();
-                this.getCarsAsync();
+                this.getCars();
             }
             else
             {
@@ -54,11 +56,11 @@ namespace wypozyczalniaSamochodow
             cars.Clear();
             carsTable.Rows.Clear();
             this.Show();
-            await this.getCarsAsync();
+            await this.getCars();
 
         }
 
-        private async Task getCarsAsync()
+        private async Task getCars()
         {
             await DatabaseService.getCarsAsync().ContinueWith((task) =>
             {
@@ -75,7 +77,8 @@ namespace wypozyczalniaSamochodow
             });
  
         }
-
+        //metoda 'addCarTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
+        //wypełnienia tabeli danymi
         private void addCarTableRow(Car car)
         {
             var index = carsTable.Rows.Add();
@@ -91,6 +94,8 @@ namespace wypozyczalniaSamochodow
             mainPanel.AutoScroll = true;
         }
 
+        //metoda 'carsTable_CellContentClick' została dodana ze względu na wymagania frameworka Windows.Forms
+        //jest uruchamiana gdy użytkownik użyje przycisku w tabeli
         private void carsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;

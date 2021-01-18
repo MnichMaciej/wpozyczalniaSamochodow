@@ -54,11 +54,12 @@
             this.panel1.TabIndex = 0;
             // 
             // backButton
-            // 
-            this.backButton.Location = new System.Drawing.Point(45, 165);
+            //
+            this.backButton.Location = new System.Drawing.Point(50, 125);
             this.backButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(69, 25);
+            this.backButton.Size = new System.Drawing.Size(70, 25);
+
             this.backButton.TabIndex = 0;
             this.backButton.Text = "Powrót";
             this.backButton.UseVisualStyleBackColor = true;
@@ -89,7 +90,7 @@
             // 
             // model
             // 
-            this.model.HeaderText = "Model";
+            this.model.HeaderText = "Model:";
             this.model.MinimumWidth = 6;
             this.model.Name = "model";
             this.model.ReadOnly = true;
@@ -97,7 +98,7 @@
             // 
             // brand
             // 
-            this.brand.HeaderText = "Marka";
+            this.brand.HeaderText = "Marka:";
             this.brand.MinimumWidth = 6;
             this.brand.Name = "brand";
             this.brand.ReadOnly = true;
@@ -105,7 +106,7 @@
             // 
             // carNumber
             // 
-            this.carNumber.HeaderText = "Numer rejestracyjny";
+            this.carNumber.HeaderText = "Tablica rejestracyjna:";
             this.carNumber.MinimumWidth = 6;
             this.carNumber.Name = "carNumber";
             this.carNumber.ReadOnly = true;
@@ -113,7 +114,7 @@
             // 
             // dateBegin
             // 
-            this.dateBegin.HeaderText = "Data rozpoczęcia";
+            this.dateBegin.HeaderText = "Data rozpoczęcia:";
             this.dateBegin.MinimumWidth = 6;
             this.dateBegin.Name = "dateBegin";
             this.dateBegin.ReadOnly = true;
@@ -121,7 +122,7 @@
             // 
             // dateEnd
             // 
-            this.dateEnd.HeaderText = "Data zakończenia";
+            this.dateEnd.HeaderText = "Data zakończenia:";
             this.dateEnd.MinimumWidth = 6;
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.ReadOnly = true;

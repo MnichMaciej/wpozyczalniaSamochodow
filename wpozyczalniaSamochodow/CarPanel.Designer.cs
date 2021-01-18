@@ -55,15 +55,17 @@
             this.menuPanel.Controls.Add(this.addingCarButton);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
+            this.menuPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(217, 611);
+            this.menuPanel.Size = new System.Drawing.Size(289, 752);
             this.menuPanel.TabIndex = 0;
             // 
             // goBackButton
             // 
-            this.goBackButton.Location = new System.Drawing.Point(32, 102);
+            this.goBackButton.Location = new System.Drawing.Point(40, 123);
+            this.goBackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.goBackButton.Name = "goBackButton";
-            this.goBackButton.Size = new System.Drawing.Size(138, 23);
+            this.goBackButton.Size = new System.Drawing.Size(184, 28);
             this.goBackButton.TabIndex = 1;
             this.goBackButton.Text = "Powrót";
             this.goBackButton.UseVisualStyleBackColor = true;
@@ -71,9 +73,10 @@
             // 
             // addingCarButton
             // 
-            this.addingCarButton.Location = new System.Drawing.Point(32, 61);
+            this.addingCarButton.Location = new System.Drawing.Point(40, 74);
+            this.addingCarButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addingCarButton.Name = "addingCarButton";
-            this.addingCarButton.Size = new System.Drawing.Size(138, 23);
+            this.addingCarButton.Size = new System.Drawing.Size(184, 28);
             this.addingCarButton.TabIndex = 0;
             this.addingCarButton.Text = "Dodaj samochód";
             this.addingCarButton.UseVisualStyleBackColor = true;
@@ -89,9 +92,10 @@
             this.mainPanel.Controls.Add(this.carsTable);
             this.mainPanel.Controls.Add(this.carEditingPanel1);
             this.mainPanel.Controls.Add(this.carAddingPanel1);
-            this.mainPanel.Location = new System.Drawing.Point(200, 0);
+            this.mainPanel.Location = new System.Drawing.Point(267, 0);
+            this.mainPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1385, 626);
+            this.mainPanel.Size = new System.Drawing.Size(1915, 869);
             this.mainPanel.TabIndex = 1;
             // 
             // carsTable
@@ -110,87 +114,88 @@
             this.editCarButton});
             this.carsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.carsTable.Location = new System.Drawing.Point(0, 0);
+            this.carsTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.carsTable.Name = "carsTable";
             this.carsTable.RowHeadersWidth = 51;
-            this.carsTable.Size = new System.Drawing.Size(1385, 626);
+            this.carsTable.Size = new System.Drawing.Size(1915, 869);
             this.carsTable.TabIndex = 0;
             this.carsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.carsTable_CellContentClick);
             // 
             // ID
             // 
             this.ID.Frozen = true;
-            this.ID.HeaderText = "id";
+            this.ID.HeaderText = "ID:";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 40;
+            this.ID.Width = 54;
             // 
             // brand
             // 
             this.brand.Frozen = true;
-            this.brand.HeaderText = "Brand";
+            this.brand.HeaderText = "Marka:";
             this.brand.MinimumWidth = 6;
             this.brand.Name = "brand";
             this.brand.ReadOnly = true;
-            this.brand.Width = 60;
+            this.brand.Width = 80;
             // 
             // model
             // 
             this.model.Frozen = true;
-            this.model.HeaderText = "Model";
+            this.model.HeaderText = "Model:";
             this.model.MinimumWidth = 6;
             this.model.Name = "model";
             this.model.ReadOnly = true;
-            this.model.Width = 61;
+            this.model.Width = 79;
             // 
             // type
             // 
             this.type.Frozen = true;
-            this.type.HeaderText = "Type";
+            this.type.HeaderText = "Typ:";
             this.type.MinimumWidth = 6;
             this.type.Name = "type";
             this.type.ReadOnly = true;
-            this.type.Width = 56;
+            this.type.Width = 65;
             // 
             // odometer
             // 
             this.odometer.Frozen = true;
-            this.odometer.HeaderText = "Odometer";
+            this.odometer.HeaderText = "Przebieg:";
             this.odometer.MinimumWidth = 6;
             this.odometer.Name = "odometer";
             this.odometer.ReadOnly = true;
-            this.odometer.Width = 78;
+            this.odometer.Width = 97;
             // 
             // registrationNumber
             // 
             this.registrationNumber.Frozen = true;
-            this.registrationNumber.HeaderText = "Registration number";
+            this.registrationNumber.HeaderText = "Tablica rejestracyjna:";
             this.registrationNumber.MinimumWidth = 6;
             this.registrationNumber.Name = "registrationNumber";
             this.registrationNumber.ReadOnly = true;
-            this.registrationNumber.Width = 115;
+            this.registrationNumber.Width = 157;
             // 
             // efficiency
             // 
             this.efficiency.Frozen = true;
-            this.efficiency.HeaderText = "Efficiency";
+            this.efficiency.HeaderText = "Dostepny:";
             this.efficiency.MinimumWidth = 6;
             this.efficiency.Name = "efficiency";
             this.efficiency.ReadOnly = true;
-            this.efficiency.Width = 59;
+            this.efficiency.Width = 78;
             // 
             // isDisabled
             // 
-            this.isDisabled.HeaderText = "Is disabled";
+            this.isDisabled.HeaderText = "Niesprawny:";
             this.isDisabled.MinimumWidth = 6;
             this.isDisabled.Name = "isDisabled";
             this.isDisabled.ReadOnly = true;
-            this.isDisabled.Width = 57;
+            this.isDisabled.Width = 91;
             // 
             // editCarButton
             // 
             this.editCarButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.editCarButton.HeaderText = "Edit";
+            this.editCarButton.HeaderText = "Edytuj:";
             this.editCarButton.MinimumWidth = 6;
             this.editCarButton.Name = "editCarButton";
             this.editCarButton.Text = "Edytuj";
@@ -200,35 +205,38 @@
             // carEditingPanel1
             // 
             this.carEditingPanel1.AutoSize = true;
+            this.carEditingPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.carEditingPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.carEditingPanel1.Location = new System.Drawing.Point(0, 0);
-            this.carEditingPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.carEditingPanel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.carEditingPanel1.Name = "carEditingPanel1";
-            this.carEditingPanel1.Size = new System.Drawing.Size(1385, 626);
+            this.carEditingPanel1.Size = new System.Drawing.Size(1915, 869);
             this.carEditingPanel1.TabIndex = 1;
             this.carEditingPanel1.Visible = false;
             // 
             // carAddingPanel1
             // 
             this.carAddingPanel1.AutoSize = true;
+            this.carAddingPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.carAddingPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.carAddingPanel1.Location = new System.Drawing.Point(0, 0);
-            this.carAddingPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.carAddingPanel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.carAddingPanel1.Name = "carAddingPanel1";
-            this.carAddingPanel1.Size = new System.Drawing.Size(1385, 626);
+            this.carAddingPanel1.Size = new System.Drawing.Size(1915, 869);
             this.carAddingPanel1.TabIndex = 2;
             this.carAddingPanel1.Visible = false;
             // 
             // CarPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.menuPanel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CarPanel";
-            this.Size = new System.Drawing.Size(1207, 611);
+            this.Size = new System.Drawing.Size(1609, 752);
             this.menuPanel.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
@@ -245,6 +253,8 @@
         private System.Windows.Forms.Button addingCarButton;
         private System.Windows.Forms.Button goBackButton;
         private System.Windows.Forms.DataGridView carsTable;
+        private CarEditingPanel carEditingPanel1;
+        private CarAddingPanel carAddingPanel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn brand;
         private System.Windows.Forms.DataGridViewTextBoxColumn model;
@@ -254,7 +264,5 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn efficiency;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isDisabled;
         private System.Windows.Forms.DataGridViewButtonColumn editCarButton;
-        private CarEditingPanel carEditingPanel1;
-        private CarAddingPanel carAddingPanel1;
     }
 }

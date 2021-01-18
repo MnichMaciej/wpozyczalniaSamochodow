@@ -31,17 +31,18 @@
             this.carPanelButton = new System.Windows.Forms.Button();
             this.reservationPanelButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.logOutButton = new System.Windows.Forms.Button();
             this.adminReservationPanel1 = new wypozyczalniaSamochodow.AdminReservationPanel();
+            this.logOutButton = new System.Windows.Forms.Button();
             this.carPanel1 = new wypozyczalniaSamochodow.CarPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // carPanelButton
             // 
-            this.carPanelButton.Location = new System.Drawing.Point(148, 247);
+            this.carPanelButton.Location = new System.Drawing.Point(197, 304);
+            this.carPanelButton.Margin = new System.Windows.Forms.Padding(4);
             this.carPanelButton.Name = "carPanelButton";
-            this.carPanelButton.Size = new System.Drawing.Size(132, 23);
+            this.carPanelButton.Size = new System.Drawing.Size(176, 28);
             this.carPanelButton.TabIndex = 0;
             this.carPanelButton.Text = "Samochody";
             this.carPanelButton.UseVisualStyleBackColor = true;
@@ -49,9 +50,10 @@
             // 
             // reservationPanelButton
             // 
-            this.reservationPanelButton.Location = new System.Drawing.Point(940, 247);
+            this.reservationPanelButton.Location = new System.Drawing.Point(1253, 304);
+            this.reservationPanelButton.Margin = new System.Windows.Forms.Padding(4);
             this.reservationPanelButton.Name = "reservationPanelButton";
-            this.reservationPanelButton.Size = new System.Drawing.Size(75, 23);
+            this.reservationPanelButton.Size = new System.Drawing.Size(100, 28);
             this.reservationPanelButton.TabIndex = 1;
             this.reservationPanelButton.Text = "Rezerwacje";
             this.reservationPanelButton.UseVisualStyleBackColor = true;
@@ -64,51 +66,55 @@
             this.panel1.Controls.Add(this.reservationPanelButton);
             this.panel1.Controls.Add(this.carPanelButton);
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2518, 1183);
+            this.panel1.Size = new System.Drawing.Size(3357, 1456);
             this.panel1.TabIndex = 3;
-            // 
-            // logOutButton
-            // 
-            this.logOutButton.Location = new System.Drawing.Point(741, 294);
-            this.logOutButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.logOutButton.Name = "logOutButton";
-            this.logOutButton.Size = new System.Drawing.Size(273, 32);
-            this.logOutButton.TabIndex = 3;
-            this.logOutButton.Text = "Wyloguj";
-            this.logOutButton.UseVisualStyleBackColor = true;
-            this.logOutButton.Click += new System.EventHandler(this.logOutButton_Click);
             // 
             // adminReservationPanel1
             // 
             this.adminReservationPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.adminReservationPanel1.Location = new System.Drawing.Point(0, 0);
-            this.adminReservationPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.adminReservationPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.adminReservationPanel1.Name = "adminReservationPanel1";
-            this.adminReservationPanel1.Size = new System.Drawing.Size(2518, 1183);
+            this.adminReservationPanel1.Size = new System.Drawing.Size(3357, 1456);
             this.adminReservationPanel1.TabIndex = 2;
+            // 
+            // logOutButton
+            // 
+            this.logOutButton.Location = new System.Drawing.Point(988, 362);
+            this.logOutButton.Name = "logOutButton";
+            this.logOutButton.Size = new System.Drawing.Size(364, 39);
+            this.logOutButton.TabIndex = 3;
+            this.logOutButton.Text = "Wyloguj";
+            this.logOutButton.UseVisualStyleBackColor = true;
+            this.logOutButton.Click += new System.EventHandler(this.logOut);
             // 
             // carPanel1
             // 
             this.carPanel1.AutoScroll = true;
+            this.carPanel1.AutoSize = true;
+            this.carPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.carPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.carPanel1.Location = new System.Drawing.Point(0, 0);
-            this.carPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.carPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.carPanel1.Name = "carPanel1";
-            this.carPanel1.Size = new System.Drawing.Size(2521, 1186);
+            this.carPanel1.Size = new System.Drawing.Size(3361, 1460);
             this.carPanel1.TabIndex = 2;
             // 
             // AdminClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.carPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminClient";
-            this.Size = new System.Drawing.Size(2521, 1186);
+            this.Size = new System.Drawing.Size(3361, 1460);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

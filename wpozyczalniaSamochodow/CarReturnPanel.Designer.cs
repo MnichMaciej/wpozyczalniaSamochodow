@@ -55,9 +55,9 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(38, 132);
+            this.backButton.Location = new System.Drawing.Point(50, 120);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.Size = new System.Drawing.Size(75, 25);
             this.backButton.TabIndex = 0;
             this.backButton.Text = "Powrót";
             this.backButton.UseVisualStyleBackColor = true;
@@ -95,37 +95,37 @@
             // 
             // reservationId
             // 
-            this.reservationId.HeaderText = "ID";
+            this.reservationId.HeaderText = "ID:";
             this.reservationId.Name = "reservationId";
             this.reservationId.ReadOnly = true;
             // 
             // brand
             // 
-            this.brand.HeaderText = "Marka";
+            this.brand.HeaderText = "Marka:";
             this.brand.Name = "brand";
             this.brand.ReadOnly = true;
             // 
             // model
             // 
-            this.model.HeaderText = "Model";
+            this.model.HeaderText = "Model:";
             this.model.Name = "model";
             this.model.ReadOnly = true;
             // 
             // carNumber
             // 
-            this.carNumber.HeaderText = "Numer rejestracyjny";
+            this.carNumber.HeaderText = "Numer rejestracyjny:";
             this.carNumber.Name = "carNumber";
             this.carNumber.ReadOnly = true;
             // 
             // dateBegin
             // 
-            this.dateBegin.HeaderText = "Data rozpoczęcia";
+            this.dateBegin.HeaderText = "Data rozpoczęcia:";
             this.dateBegin.Name = "dateBegin";
             this.dateBegin.ReadOnly = true;
             // 
             // dateEnd
             // 
-            this.dateEnd.HeaderText = "Data zakończenia";
+            this.dateEnd.HeaderText = "Data zakończenia:";
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.ReadOnly = true;
             // 
