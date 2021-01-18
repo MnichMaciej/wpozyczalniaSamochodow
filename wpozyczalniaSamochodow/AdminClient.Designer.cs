@@ -32,8 +32,8 @@
             this.reservationPanelButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.adminReservationPanel1 = new wypozyczalniaSamochodow.AdminReservationPanel();
-            this.carPanel1 = new wypozyczalniaSamochodow.CarPanel();
             this.logOutButton = new System.Windows.Forms.Button();
+            this.carPanel1 = new wypozyczalniaSamochodow.CarPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,16 +80,6 @@
             this.adminReservationPanel1.Size = new System.Drawing.Size(3357, 1456);
             this.adminReservationPanel1.TabIndex = 2;
             // 
-            // carPanel1
-            // 
-            this.carPanel1.AutoSize = true;
-            this.carPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.carPanel1.Location = new System.Drawing.Point(0, 0);
-            this.carPanel1.Margin = new System.Windows.Forms.Padding(5);
-            this.carPanel1.Name = "carPanel1";
-            this.carPanel1.Size = new System.Drawing.Size(1609, 752);
-            this.carPanel1.TabIndex = 2;
-            // 
             // logOutButton
             // 
             this.logOutButton.Location = new System.Drawing.Point(988, 362);
@@ -99,6 +89,18 @@
             this.logOutButton.Text = "Wyloguj";
             this.logOutButton.UseVisualStyleBackColor = true;
             this.logOutButton.Click += new System.EventHandler(this.logOut);
+            // 
+            // carPanel1
+            // 
+            this.carPanel1.AutoScroll = true;
+            this.carPanel1.AutoSize = true;
+            this.carPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.carPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.carPanel1.Location = new System.Drawing.Point(0, 0);
+            this.carPanel1.Margin = new System.Windows.Forms.Padding(5);
+            this.carPanel1.Name = "carPanel1";
+            this.carPanel1.Size = new System.Drawing.Size(3361, 1460);
+            this.carPanel1.TabIndex = 2;
             // 
             // AdminClient
             // 

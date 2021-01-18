@@ -31,7 +31,6 @@
             this.menuPanel = new System.Windows.Forms.Panel();
             this.goBackButton = new System.Windows.Forms.Button();
             this.reservationTable = new System.Windows.Forms.DataGridView();
-            this.carConditionPanel1 = new wypozyczalniaSamochodow.CarConditionPanel();
             this.reservationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +42,7 @@
             this.fine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._checked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.carConditionButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.carConditionPanel1 = new wypozyczalniaSamochodow.CarConditionPanel();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reservationTable)).BeginInit();
             this.SuspendLayout();
@@ -52,15 +52,17 @@
             this.menuPanel.Controls.Add(this.goBackButton);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
+            this.menuPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(200, 610);
+            this.menuPanel.Size = new System.Drawing.Size(267, 751);
             this.menuPanel.TabIndex = 1;
             // 
             // goBackButton
             // 
-            this.goBackButton.Location = new System.Drawing.Point(32, 102);
+            this.goBackButton.Location = new System.Drawing.Point(43, 126);
+            this.goBackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.goBackButton.Name = "goBackButton";
-            this.goBackButton.Size = new System.Drawing.Size(138, 23);
+            this.goBackButton.Size = new System.Drawing.Size(184, 28);
             this.goBackButton.TabIndex = 1;
             this.goBackButton.Text = "Powrót";
             this.goBackButton.UseVisualStyleBackColor = true;
@@ -83,20 +85,13 @@
             this._checked,
             this.carConditionButton});
             this.reservationTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reservationTable.Location = new System.Drawing.Point(200, 0);
+            this.reservationTable.Location = new System.Drawing.Point(267, 0);
+            this.reservationTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.reservationTable.Name = "reservationTable";
             this.reservationTable.RowHeadersWidth = 51;
-            this.reservationTable.Size = new System.Drawing.Size(1278, 610);
+            this.reservationTable.Size = new System.Drawing.Size(1704, 751);
             this.reservationTable.TabIndex = 2;
             this.reservationTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.reservationTable_CellContentClick);
-            // 
-            // carConditionPanel1
-            // 
-            this.carConditionPanel1.Location = new System.Drawing.Point(200, 0);
-            this.carConditionPanel1.Margin = new System.Windows.Forms.Padding(2);
-            this.carConditionPanel1.Name = "carConditionPanel1";
-            this.carConditionPanel1.Size = new System.Drawing.Size(1278, 610);
-            this.carConditionPanel1.TabIndex = 3;
             // 
             // reservationId
             // 
@@ -104,21 +99,21 @@
             this.reservationId.MinimumWidth = 6;
             this.reservationId.Name = "reservationId";
             this.reservationId.ReadOnly = true;
-            this.reservationId.Width = 46;
+            this.reservationId.Width = 54;
             // 
             // brand
             // 
             this.brand.HeaderText = "Marka:";
             this.brand.MinimumWidth = 6;
             this.brand.Name = "brand";
-            this.brand.Width = 65;
+            this.brand.Width = 80;
             // 
             // model
             // 
             this.model.HeaderText = "Model:";
             this.model.MinimumWidth = 6;
             this.model.Name = "model";
-            this.model.Width = 64;
+            this.model.Width = 79;
             // 
             // carNumber
             // 
@@ -126,14 +121,14 @@
             this.carNumber.MinimumWidth = 6;
             this.carNumber.Name = "carNumber";
             this.carNumber.ReadOnly = true;
-            this.carNumber.Width = 152;
+            this.carNumber.Width = 201;
             // 
             // type
             // 
             this.type.HeaderText = "Typ pojazdu:";
             this.type.MinimumWidth = 6;
             this.type.Name = "type";
-            this.type.Width = 86;
+            this.type.Width = 109;
             // 
             // dateBegin
             // 
@@ -141,7 +136,7 @@
             this.dateBegin.MinimumWidth = 6;
             this.dateBegin.Name = "dateBegin";
             this.dateBegin.ReadOnly = true;
-            this.dateBegin.Width = 108;
+            this.dateBegin.Width = 138;
             // 
             // dateEnd
             // 
@@ -149,7 +144,7 @@
             this.dateEnd.MinimumWidth = 6;
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.ReadOnly = true;
-            this.dateEnd.Width = 111;
+            this.dateEnd.Width = 141;
             // 
             // ended
             // 
@@ -157,7 +152,7 @@
             this.ended.MinimumWidth = 6;
             this.ended.Name = "ended";
             this.ended.ReadOnly = true;
-            this.ended.Width = 73;
+            this.ended.Width = 92;
             // 
             // fine
             // 
@@ -165,32 +160,43 @@
             this.fine.MinimumWidth = 6;
             this.fine.Name = "fine";
             this.fine.ReadOnly = true;
-            this.fine.Width = 82;
+            this.fine.Width = 105;
             // 
             // _checked
             // 
             this._checked.HeaderText = "Oceniono";
+            this._checked.MinimumWidth = 6;
             this._checked.Name = "_checked";
             this._checked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this._checked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this._checked.Width = 78;
+            this._checked.Width = 98;
             // 
             // carConditionButton
             // 
             this.carConditionButton.HeaderText = "Oceń stan pojazdu";
             this.carConditionButton.MinimumWidth = 6;
             this.carConditionButton.Name = "carConditionButton";
-            this.carConditionButton.Width = 92;
+            this.carConditionButton.Width = 120;
+            // 
+            // carConditionPanel1
+            // 
+            this.carConditionPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.carConditionPanel1.Location = new System.Drawing.Point(0, 0);
+            this.carConditionPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.carConditionPanel1.Name = "carConditionPanel1";
+            this.carConditionPanel1.Size = new System.Drawing.Size(1971, 751);
+            this.carConditionPanel1.TabIndex = 3;
             // 
             // AdminReservationPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.reservationTable);
             this.Controls.Add(this.menuPanel);
             this.Controls.Add(this.carConditionPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AdminReservationPanel";
-            this.Size = new System.Drawing.Size(1478, 610);
+            this.Size = new System.Drawing.Size(1971, 751);
             this.menuPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.reservationTable)).EndInit();
             this.ResumeLayout(false);
