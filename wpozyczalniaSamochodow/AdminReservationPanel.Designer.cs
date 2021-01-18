@@ -93,63 +93,63 @@
             // carConditionPanel1
             // 
             this.carConditionPanel1.Location = new System.Drawing.Point(200, 0);
-            this.carConditionPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.carConditionPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.carConditionPanel1.Name = "carConditionPanel1";
             this.carConditionPanel1.Size = new System.Drawing.Size(1278, 610);
             this.carConditionPanel1.TabIndex = 3;
             // 
             // reservationId
             // 
-            this.reservationId.HeaderText = "ID";
+            this.reservationId.HeaderText = "ID:";
             this.reservationId.MinimumWidth = 6;
             this.reservationId.Name = "reservationId";
             this.reservationId.ReadOnly = true;
-            this.reservationId.Width = 43;
+            this.reservationId.Width = 46;
             // 
             // brand
             // 
-            this.brand.HeaderText = "Marka";
+            this.brand.HeaderText = "Marka:";
             this.brand.MinimumWidth = 6;
             this.brand.Name = "brand";
-            this.brand.Width = 62;
+            this.brand.Width = 65;
             // 
             // model
             // 
-            this.model.HeaderText = "Model";
+            this.model.HeaderText = "Model:";
             this.model.MinimumWidth = 6;
             this.model.Name = "model";
-            this.model.Width = 61;
+            this.model.Width = 64;
             // 
             // carNumber
             // 
-            this.carNumber.HeaderText = "Numer rejestracyjny pojazdu";
+            this.carNumber.HeaderText = "Numer rejestracyjny pojazdu:";
             this.carNumber.MinimumWidth = 6;
             this.carNumber.Name = "carNumber";
             this.carNumber.ReadOnly = true;
-            this.carNumber.Width = 150;
+            this.carNumber.Width = 152;
             // 
             // type
             // 
-            this.type.HeaderText = "Typ pojazdu";
+            this.type.HeaderText = "Typ pojazdu:";
             this.type.MinimumWidth = 6;
             this.type.Name = "type";
-            this.type.Width = 83;
+            this.type.Width = 86;
             // 
             // dateBegin
             // 
-            this.dateBegin.HeaderText = "Data rozpoczęcia";
+            this.dateBegin.HeaderText = "Data rozpoczęcia:";
             this.dateBegin.MinimumWidth = 6;
             this.dateBegin.Name = "dateBegin";
             this.dateBegin.ReadOnly = true;
-            this.dateBegin.Width = 105;
+            this.dateBegin.Width = 108;
             // 
             // dateEnd
             // 
-            this.dateEnd.HeaderText = "Data zakończenia";
+            this.dateEnd.HeaderText = "Data zakończenia:";
             this.dateEnd.MinimumWidth = 6;
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.ReadOnly = true;
-            this.dateEnd.Width = 108;
+            this.dateEnd.Width = 111;
             // 
             // ended
             // 
@@ -161,11 +161,11 @@
             // 
             // fine
             // 
-            this.fine.HeaderText = "Numer kary";
+            this.fine.HeaderText = "Numer kary:";
             this.fine.MinimumWidth = 6;
             this.fine.Name = "fine";
             this.fine.ReadOnly = true;
-            this.fine.Width = 79;
+            this.fine.Width = 82;
             // 
             // _checked
             // 

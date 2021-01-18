@@ -33,6 +33,8 @@
             this.addingCarButton = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.carsTable = new System.Windows.Forms.DataGridView();
+            this.carEditingPanel1 = new wypozyczalniaSamochodow.CarEditingPanel();
+            this.carAddingPanel1 = new wypozyczalniaSamochodow.CarAddingPanel();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,8 +44,6 @@
             this.efficiency = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.isDisabled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.editCarButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.carEditingPanel1 = new wypozyczalniaSamochodow.CarEditingPanel();
-            this.carAddingPanel1 = new wypozyczalniaSamochodow.CarAddingPanel();
             this.menuPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.carsTable)).BeginInit();
@@ -61,7 +61,7 @@
             // 
             // goBackButton
             // 
-            this.goBackButton.Location = new System.Drawing.Point(32, 102);
+            this.goBackButton.Location = new System.Drawing.Point(30, 100);
             this.goBackButton.Name = "goBackButton";
             this.goBackButton.Size = new System.Drawing.Size(138, 23);
             this.goBackButton.TabIndex = 1;
@@ -71,7 +71,7 @@
             // 
             // addingCarButton
             // 
-            this.addingCarButton.Location = new System.Drawing.Point(32, 61);
+            this.addingCarButton.Location = new System.Drawing.Point(30, 60);
             this.addingCarButton.Name = "addingCarButton";
             this.addingCarButton.Size = new System.Drawing.Size(138, 23);
             this.addingCarButton.TabIndex = 0;
@@ -91,7 +91,7 @@
             this.mainPanel.Controls.Add(this.carAddingPanel1);
             this.mainPanel.Location = new System.Drawing.Point(200, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1385, 626);
+            this.mainPanel.Size = new System.Drawing.Size(1436, 706);
             this.mainPanel.TabIndex = 1;
             // 
             // carsTable
@@ -112,90 +112,9 @@
             this.carsTable.Location = new System.Drawing.Point(0, 0);
             this.carsTable.Name = "carsTable";
             this.carsTable.RowHeadersWidth = 51;
-            this.carsTable.Size = new System.Drawing.Size(1385, 626);
+            this.carsTable.Size = new System.Drawing.Size(1436, 706);
             this.carsTable.TabIndex = 0;
             this.carsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.carsTable_CellContentClick);
-            // 
-            // ID
-            // 
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "id";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 40;
-            // 
-            // brand
-            // 
-            this.brand.Frozen = true;
-            this.brand.HeaderText = "Brand";
-            this.brand.MinimumWidth = 6;
-            this.brand.Name = "brand";
-            this.brand.ReadOnly = true;
-            this.brand.Width = 60;
-            // 
-            // model
-            // 
-            this.model.Frozen = true;
-            this.model.HeaderText = "Model";
-            this.model.MinimumWidth = 6;
-            this.model.Name = "model";
-            this.model.ReadOnly = true;
-            this.model.Width = 61;
-            // 
-            // type
-            // 
-            this.type.Frozen = true;
-            this.type.HeaderText = "Type";
-            this.type.MinimumWidth = 6;
-            this.type.Name = "type";
-            this.type.ReadOnly = true;
-            this.type.Width = 56;
-            // 
-            // odometer
-            // 
-            this.odometer.Frozen = true;
-            this.odometer.HeaderText = "Odometer";
-            this.odometer.MinimumWidth = 6;
-            this.odometer.Name = "odometer";
-            this.odometer.ReadOnly = true;
-            this.odometer.Width = 78;
-            // 
-            // registrationNumber
-            // 
-            this.registrationNumber.Frozen = true;
-            this.registrationNumber.HeaderText = "Registration number";
-            this.registrationNumber.MinimumWidth = 6;
-            this.registrationNumber.Name = "registrationNumber";
-            this.registrationNumber.ReadOnly = true;
-            this.registrationNumber.Width = 115;
-            // 
-            // efficiency
-            // 
-            this.efficiency.Frozen = true;
-            this.efficiency.HeaderText = "Efficiency";
-            this.efficiency.MinimumWidth = 6;
-            this.efficiency.Name = "efficiency";
-            this.efficiency.ReadOnly = true;
-            this.efficiency.Width = 59;
-            // 
-            // isDisabled
-            // 
-            this.isDisabled.HeaderText = "Is disabled";
-            this.isDisabled.MinimumWidth = 6;
-            this.isDisabled.Name = "isDisabled";
-            this.isDisabled.ReadOnly = true;
-            this.isDisabled.Width = 57;
-            // 
-            // editCarButton
-            // 
-            this.editCarButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.editCarButton.HeaderText = "Edit";
-            this.editCarButton.MinimumWidth = 6;
-            this.editCarButton.Name = "editCarButton";
-            this.editCarButton.Text = "Edytuj";
-            this.editCarButton.ToolTipText = "Edytuj";
-            this.editCarButton.UseColumnTextForButtonValue = true;
             // 
             // carEditingPanel1
             // 
@@ -204,7 +123,7 @@
             this.carEditingPanel1.Location = new System.Drawing.Point(0, 0);
             this.carEditingPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.carEditingPanel1.Name = "carEditingPanel1";
-            this.carEditingPanel1.Size = new System.Drawing.Size(1385, 626);
+            this.carEditingPanel1.Size = new System.Drawing.Size(1436, 706);
             this.carEditingPanel1.TabIndex = 1;
             this.carEditingPanel1.Visible = false;
             // 
@@ -215,9 +134,90 @@
             this.carAddingPanel1.Location = new System.Drawing.Point(0, 0);
             this.carAddingPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.carAddingPanel1.Name = "carAddingPanel1";
-            this.carAddingPanel1.Size = new System.Drawing.Size(1385, 626);
+            this.carAddingPanel1.Size = new System.Drawing.Size(1436, 706);
             this.carAddingPanel1.TabIndex = 2;
             this.carAddingPanel1.Visible = false;
+            // 
+            // ID
+            // 
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID:";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 46;
+            // 
+            // brand
+            // 
+            this.brand.Frozen = true;
+            this.brand.HeaderText = "Marka:";
+            this.brand.MinimumWidth = 6;
+            this.brand.Name = "brand";
+            this.brand.ReadOnly = true;
+            this.brand.Width = 65;
+            // 
+            // model
+            // 
+            this.model.Frozen = true;
+            this.model.HeaderText = "Model:";
+            this.model.MinimumWidth = 6;
+            this.model.Name = "model";
+            this.model.ReadOnly = true;
+            this.model.Width = 64;
+            // 
+            // type
+            // 
+            this.type.Frozen = true;
+            this.type.HeaderText = "Typ:";
+            this.type.MinimumWidth = 6;
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            this.type.Width = 53;
+            // 
+            // odometer
+            // 
+            this.odometer.Frozen = true;
+            this.odometer.HeaderText = "Przebieg:";
+            this.odometer.MinimumWidth = 6;
+            this.odometer.Name = "odometer";
+            this.odometer.ReadOnly = true;
+            this.odometer.Width = 76;
+            // 
+            // registrationNumber
+            // 
+            this.registrationNumber.Frozen = true;
+            this.registrationNumber.HeaderText = "Tablica rejestracyjna:";
+            this.registrationNumber.MinimumWidth = 6;
+            this.registrationNumber.Name = "registrationNumber";
+            this.registrationNumber.ReadOnly = true;
+            this.registrationNumber.Width = 121;
+            // 
+            // efficiency
+            // 
+            this.efficiency.Frozen = true;
+            this.efficiency.HeaderText = "Dostepny:";
+            this.efficiency.MinimumWidth = 6;
+            this.efficiency.Name = "efficiency";
+            this.efficiency.ReadOnly = true;
+            this.efficiency.Width = 61;
+            // 
+            // isDisabled
+            // 
+            this.isDisabled.HeaderText = "Niesprawny:";
+            this.isDisabled.MinimumWidth = 6;
+            this.isDisabled.Name = "isDisabled";
+            this.isDisabled.ReadOnly = true;
+            this.isDisabled.Width = 71;
+            // 
+            // editCarButton
+            // 
+            this.editCarButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.editCarButton.HeaderText = "Edytuj:";
+            this.editCarButton.MinimumWidth = 6;
+            this.editCarButton.Name = "editCarButton";
+            this.editCarButton.Text = "Edytuj";
+            this.editCarButton.ToolTipText = "Edytuj";
+            this.editCarButton.UseColumnTextForButtonValue = true;
             // 
             // CarPanel
             // 
@@ -245,6 +245,8 @@
         private System.Windows.Forms.Button addingCarButton;
         private System.Windows.Forms.Button goBackButton;
         private System.Windows.Forms.DataGridView carsTable;
+        private CarEditingPanel carEditingPanel1;
+        private CarAddingPanel carAddingPanel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn brand;
         private System.Windows.Forms.DataGridViewTextBoxColumn model;
@@ -254,7 +256,5 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn efficiency;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isDisabled;
         private System.Windows.Forms.DataGridViewButtonColumn editCarButton;
-        private CarEditingPanel carEditingPanel1;
-        private CarAddingPanel carAddingPanel1;
     }
 }

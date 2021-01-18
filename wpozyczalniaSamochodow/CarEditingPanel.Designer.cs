@@ -53,7 +53,7 @@
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(31, 35);
+            this.idLabel.Location = new System.Drawing.Point(90, 60);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(21, 13);
             this.idLabel.TabIndex = 0;
@@ -62,7 +62,7 @@
             // brandLabel
             // 
             this.brandLabel.AutoSize = true;
-            this.brandLabel.Location = new System.Drawing.Point(31, 61);
+            this.brandLabel.Location = new System.Drawing.Point(90, 90);
             this.brandLabel.Name = "brandLabel";
             this.brandLabel.Size = new System.Drawing.Size(40, 13);
             this.brandLabel.TabIndex = 1;
@@ -71,7 +71,7 @@
             // modelLabel
             // 
             this.modelLabel.AutoSize = true;
-            this.modelLabel.Location = new System.Drawing.Point(31, 88);
+            this.modelLabel.Location = new System.Drawing.Point(90, 125);
             this.modelLabel.Name = "modelLabel";
             this.modelLabel.Size = new System.Drawing.Size(39, 13);
             this.modelLabel.TabIndex = 2;
@@ -80,67 +80,67 @@
             // typeLabel
             // 
             this.typeLabel.AutoSize = true;
-            this.typeLabel.Location = new System.Drawing.Point(31, 118);
+            this.typeLabel.Location = new System.Drawing.Point(90, 160);
             this.typeLabel.Name = "typeLabel";
-            this.typeLabel.Size = new System.Drawing.Size(34, 13);
+            this.typeLabel.Size = new System.Drawing.Size(28, 13);
             this.typeLabel.TabIndex = 3;
-            this.typeLabel.Text = "Type:";
+            this.typeLabel.Text = "Typ:";
             // 
             // odometerLabel
             // 
             this.odometerLabel.AutoSize = true;
-            this.odometerLabel.Location = new System.Drawing.Point(31, 150);
+            this.odometerLabel.Location = new System.Drawing.Point(90, 195);
             this.odometerLabel.Name = "odometerLabel";
-            this.odometerLabel.Size = new System.Drawing.Size(56, 13);
+            this.odometerLabel.Size = new System.Drawing.Size(51, 13);
             this.odometerLabel.TabIndex = 4;
-            this.odometerLabel.Text = "Odometer:";
+            this.odometerLabel.Text = "Przebieg:";
             // 
             // registrationNumberLabel
             // 
             this.registrationNumberLabel.AutoSize = true;
-            this.registrationNumberLabel.Location = new System.Drawing.Point(31, 180);
+            this.registrationNumberLabel.Location = new System.Drawing.Point(90, 230);
             this.registrationNumberLabel.Name = "registrationNumberLabel";
-            this.registrationNumberLabel.Size = new System.Drawing.Size(104, 13);
+            this.registrationNumberLabel.Size = new System.Drawing.Size(107, 13);
             this.registrationNumberLabel.TabIndex = 5;
-            this.registrationNumberLabel.Text = "Registration number:";
+            this.registrationNumberLabel.Text = "Tablica rejestracyjna:";
             // 
             // efficiencyLabel
             // 
             this.efficiencyLabel.AutoSize = true;
-            this.efficiencyLabel.Location = new System.Drawing.Point(31, 210);
+            this.efficiencyLabel.Location = new System.Drawing.Point(90, 265);
             this.efficiencyLabel.Name = "efficiencyLabel";
-            this.efficiencyLabel.Size = new System.Drawing.Size(56, 13);
+            this.efficiencyLabel.Size = new System.Drawing.Size(55, 13);
             this.efficiencyLabel.TabIndex = 6;
-            this.efficiencyLabel.Text = "Efficiency:";
+            this.efficiencyLabel.Text = "Dostepny:";
             // 
             // isDisabledLabel
             // 
             this.isDisabledLabel.AutoSize = true;
-            this.isDisabledLabel.Location = new System.Drawing.Point(31, 242);
+            this.isDisabledLabel.Location = new System.Drawing.Point(90, 300);
             this.isDisabledLabel.Name = "isDisabledLabel";
-            this.isDisabledLabel.Size = new System.Drawing.Size(60, 13);
+            this.isDisabledLabel.Size = new System.Drawing.Size(65, 13);
             this.isDisabledLabel.TabIndex = 7;
-            this.isDisabledLabel.Text = "Is disabled:";
+            this.isDisabledLabel.Text = "Niesprawny:";
             // 
             // imageUrlLabel
             // 
             this.imageUrlLabel.AutoSize = true;
-            this.imageUrlLabel.Location = new System.Drawing.Point(27, 269);
+            this.imageUrlLabel.Location = new System.Drawing.Point(90, 335);
             this.imageUrlLabel.Name = "imageUrlLabel";
-            this.imageUrlLabel.Size = new System.Drawing.Size(55, 13);
+            this.imageUrlLabel.Size = new System.Drawing.Size(166, 13);
             this.imageUrlLabel.TabIndex = 8;
-            this.imageUrlLabel.Text = "Image Url:";
+            this.imageUrlLabel.Text = "Zdjecie pogladowe: (opcjonalnie):";
             // 
             // brandTextbox
             // 
-            this.brandTextbox.Location = new System.Drawing.Point(184, 54);
+            this.brandTextbox.Location = new System.Drawing.Point(260, 85);
             this.brandTextbox.Name = "brandTextbox";
             this.brandTextbox.Size = new System.Drawing.Size(100, 20);
             this.brandTextbox.TabIndex = 10;
             // 
             // modelTextbox
             // 
-            this.modelTextbox.Location = new System.Drawing.Point(184, 85);
+            this.modelTextbox.Location = new System.Drawing.Point(260, 120);
             this.modelTextbox.Name = "modelTextbox";
             this.modelTextbox.Size = new System.Drawing.Size(100, 20);
             this.modelTextbox.TabIndex = 11;
@@ -148,21 +148,21 @@
             // typeCombobox
             // 
             this.typeCombobox.FormattingEnabled = true;
-            this.typeCombobox.Location = new System.Drawing.Point(184, 110);
+            this.typeCombobox.Location = new System.Drawing.Point(240, 155);
             this.typeCombobox.Name = "typeCombobox";
-            this.typeCombobox.Size = new System.Drawing.Size(121, 21);
+            this.typeCombobox.Size = new System.Drawing.Size(120, 21);
             this.typeCombobox.TabIndex = 12;
             // 
             // registrationNumberTextbox
             // 
-            this.registrationNumberTextbox.Location = new System.Drawing.Point(184, 177);
+            this.registrationNumberTextbox.Location = new System.Drawing.Point(260, 225);
             this.registrationNumberTextbox.Name = "registrationNumberTextbox";
             this.registrationNumberTextbox.Size = new System.Drawing.Size(100, 20);
             this.registrationNumberTextbox.TabIndex = 14;
             // 
             // imageUrlTextBox
             // 
-            this.imageUrlTextBox.Location = new System.Drawing.Point(184, 266);
+            this.imageUrlTextBox.Location = new System.Drawing.Point(260, 330);
             this.imageUrlTextBox.Name = "imageUrlTextBox";
             this.imageUrlTextBox.Size = new System.Drawing.Size(100, 20);
             this.imageUrlTextBox.TabIndex = 15;
@@ -170,7 +170,7 @@
             // efficiencyCheckbox
             // 
             this.efficiencyCheckbox.AutoSize = true;
-            this.efficiencyCheckbox.Location = new System.Drawing.Point(184, 210);
+            this.efficiencyCheckbox.Location = new System.Drawing.Point(240, 265);
             this.efficiencyCheckbox.Name = "efficiencyCheckbox";
             this.efficiencyCheckbox.Size = new System.Drawing.Size(15, 14);
             this.efficiencyCheckbox.TabIndex = 16;
@@ -179,7 +179,7 @@
             // isDisabledCheckbox
             // 
             this.isDisabledCheckbox.AutoSize = true;
-            this.isDisabledCheckbox.Location = new System.Drawing.Point(184, 241);
+            this.isDisabledCheckbox.Location = new System.Drawing.Point(240, 300);
             this.isDisabledCheckbox.Name = "isDisabledCheckbox";
             this.isDisabledCheckbox.Size = new System.Drawing.Size(15, 14);
             this.isDisabledCheckbox.TabIndex = 17;
@@ -187,9 +187,9 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(585, 147);
+            this.saveButton.Location = new System.Drawing.Point(640, 195);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.Size = new System.Drawing.Size(75, 25);
             this.saveButton.TabIndex = 18;
             this.saveButton.Text = "Zapisz";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -205,7 +205,7 @@
             // 
             // odometerTextbox
             // 
-            this.odometerTextbox.Location = new System.Drawing.Point(185, 147);
+            this.odometerTextbox.Location = new System.Drawing.Point(240, 190);
             this.odometerTextbox.Maximum = new decimal(new int[] {
             -1304428545,
             434162106,
@@ -241,7 +241,7 @@
             this.Controls.Add(this.brandLabel);
             this.Controls.Add(this.idLabel);
             this.Name = "CarEditingPanel";
-            this.Size = new System.Drawing.Size(1000, 296);
+            this.Size = new System.Drawing.Size(1000, 450);
             ((System.ComponentModel.ISupportInitialize)(this.odometerTextbox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

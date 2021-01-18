@@ -48,17 +48,20 @@
             // 
             // registrationPanel1
             // 
+            this.registrationPanel1.BackColor = System.Drawing.Color.Silver;
             resources.ApplyResources(this.registrationPanel1, "registrationPanel1");
             this.registrationPanel1.Name = "registrationPanel1";
             // 
             // loginPanel1
             // 
             resources.ApplyResources(this.loginPanel1, "loginPanel1");
+            this.loginPanel1.BackColor = System.Drawing.Color.Silver;
             this.loginPanel1.Name = "loginPanel1";
             // 
             // adminClient1
             // 
             resources.ApplyResources(this.adminClient1, "adminClient1");
+            this.adminClient1.BackColor = System.Drawing.Color.Silver;
             this.adminClient1.Name = "adminClient1";
             // 
             // customerClient1
