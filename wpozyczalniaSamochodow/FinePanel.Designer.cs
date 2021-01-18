@@ -49,9 +49,9 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(65, 123);
+            this.backButton.Location = new System.Drawing.Point(65, 120);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.Size = new System.Drawing.Size(75, 25);
             this.backButton.TabIndex = 0;
             this.backButton.Text = "Powrót";
             this.backButton.UseVisualStyleBackColor = true;
@@ -75,20 +75,20 @@
             // 
             // id
             // 
-            this.id.HeaderText = "Id";
+            this.id.HeaderText = "ID:";
             this.id.Name = "id";
             this.id.ReadOnly = true;
             // 
             // cost
             // 
-            this.cost.HeaderText = "Koszt";
+            this.cost.HeaderText = "Koszt:";
             this.cost.Name = "cost";
             this.cost.ReadOnly = true;
             // 
             // description
             // 
             this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.description.HeaderText = "Opis";
+            this.description.HeaderText = "Opis:";
             this.description.Name = "description";
             this.description.ReadOnly = true;
             // 
