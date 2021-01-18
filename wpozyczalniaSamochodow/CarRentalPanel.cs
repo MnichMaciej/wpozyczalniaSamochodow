@@ -68,7 +68,7 @@ namespace wypozyczalniaSamochodow
         {
             cars.Clear();
             carTable.Rows.Clear();
-            if(reservation.carType != 0 && reservation.dateBegin!=null && reservation.dateEnd != null)
+            if(reservation.carType != 0 && reservation.dateBegin!=null && reservation.dateEnd != null && reservation.dateBegin != "0000-00-00" && reservation.dateEnd != "0000-00-00")
             {
                 await DatabaseService.getAvaliableCars(reservation).ContinueWith((task) =>
                 {
