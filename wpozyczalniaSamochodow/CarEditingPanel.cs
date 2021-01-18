@@ -105,7 +105,10 @@ namespace wypozyczalniaSamochodow
                     bool result = task.Result;
                     if(result){
                         MessageBox.Show("Zapisano zmiany.");
-                        Hide();
+                        if (InvokeRequired)
+                            Invoke(new Action(() => {  Hide(); }));
+                        else
+                            Hide();
                     }
                     else
                     {

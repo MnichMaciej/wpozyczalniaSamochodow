@@ -255,11 +255,11 @@ namespace wypozyczalniaSamochodow
                 {
                     var result = new MySqlCommand(query, connection);
                     MySqlDataReader resultReader = result.ExecuteReader();
-                    if (resultReader.Read()) resultFlag = true;
+                    //if (resultReader.Read()) resultFlag = true;
                     resultReader.Close();
                     result.Cancel();
                     connection.Close();
-
+                    resultFlag = true;
 
                 }
                 return resultFlag;
