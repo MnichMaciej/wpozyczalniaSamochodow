@@ -17,6 +17,14 @@ namespace wypozyczalniaSamochodow
         public ReservationPanel()
         {
             InitializeComponent();
+            reservationEditingPanel1.Hide();
+            reservationEditingPanel1.refreshDatabase =  () => 
+            {
+                reservations.Clear();
+                reservationTable.Rows.Clear(); 
+                getReservations(); 
+                //reservationEditingPanel1.Hide(); 
+            };
         }
         public void show(Account acc)
         {
@@ -83,7 +91,7 @@ namespace wypozyczalniaSamochodow
 
         private void editReservation(Reservation reservation)
         {
-            //TODO: open edit reservationpanel
+            reservationEditingPanel1.show(reservation);
         }
 
         private async void cancelReservation(Reservation reservation)

@@ -128,6 +128,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservation.cs" />
     <Compile Include="ReservationData.cs" />
+    <Compile Include="ReservationEditingPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReservationEditingPanel.Designer.cs">
+      <DependentUpon>ReservationEditingPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReservationPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </Compile>
     <EmbeddedResource Include="RegistrationPanel.resx">
       <DependentUpon>RegistrationPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReservationEditingPanel.resx">
+      <DependentUpon>ReservationEditingPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReservationPanel.resx">
       <DependentUpon>ReservationPanel.cs</DependentUpon>

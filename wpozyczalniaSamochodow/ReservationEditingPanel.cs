@@ -10,33 +10,33 @@ using System.Windows.Forms;
 
 namespace wypozyczalniaSamochodow
 {
-    public partial class CarRentalPanel : UserControl
+    public partial class ReservationEditingPanel : UserControl
     {
-        Account account;
-        ReservationData reservation;
+        Reservation reservation;
         List<Car> cars = new List<Car>();
-        public CarRentalPanel()
+        public Action refreshDatabase;
+        public ReservationEditingPanel()
         {
             InitializeComponent();
-            foreach (var item in Enum.GetValues(typeof(CarType)))
-            {
-                typeCombobox.Items.Add(item);
-            }
-            carTable.Hide();
+        }
+
+        public void show(Reservation res)
+        {
+            reservation = res;
+            Show();
+            typeLabel.Text = Enum.GetName(typeof(CarType),reservation.carType);
             dateFromPicker.MinDate = DateTime.Today;
             dateToPicker.MinDate = DateTime.Today;
-
+            dateToPicker.Value = dateFromPicker.Value.AddDays(1);
         }
-        public void show(Account acc)
+
+        private void goBackButton_Click(object sender, EventArgs e)
         {
-            cars.Clear();
-            carTable.Rows.Clear();
-            account = acc;
-            reservation = new ReservationData();
-            Show();
+            refreshDatabase();
+            Hide();
         }
 
-        private void setDateBegin(object sender, EventArgs e)
+        private void dateFromPicker_ValueChanged(object sender, EventArgs e)
         {
             cars.Clear();
             carTable.Rows.Clear();
@@ -44,7 +44,7 @@ namespace wypozyczalniaSamochodow
             dateToPicker.MinDate = dateFromPicker.Value.AddDays(1);
         }
 
-        private void setDateEnd(object sender, EventArgs e)
+        private void dateToPicker_ValueChanged(object sender, EventArgs e)
         {
             cars.Clear();
             carTable.Rows.Clear();
@@ -59,20 +59,23 @@ namespace wypozyczalniaSamochodow
             return String.Join("-", date.Split(' ')[0].Split('.').Reverse());
         }
 
-        private void setCarType(object sender, EventArgs e)
+        //metoda 'addCarTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
+        //wypełnienia tabeli danymi
+        private void addCarTableRow(Car car)
         {
-            cars.Clear();
-            carTable.Rows.Clear();
-            reservation.carType = (CarType)Enum.Parse(typeof(CarType), typeCombobox.SelectedItem.ToString());
+            var index = carTable.Rows.Add();
+            carTable.Rows[index].Cells["brand"].Value = car.brand;
+            carTable.Rows[index].Cells["model"].Value = car.model;
+
         }
 
-        private async void getAvaliableCars(object sender, EventArgs e)
+        private async void getAvailableCars(object sender, EventArgs e)
         {
             cars.Clear();
             carTable.Rows.Clear();
-            if(reservation.carType != 0 && reservation.dateBegin!=null && reservation.dateEnd != null && reservation.dateBegin != "0000-00-00" && reservation.dateEnd != "0000-00-00")
+            if (reservation.carType != 0 && reservation.dateBegin != null && reservation.dateEnd != null && reservation.dateBegin != "0000-00-00" && reservation.dateEnd != "0000-00-00")
             {
-                await DatabaseService.getAvaliableCars(reservation).ContinueWith((task) =>
+                await DatabaseService.getAvaliableCarsForEditReservation(reservation).ContinueWith((task) =>
                 {
                     cars = task.Result;
                     foreach (Car car in cars)
@@ -81,30 +84,18 @@ namespace wypozyczalniaSamochodow
                             carTable.Invoke(new Action(() => addCarTableRow(car)));
                         else
                             addCarTableRow(car);
-
                     }
                     if (carTable.InvokeRequired)
                         carTable.Invoke(new Action(() => carTable.Show()));
                     else
                         carTable.Show();
-
-
                 });
             }
             else
             {
                 MessageBox.Show("Uzupełnij wszystkie pola.");
             }
-        }
 
-        //metoda 'addCarTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
-        //wypełnienia tabeli danymi
-        private void addCarTableRow(Car car)
-        {
-            var index = carTable.Rows.Add();
-            carTable.Rows[index].Cells["brand"].Value = car.brand;
-            carTable.Rows[index].Cells["model"].Value = car.model;
-            
         }
 
         //metoda 'carTable_CellContentClick' została dodana ze względu na wymagania frameworka Windows.Forms
@@ -122,16 +113,16 @@ namespace wypozyczalniaSamochodow
 
         private async void saveReservation(Car car)
         {
-            await DatabaseService.insertReservation(reservation, car, account.id).ContinueWith(task =>
+            await DatabaseService.updateReservationOnEdit(reservation, car).ContinueWith(task =>
             {
                 bool result = task.Result;
                 if (result)
                 {
                     MessageBox.Show("Zapisano");
                     if (InvokeRequired)
-                        Invoke(new Action(() =>Hide()));
+                        Invoke(new Action(() => { refreshDatabase(); Hide(); }));
                     else
-                       Hide();
+                        Hide();
                 }
                 else
                 {
@@ -140,9 +131,8 @@ namespace wypozyczalniaSamochodow
             });
         }
 
-        private void goBack(object sender, EventArgs e)
-        {
-            Hide();
-        }
+
     }
+
+    
 }
