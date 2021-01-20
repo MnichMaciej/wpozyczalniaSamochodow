@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace wypozyczalniaSamochodow
 {
-    //Klasa przedstawiająca okno programu klienckiego administratora
+    // Klasa przedstawiająca okno programu klienckiego administratora
     public partial class AdminClient : UserControl
     {
         public AdminClient()

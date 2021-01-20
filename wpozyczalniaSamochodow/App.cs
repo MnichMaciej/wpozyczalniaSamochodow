@@ -14,8 +14,8 @@ namespace wypozyczalniaSamochodow
     {
 
         private Account account;
-        //pole 'panels' zostało dodane ze względu na wymagania frameworka Windows.Forms
-        //przechowuje 'okna' dodane do klasy 'App'
+        // Pole 'panels' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        // Przechowuje 'okna' dodane do klasy 'App'
         private List<UserControl> panels = new List<UserControl>();
 
         public App()
@@ -29,8 +29,8 @@ namespace wypozyczalniaSamochodow
             loginPanel1.Show();
         }
 
-        //metoda 'hidePanels' jest metodą pomocniczą
-        //ukrywa wszystkie panele 
+        // Metoda 'hidePanels' jest metodą pomocniczą
+        // Ukrywa wszystkie panele 
         private void hidePanels()
         {
             foreach (UserControl panel in panels)

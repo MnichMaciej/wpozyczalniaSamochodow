@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 
 namespace wypozyczalniaSamochodow
 {
-    //klasa 'DatabaseService' służy do obsługi połączenia z bazą danych
+    // Klasa 'DatabaseService' służy do obsługi połączenia z bazą danych
     static class DatabaseService
     {
         private static string server = "mn16.webd.pl";
@@ -89,7 +89,6 @@ namespace wypozyczalniaSamochodow
 
             return account;
         }
-
 
         public static async Task<List<Car>> getCarsAsync()
         {
@@ -194,7 +193,6 @@ namespace wypozyczalniaSamochodow
                 return resultFlag;
             });
         }
-
 
         public static async Task<List<Reservation>> getReservationsAsync(Account acc)
         {
@@ -692,7 +690,6 @@ namespace wypozyczalniaSamochodow
             });
         }
 
-
         private static void ShowDialog(string text, string caption)
         {
             Form prompt = new Form()
@@ -717,7 +714,6 @@ namespace wypozyczalniaSamochodow
             database + ";";
             connection.ConnectionString = connectionString;
         }
-
 
         private static int getDateDiff(ReservationData reservation)
         {

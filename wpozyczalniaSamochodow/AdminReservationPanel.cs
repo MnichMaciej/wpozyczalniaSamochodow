@@ -11,12 +11,12 @@ using wypozyczalniaSamochodow;
 
 namespace wypozyczalniaSamochodow
 {
-    //Klasa przedstawiająca panel rezerwacji administratora
+    // Klasa przedstawiająca panel rezerwacji administratora
     public partial class AdminReservationPanel : UserControl
     {
         private List<Reservation> reservations = new List<Reservation>();
-        //pole 'showParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
-        //pole przechowuje metodę panelu nadrzędnego
+        // Pole 'showParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        // Pole przechowuje metodę panelu nadrzędnego
         public Action showParent;
         public AdminReservationPanel()
         {
@@ -67,8 +67,8 @@ namespace wypozyczalniaSamochodow
             });
 
         }
-        //metoda 'addReservationTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
-        //wypełnienia tabeli danymi
+        // Metoda 'addReservationTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
+        // Wypełnienia tabeli danymi
         private void addReservationTableRow(Reservation reservation)
         {
             var index = reservationTable.Rows.Add();
@@ -87,8 +87,8 @@ namespace wypozyczalniaSamochodow
 
         }
 
-        //metoda 'reservationTable_CellContentClick' została dodana ze względu na wymagania frameworka Windows.Forms
-        //jest uruchamiana gdy użytkownik wciśnie przycisk znajdujący się w danym wierszu w tabeli
+        // Metoda 'reservationTable_CellContentClick' została dodana ze względu na wymagania frameworka Windows.Forms
+        // Jest uruchamiana gdy użytkownik wciśnie przycisk znajdujący się w danym wierszu w tabeli
         private void reservationTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;

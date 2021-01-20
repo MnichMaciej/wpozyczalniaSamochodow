@@ -47,8 +47,8 @@ namespace wypozyczalniaSamochodow
             });
         }
 
-        //metoda 'addFineTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
-        //wypełnienia tabeli danymi
+        // Metoda 'addFineTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
+        // Wypełnienia tabeli danymi
         private void addFineTableRow(Fine fine)
         {
             var index = fineTable.Rows.Add();

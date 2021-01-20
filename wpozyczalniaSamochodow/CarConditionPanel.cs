@@ -14,8 +14,8 @@ namespace wypozyczalniaSamochodow
     public partial class CarConditionPanel : UserControl
     {
         Reservation reservation;
-        //pole 'showParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
-        //pole przechowuje metodę panelu nadrzędnego
+        // Pole 'showParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        // Pole przechowuje metodę panelu nadrzędnego
         public Action showParent;
         public CarConditionPanel()
         {
@@ -68,8 +68,8 @@ namespace wypozyczalniaSamochodow
             return await DatabaseService.insertFine(fine,reservation);
 
         }
-        //metoda 'fineCheckbox_CheckedChanged' została dodana ze względu na wymagania frameworka Windows.Forms
-        //jest uruchamiana gdy użytkownik zmieni wartość pola wyboru
+        // Metoda 'fineCheckbox_CheckedChanged' została dodana ze względu na wymagania frameworka Windows.Forms
+        // Jest uruchamiana gdy użytkownik zmieni wartość pola wyboru
         private void fineCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (fineCheckbox.Checked)

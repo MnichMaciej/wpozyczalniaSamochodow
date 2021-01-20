@@ -49,8 +49,8 @@ namespace wypozyczalniaSamochodow
 
         }
 
-        //metoday zostały dodane ze względu na wymagania frameworka Windows.Forms
-        //są uruchamiane gdy użytkownik użyje danego przycisku
+        // Metoday zostały dodane ze względu na wymagania frameworka Windows.Forms
+        // Są uruchamiane gdy użytkownik użyje danego przycisku
         private void CarReturnPanelButton_Click(object sender, EventArgs e)
         {
             openCarReturnPanel(acc);

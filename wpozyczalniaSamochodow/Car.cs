@@ -11,7 +11,7 @@ namespace wypozyczalniaSamochodow
         SUV=1,Combi=2,Sport=3,Sedan=4,Coupe=5
     }
     
-    //Klasa 'kontener' przechowująca dane jednegeo pojazdu
+    // Klasa 'kontener' przechowująca dane jednegeo pojazdu
     public class Car : CarData
     {
         public int carId;

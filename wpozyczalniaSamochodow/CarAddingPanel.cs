@@ -12,8 +12,8 @@ namespace wypozyczalniaSamochodow
 {
     public partial class CarAddingPanel : UserControl
     {
-        //pole 'showParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
-        //pole przechowuje metodę panelu nadrzędnego
+        // Pole 'showParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        // Pole przechowuje metodę panelu nadrzędnego
         public Action showParent;
         public CarAddingPanel()
         {
@@ -138,8 +138,8 @@ namespace wypozyczalniaSamochodow
             }
         }
 
-        //metody dodane ze względu na wymagania frameworka Windows.Forms
-        //dokonują graficznych zmian w okienku
+        // Metody dodane ze względu na wymagania frameworka Windows.Forms
+        // Dokonują graficznych zmian w okienku
         private void brandTextBox_Click(object sender, EventArgs e)
         {
             brandTextBox.BackColor = Color.White;
