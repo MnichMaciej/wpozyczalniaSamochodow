@@ -29,7 +29,7 @@ namespace wypozyczalniaSamochodow
             reservations.Clear();
             reservationTable.Rows.Clear();
             this.Show();
-            await this.getReservations();
+            this.getReservations();
 
         }
 
@@ -39,7 +39,7 @@ namespace wypozyczalniaSamochodow
             {
                 reservations.Clear();
                 reservationTable.Rows.Clear();
-                await getReservations();
+                getReservations();
                 carConditionPanel1.Hide();
                 carConditionPanel1.SendToBack();
             }
@@ -50,7 +50,7 @@ namespace wypozyczalniaSamochodow
             }
         }
 
-        private async Task getReservations()
+        private async void getReservations()
         {
             await DatabaseService.getReservationsAsync(null).ContinueWith((task) =>
             {

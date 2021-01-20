@@ -56,11 +56,11 @@ namespace wypozyczalniaSamochodow
             cars.Clear();
             carsTable.Rows.Clear();
             this.Show();
-            await this.getCars();
+            this.getCars();
 
         }
 
-        private async Task getCars()
+        private async void getCars()
         {
             await DatabaseService.getCarsAsync().ContinueWith((task) =>
             {
