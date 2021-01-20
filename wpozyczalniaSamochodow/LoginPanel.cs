@@ -15,8 +15,8 @@ namespace wypozyczalniaSamochodow
     {
         
         private Account account;        
-        //pole 'parent' zostało dodane ze względu na wymagania frameworka Windows.Forms
-        //pole przechowuje referencje do panelu nadrzędnego
+        // Pole 'parent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        // Pole przechowuje referencje do panelu nadrzędnego
         private App parent;
 
         public LoginPanel()
@@ -26,8 +26,8 @@ namespace wypozyczalniaSamochodow
         
         }
 
-        //metoda 'setParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
-        //metoda pozwala na przypisanie wartości do pola 'parent'
+        // Metoda 'setParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        // Metoda pozwala na przypisanie wartości do pola 'parent'
         public void setParent(App parent)
         {
             this.parent = parent;

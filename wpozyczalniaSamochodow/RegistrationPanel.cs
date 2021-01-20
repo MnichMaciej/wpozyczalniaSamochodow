@@ -12,8 +12,8 @@ namespace wypozyczalniaSamochodow
 {
     public partial class RegistrationPanel : UserControl
     {
-        //pole 'parent' zostało dodane ze względu na wymagania frameworka Windows.Forms
-        //pole przechowuje referencje do panelu nadrzędnego
+        // Pole 'parent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        // Pole przechowuje referencje do panelu nadrzędnego
         private App parent;
         public RegistrationPanel()
         {
@@ -21,8 +21,8 @@ namespace wypozyczalniaSamochodow
             Hide();
         }
 
-        //metoda 'setParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
-        //metoda pozwala na przypisanie wartości do pola 'parent'
+        // Metoda 'setParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        // Metoda pozwala na przypisanie wartości do pola 'parent'
         public void setParent(App parent)
         {
             this.parent = parent;
@@ -199,57 +199,57 @@ namespace wypozyczalniaSamochodow
             }
         }
 
-        //Metoda wizualna
+        // Metoda wizualna
         private void emailTextBox_Click(object sender, EventArgs e)
         {
             emailTextBox.BackColor = Color.White;
         }
 
-        //Metoda wizualna
+        // Metoda wizualna
         private void passwordTextBox_Click(object sender, EventArgs e)
         {
             passwordTextBox.BackColor = Color.White;
             passwordTextBox2.BackColor = Color.White;
         }
 
-        //Metoda wizualna
+        // Metoda wizualna
         private void passwordTextBox2_Click(object sender, EventArgs e)
         {
             passwordTextBox.BackColor = Color.White;
             passwordTextBox2.BackColor = Color.White;
         }
 
-        //Metoda wizualna
+        // Metoda wizualna
         private void firstNameTextBox_Click(object sender, EventArgs e)
         {
             firstNameTextBox.BackColor = Color.White;
         }
 
-        //Metoda wizualna
+        // Metoda wizualna
         private void lastNameTextBox_Click(object sender, EventArgs e)
         {
             lastNameTextBox.BackColor = Color.White;
         }
 
-        //Metoda wizualna
+        // Metoda wizualna
         private void cityTextBox_Click(object sender, EventArgs e)
         {
             cityTextBox.BackColor = Color.White;
         }
 
-        //Metoda wizualna
+        // Metoda wizualna
         private void addressTextBox_Click(object sender, EventArgs e)
         {
             addressTextBox.BackColor = Color.White;
         }
 
-        //Metoda wizualna
+        // Metoda wizualna
         private void houseNumberTextBox_Click(object sender, EventArgs e)
         {
             houseNumberTextBox.BackColor = Color.White;
         }
 
-        //Metoda wizualna
+        // Metoda wizualna
         private void apartmentNumberTextBox_Click(object sender, EventArgs e)
         {
             apartmentNumberTextBox.BackColor = Color.White;

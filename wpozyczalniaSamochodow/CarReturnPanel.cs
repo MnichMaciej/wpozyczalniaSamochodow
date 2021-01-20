@@ -49,8 +49,8 @@ namespace wypozyczalniaSamochodow
 
         }
 
-        //metoda 'addReservationTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
-        //wypełnienia tabeli danymi
+        // Metoda 'addReservationTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
+        // Wypełnienia tabeli danymi
         private void addReservationTableRow(Reservation reservation)
         {
             var index = reservationTable.Rows.Add();
@@ -62,8 +62,8 @@ namespace wypozyczalniaSamochodow
             reservationTable.Rows[index].Cells["dateEnd"].Value = reservation.dateEnd;
         }
 
-        //metoda 'reservationTable_CellContentClick' została dodana ze względu na wymagania frameworka Windows.Forms
-        //jest uruchamiana gdy użytkownik użyje przycisku w tabeli
+        // Metoda 'reservationTable_CellContentClick' została dodana ze względu na wymagania frameworka Windows.Forms
+        // Jest uruchamiana gdy użytkownik użyje przycisku w tabeli
         private void reservationTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;

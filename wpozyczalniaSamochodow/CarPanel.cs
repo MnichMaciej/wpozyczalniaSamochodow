@@ -14,8 +14,8 @@ namespace wypozyczalniaSamochodow
     public partial class CarPanel : UserControl
     {
         private List<Car> cars = new List<Car>();
-        //pole 'showParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
-        //pole przechowuje metodę panelu nadrzędnego
+        // Pole 'showParent' zostało dodane ze względu na wymagania frameworka Windows.Forms
+        // Pole przechowuje metodę panelu nadrzędnego
         public Action showParent;
         public CarPanel()
         {
@@ -77,8 +77,8 @@ namespace wypozyczalniaSamochodow
             });
  
         }
-        //metoda 'addCarTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
-        //wypełnienia tabeli danymi
+        // Metoda 'addCarTableRow' została dodana ze względu na wymagania frameworka Windows.Forms
+        // Wypełnienia tabeli danymi
         private void addCarTableRow(Car car)
         {
             var index = carsTable.Rows.Add();
@@ -94,8 +94,8 @@ namespace wypozyczalniaSamochodow
             mainPanel.AutoScroll = true;
         }
 
-        //metoda 'carsTable_CellContentClick' została dodana ze względu na wymagania frameworka Windows.Forms
-        //jest uruchamiana gdy użytkownik użyje przycisku w tabeli
+        // Metoda 'carsTable_CellContentClick' została dodana ze względu na wymagania frameworka Windows.Forms
+        // Jest uruchamiana gdy użytkownik użyje przycisku w tabeli
         private void carsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
