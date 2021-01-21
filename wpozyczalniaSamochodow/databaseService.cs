@@ -19,15 +19,15 @@ namespace wypozyczalniaSamochodow
         private static string server = "mn16.webd.pl";
         private static string database = "tomnich_maciek";
         private static string uid= "tomnich_maciek";
-        private static string password;
-        private static string connectionString;
+        private static string password = "BardzoSilneHaslo";
+        private static string connectionString = "Server=" + server + ";" + " Uid=" + uid + ";" + " Pwd=" + password + ";" + " Database=" +
+            database + ";";
         private static MySqlConnection connection = new MySqlConnection(connectionString) ;
         public static Account account = null;
 
 
         public static bool openConnection()
         {
-            if(string.IsNullOrEmpty(password)) ShowDialog("Podaj hasło do bazy danych","Połączenie");
             try
             {
                 connection.Open();
@@ -35,7 +35,6 @@ namespace wypozyczalniaSamochodow
             }
             catch (MySqlException ex)
             {
-                password = null;
                 switch (ex.Number)
                 {
                     case 0:
@@ -46,7 +45,7 @@ namespace wypozyczalniaSamochodow
                         MessageBox.Show("Invalid username/password, please try again");
                         break;
                     default:
-                        MessageBox.Show("Jakiś error:"+ ex.Message.ToString());
+                        MessageBox.Show("Unknown error:"+ ex.Message.ToString());
                         break;
                 }
                 return false;
@@ -253,7 +252,6 @@ namespace wypozyczalniaSamochodow
                 {
                     var result = new MySqlCommand(query, connection);
                     MySqlDataReader resultReader = result.ExecuteReader();
-                    //if (resultReader.Read()) resultFlag = true;
                     resultReader.Close();
                     result.Cancel();
                     connection.Close();

@@ -72,7 +72,6 @@
             this.passwordInput.PasswordChar = '*';
             this.passwordInput.Size = new System.Drawing.Size(210, 20);
             this.passwordInput.TabIndex = 2;
-            this.passwordInput.Text = "klient1";
             // 
             // loginInput
             // 
@@ -80,12 +79,11 @@
             this.loginInput.Name = "loginInput";
             this.loginInput.Size = new System.Drawing.Size(210, 20);
             this.loginInput.TabIndex = 1;
-            this.loginInput.Text = "jkowalski@gmail.com";
             // 
             // registrationButton
             // 
             this.registrationButton.Location = new System.Drawing.Point(330, 265);
-            this.registrationButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registrationButton.Margin = new System.Windows.Forms.Padding(2);
             this.registrationButton.Name = "registrationButton";
             this.registrationButton.Size = new System.Drawing.Size(80, 30);
             this.registrationButton.TabIndex = 4;
